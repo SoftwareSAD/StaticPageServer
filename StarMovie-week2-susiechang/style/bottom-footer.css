@@ -1,0 +1,23 @@
+.footer {
+    background-color:#383A3F;
+    color: #6c757d;
+    width: 100%;
+    height: fit-content;
+}
+
+.footer-grid {
+    float: left;
+    height: 250px;
+    text-align: left;
+    padding: 50px;
+}
+ul,li{
+    list-style-type:none;
+    padding:0;
+    margin:10px 0px 10px 0px;
+}
+
+.footer_copy {
+    text-align: center;
+    margin: 25px;
+}
