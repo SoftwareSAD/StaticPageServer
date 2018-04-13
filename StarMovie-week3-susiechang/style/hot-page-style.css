@@ -1,5 +1,5 @@
 html, body{
-    background: url("../img/slide_1.jpg") no-repeat fixed;
+    background: url("../img/background.jpg") no-repeat fixed;
     background-size: cover;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -7,7 +7,6 @@ html, body{
     height: 100%;
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 
 .latest-news-container,
@@ -47,19 +46,6 @@ html, body{
 {
     width: 100%;
     height: 235px;
-}
-.two-line-text {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-}
-
-.three-line-text {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
 }
 span.fa{
     line-height: 3px;

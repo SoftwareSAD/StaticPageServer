@@ -1,5 +1,5 @@
 html, body{
-    background: url("../img/slide_1.jpg") no-repeat fixed;
+    /*background: url("../img/background.jpg") no-repeat fixed;*/
     background-size: cover;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -7,14 +7,13 @@ html, body{
     height: 100%;
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 
 .latest-news-list-container
 {
-    margin-top: 100px;
     padding: 0;
     height: fit-content;
+    width: 70%;
 }
 
 .latest-news-list-img {
@@ -23,12 +22,15 @@ html, body{
 }
 
 .latest-news-list img{
-    width: 120px;
-    height: 80px;
+    width: 130px;
+    height: 90px;
 }
 .change-pager ul
 {
-    text-align: center;
     width: min-content;
     margin: 50px auto 50px auto;
 }
+.container {
+    margin: 100px auto 100px auto;
+}
+
