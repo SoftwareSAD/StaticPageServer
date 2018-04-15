@@ -1,0 +1,34 @@
+html, body{
+    background: url("../img/slide_1.jpg") no-repeat fixed;
+    background-size: cover;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.latest-news-list-container
+{
+    margin-top: 100px;
+    padding: 0;
+    height: fit-content;
+}
+
+.latest-news-list-img {
+    float: left;
+    margin-right: 3px;
+}
+
+.latest-news-list img{
+    width: 120px;
+    height: 80px;
+}
+.change-pager ul
+{
+    text-align: center;
+    width: min-content;
+    margin: 50px auto 50px auto;
+}
