@@ -19,7 +19,8 @@ ul,li{
 
 .footer_copy {
     text-align: center;
-    margin: 25px;
+    margin: 25px 0px 0px 0px;
+    padding: 5px;
 }
 
  .user-portrait {

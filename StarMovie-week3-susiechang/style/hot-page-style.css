@@ -1,6 +1,7 @@
 html, body{
-    background: url("../img/background.jpg") no-repeat fixed;
-    background-size: cover;
+    /*background: url("../img/background.jpg") no-repeat fixed;*/
+    /*background-size: cover;*/
+    background-color: wheat;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     width: 100%;
@@ -9,10 +10,15 @@ html, body{
     padding: 0;
 }
 
+.hot-container {
+    margin: 100px auto 100px auto;
+    background-color:wheat;
+}
+
 .latest-news-container,
 .latest-video-container
 {
-    margin: 50px 0px 100px 0px;
+    margin: 10px 0px 100px 0px;
     text-align: center;
     color: white;
 }
@@ -33,16 +39,16 @@ html, body{
     background-color: white;
     opacity: 50%;
 }
-.latest-news-box-detail {
+.news-box-detail {
     padding: 10px;
     width: 100%;
     height: 135px;
 }
-.latest-news-info
+.news-box-info
 {
     padding: 10px;
 }
-.latest-news-img
+.news-box-img img
 {
     width: 100%;
     height: 235px;
@@ -64,33 +70,27 @@ span.fa{
     border-width: 0px;
     overflow: hidden;
 }
-.latest-video-img {
+.video-box-img {
     width: 100%;
     height: 235px;
 }
-.latest-video-title {
+.video-box-title {
     margin-top: 130px;
 }
-.latest-video-box-detail:hover {
+.video-box-detail:hover {
     background-color:  rgba(0,0,0,0.5);
     color: floralwhite;
     font-size: 16px;
 }
-.latest-video-box-detail{
+.video-box-detail{
     background-color:  rgba(0,0,0,0.1);
     color: white;
     font-size: 16px;
-}
-.change-pager ul
-{
-    text-align: center;
-    width: min-content;
-    margin: 50px auto 50px auto;
 }
 
 #HelloText {
     font-size: 50px;
     margin: 150px auto 50px auto;
     text-align: center;
-    color: white;
+    color: #EC7357;
 }

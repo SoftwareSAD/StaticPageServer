@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="grid loading, swipe, effect, slide, masonry, web design, tutorial" />
+    <title>热点首页 | STAR MOVIES</title>
+    <link rel="stylesheet" href="../style/base.css">
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="../style/hot-page-style.css">
+    <link rel="stylesheet" href="../style/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bootstrap-4.1.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="../bootstrap-4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="test.js"></script>
+</head>
+<body>
+<div class="header">
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg fixed-top top-navbar">
+        <div class="container">
+            <!--Brand-->
+            <div class="navbar-header page-scroll">
+                <a class="navbar-brand" href="page-top">STAR MOVIES</a>
+            </div>
+            <div class="navbar-expand-sm navbar-expand-lg navbar-expand-md"><!--navbar-collapse-->
+                <ul class="navbar-nav">
+                    <!--定位城市-->
+                    <li class="nav-item">
+                        <div class="dropdown city-selected"  data-val="{currentcityid:20}">
+                            <div class="dropdown-toggle city-name " id="dropdownMenu1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                广州
+                                <span class="caret"></span>
+                            </div>
+                            <div class="dropdown-menu city-list " aria-labelledby="dropdownMenu1" role="menu"  data-val="{localcityid: 20}">
+                                <div class="dropdown-item city-list-header"><a class="js-geo-city"  href="#">定位城市：广州</a></div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item ity-list-header "><a class="js-geo-city" href="#">Other</a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="hotPage.html" class="nav-link" >首页</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link active">资讯</a></li>
+                    <li class="nav-item"><a href="forumPage.html" class="nav-link">论坛</a></li>
+                    <li class="nav-item"><span class="fa fa-search fa-lg search-icon"></span></li>
+                    <li>
+                        <!--登录界面-->
+                        <div class="dropdown user-info">
+                            <div class="dropdown-toggle user-avatar " data-toggle="dropdown"  id="dropdownMenu2">
+                                <img src="../img/1.jpg" class="rounded-circle user-portrait">
+                                <span class="caret"></span>
+                            </div>
+                            <ul class="user-menu dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li class="dropdown-item"><a  href="javascript:void 0">登录</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--end of navbar-->
+</div>
+<div class="hot-container">
+    <p  id="HelloText">Hello, This is Star Movies.</p>
+    <!--最新资讯栏-->
+    <div class="latest-news-container container clearfix">
+        <h4 class="latest-header">
+            最新资讯
+        </h4>
+        <div class="latest-box-container clearfix">
+            <div class="latest-news-box">
+                <div class="news-box-img">
+                    <a href="#" target="_blank" data-act="news-click">
+                        <img src="../img/2.jpg" alt="news image">
+                    </a>
+                </div>
+                <div class="news-box-detail">
+                    <a  class="news-box-title " href="#" target="_blank" data-act="news-click">
+                        <p class="two-line-text text-center">
+                            《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳
+                        </p>
+                    </a>
+                    <article class="three-line-text news-box-article">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</article>
+                </div>
+                <div class="news-box-info">
+                    <small class="update-time text-muted float-left">Last updated 3 mins ago</small>
+                    <small class="view-count float-right"><span class="fa fa-eye fa-lg"></span>200</small>
+                </div>
+            </div>
+            <div class="latest-news-box">
+                <div class="news-box-img">
+                    <a href="#" target="_blank" data-act="news-click">
+                        <img src="../img/2.jpg" alt="news image">
+                    </a>
+                </div>
+                <div class="news-box-detail">
+                    <a  class="news-box-title " href="#" target="_blank" data-act="news-click">
+                        <p class="two-line-text text-center">
+                            《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳
+                        </p>
+                    </a>
+                    <article class="three-line-text news-box-article">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</article>
+                </div>
+                <div class="news-box-info">
+                    <small class="update-time text-muted float-left">Last updated 3 mins ago</small>
+                    <small class="view-count float-right"><span class="fa fa-eye fa-lg"></span>200</small>
+                </div>
+            </div>
+            <div class="latest-news-box">
+                <div class="news-box-img">
+                    <a href="#" target="_blank" data-act="news-click">
+                        <img src="../img/2.jpg" alt="news image">
+                    </a>
+                </div>
+                <div class="news-box-detail">
+                    <a  class="news-box-title " href="#" target="_blank" data-act="news-click">
+                        <p class="two-line-text text-center">
+                            《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳
+                        </p>
+                    </a>
+                    <article class="three-line-text news-box-article">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</article>
+                </div>
+                <div class="news-box-info">
+                    <small class="update-time text-muted float-left">Last updated 3 mins ago</small>
+                    <small class="view-count float-right"><span class="fa fa-eye fa-lg"></span>200</small>
+                </div>
+            </div>
+            <div class="latest-news-box">
+                <div class="news-box-img">
+                    <a href="#" target="_blank" data-act="news-click">
+                        <img src="../img/2.jpg" alt="news image">
+                    </a>
+                </div>
+                <div class="news-box-detail">
+                    <a  class="news-box-title " href="#" target="_blank" data-act="news-click">
+                        <p class="two-line-text text-center">
+                            《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳
+                        </p>
+                    </a>
+                    <article class="three-line-text news-box-article">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</article>
+                </div>
+                <div class="news-box-info">
+                    <small class="update-time text-muted float-left">Last updated 3 mins ago</small>
+                    <small class="view-count float-right"><span class="fa fa-eye fa-lg"></span>200</small>
+                </div>
+            </div>
+            <div class="latest-news-box">
+                <div class="news-box-img">
+                    <a href="#" target="_blank" data-act="news-click">
+                        <img src="../img/2.jpg" alt="news image">
+                    </a>
+                </div>
+                <div class="news-box-detail">
+                    <a  class="news-box-title " href="#" target="_blank" data-act="news-click">
+                        <p class="two-line-text text-center">
+                            《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳
+                        </p>
+                    </a>
+                    <article class="three-line-text news-box-article">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</article>
+                </div>
+                <div class="news-box-info">
+                    <small class="update-time text-muted float-left">Last updated 3 mins ago</small>
+                    <small class="view-count float-right"><span class="fa fa-eye fa-lg"></span>200</small>
+                </div>
+            </div>
+            <div class="latest-news-box">
+                <div class="news-box-img">
+                    <a href="#" target="_blank" data-act="news-click">
+                        <img src="../img/2.jpg" alt="news image">
+                    </a>
+                </div>
+                <div class="news-box-detail">
+                    <a  class="news-box-title " href="#" target="_blank" data-act="news-click">
+                        <p class="two-line-text text-center">
+                            《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳
+                        </p>
+                    </a>
+                    <article class="three-line-text news-box-article">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</article>
+                </div>
+                <div class="news-box-info">
+                    <small class="update-time text-muted float-left">Last updated 3 mins ago</small>
+                    <small class="view-count float-right"><span class="fa fa-eye fa-lg"></span>200</small>
+                </div>
+            </div>
+        </div>
+        <a href="newsPage.html" class="all-news-ref float-right" data-act="all-news-click">更多<span class="fa fa-arrow-right fa-lg"></span></a>
+    </div>
+    <!--最新视频栏-->
+    <div class="latest-video-container container clearfix">
+        <h4 class="latest-header">
+            最新视频
+        </h4>
+        <div class="latest-box-container clearfix">
+            <div class="card img-fluid latest-video-box">
+                <a  class="video-box-anchor" href="#" title="" target="_blank" data-act="video-click">
+                    <img class="card-img-top video-box-img" src="../img/5.jpg" alt="Card image">
+                    <div class="card-img-overlay video-box-detail">
+                        <p class="card-title video-title two-line-text">《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳</p>
+                        <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>200</small>
+                    </div>
+                </a>
+            </div>
+            <div class="card img-fluid latest-video-box">
+                <a  class="video-box-anchor" href="#" title="" target="_blank" data-act="video-click">
+                    <img class="card-img-top video-box-img" src="../img/5.jpg" alt="Card image">
+                    <div class="card-img-overlay video-box-detail">
+                        <p class="card-title video-title two-line-text">《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳</p>
+                        <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>200</small>
+                    </div>
+                </a>
+            </div>
+            <div class="card img-fluid latest-video-box">
+                <a  class="video-box-anchor" href="#" title="" target="_blank" data-act="video-click">
+                    <img class="card-img-top video-box-img" src="../img/5.jpg" alt="Card image">
+                    <div class="card-img-overlay video-box-detail">
+                        <p class="card-title video-title two-line-text">《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳</p>
+                        <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>200</small>
+                    </div>
+                </a>
+            </div>
+            <div class="card img-fluid latest-video-box">
+                <a  class="video-box-anchor" href="#" title="" target="_blank" data-act="video-click">
+                    <img class="card-img-top video-box-img" src="../img/5.jpg" alt="Card image">
+                    <div class="card-img-overlay video-box-detail">
+                        <p class="card-title video-title two-line-text">《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳</p>
+                        <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>200</small>
+                    </div>
+                </a>
+            </div>
+            <div class="card img-fluid latest-video-box">
+                <a  class="video-box-anchor" href="#" title="" target="_blank" data-act="video-click">
+                    <img class="card-img-top video-box-img" src="../img/5.jpg" alt="Card image">
+                    <div class="card-img-overlay video-box-detail">
+                        <p class="card-title video-title two-line-text">《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳</p>
+                        <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>200</small>
+                    </div>
+                </a>
+            </div>
+            <div class="card img-fluid latest-video-box">
+                <a  class="video-box-anchor" href="#" title="" target="_blank" data-act="video-click">
+                    <img class="card-img-top video-box-img" src="../img/5.jpg" alt="Card image">
+                    <div class="card-img-overlay video-box-detail">
+                        <p class="card-title video-title two-line-text">《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳</p>
+                        <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>200</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <a href="trailerPage.html" class="all-video-ref float-right" data-act="all-video-click">更多<span class="fa fa-arrow-right fa-lg"></span></a>
+    </div>
+</div>
+<div class="footer" id="footer">
+    <div class="container">
+        <div class="col-lg-6 float-left clearfix">
+            <div class=" footer-grid">
+                <h4>About Us</h4>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. <span>Excepteur sint occaecat cupidatat non proident
+					sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
+            </div>
+        </div>
+        <div class="col-lg-6 float-left clearfix">
+            <div class="footer-grid">
+                <h4>Contact</h4>
+                <ul style="list-style: none">
+                    <li><span class="fa fa-address-book fa-lg"></span> 738 Diamond Road, New York City</li>
+                    <li><span class="fa fa-mail-forward fa-lg"></span><a href="mailto:info@example.com">info@example.com</a></li>
+                    <li><span class="fa fa-phone fa-lg" aria-hidden="true"></span> (0123) 0111 111 222</li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer_copy">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="#">STAR MOVIES</a></p>
+    </div>
+</div>
+
+<script src="../js/jquery.shuffleLetters.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>
