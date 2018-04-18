@@ -1,37 +1,50 @@
-html, body{
-    /*background: url("../img/background.jpg") no-repeat fixed;*/
-    /*background-size: cover;*/
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 .all-news-container{
     margin: 150px auto 100px auto;
+    background-color:  #d9e1e8;
+}
+
+.latest-header {
+    text-align: center;
+    margin: 10px;
+    color: #9baec8;
 }
 
 .news-cell {
-    width: 100%;
+    width: 95%;
     height: 130px;
     margin: 10px auto 10px auto;
     padding: 5px 5px 5px 5px;
+    text-align: left;
 }
 
 .news-cell-img {
-    width: 20%;
+    width: 19%;
     height: 100%;
+    overflow: hidden;
 }
 
 .news-cell-img img {
     width: 100%;
-    height: 100%;
 }
 
 .news-cell-detail {
-    width: 80%;
+    width: 68%;
     height: 100%;
-    padding: 0px 5px 0px 5px;
+    padding: 5px 20px 10px 10px;
+    overflow: hidden;
+}
+
+.news-date {
+    padding: 0px 0px 0px 5px;
+}
+.news-cell-info {
+    width: 13%;
+    height: 100%;
+    padding: 5px 0px 0px 0px;
+}
+
+
+.change-pager ul{
+    width: fit-content;
+    margin: auto auto;
 }
