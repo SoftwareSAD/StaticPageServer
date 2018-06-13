@@ -5,7 +5,7 @@
       <!--end of navbar-->
     </div>
 
-      <nuxt/>
+    <nuxt/>
 
     <div class="footer">
       <bottom-footer/>

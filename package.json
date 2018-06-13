@@ -1,32 +1,30 @@
 {
-  "name": "starmovie",
+  "name": "sad-project",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
-  "author": "sad",
+  "description": "My tremendous Nuxt.js project",
+  "author": "SAD",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "heroku-postbuild": "npm run build"
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
   },
   "dependencies": {
-    "bootstrap-vue": "^2.0.0-rc.8",
-    "nuxt": "^1.4.0"
+    "nuxt": "^1.0.0",
+    "express": "^4.15.3",
+    "bootstrap-vue": "^1.0.2",
+    "bootstrap": "^4.0.0-beta.2",
+    "@nuxtjs/axios": "^5.0.0"
   },
   "devDependencies": {
+    "cross-env": "^5.0.1",
     "babel-eslint": "^8.2.1",
     "eslint": "^4.15.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
+    "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^4.0.0",
-    "ejs": "^2.5.6",
-    "express": "^4.15.2"
-  },
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "heroku-postbuild": "npm run build"
+    "nodemon": "^1.11.0"
   }
 }
