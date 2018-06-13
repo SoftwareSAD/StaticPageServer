@@ -20,3 +20,13 @@ $ yarn run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+# ternimal logs
+``` bash
+$ npm install -g npx
+$ npx create-nuxt-app sad-project
+$ cd sad-project
+$ npm install
+$ npm run dev
+```
+
