@@ -1,50 +1,44 @@
 <template>
-  <div class="container all-news-container">
-    <!--全部资讯栏-->
-    <h4 class="latest-header">全部资讯</h4>
-    <div class="news-cell-group">
-      <div class="news-cell clearfix" v-for="item in allnewsdata" :key="item.id">
-        <div class="news-cell-img float-left">
-          <a :href="item.newsLink" :title="item.newsTitle" target="_blank">
-            <img :src="item.imgUrl"/>
-          </a>
+  <div>
+    <b-row class="nav-row text-center " align-v="center">
+      <b-col><nuxt-link to="/hot-news" >热点资讯</nuxt-link></b-col>
+      <b-col><nuxt-link to="/all-news" class="active">全部新闻</nuxt-link></b-col>
+      <b-col><nuxt-link to="/all-videos" >全部视频</nuxt-link></b-col>
+    </b-row>
+    <div class="container all-news-container">
+      <!--全部资讯栏-->
+      <h4 class="latest-header">全部资讯</h4>
+      <div class="news-cell-group">
+        <div class="news-cell clearfix" v-for="item in allnewsdata" :key="item.id">
+          <div class="news-cell-img float-left">
+            <a :href="item.newsLink" :title="item.newsTitle" target="_blank">
+              <img :src="item.imgUrl"/>
+            </a>
+          </div>
+          <div class="news-cell-detail float-left">
+            <a :href="item.newsLink" title="item.newsTitle" target="_blank">
+              <h5 class="news-cell-title two-line-text">{{item.newsTitle}}</h5>
+            </a>
+            <article class="news-cell-article three-line-text">{{item.newsArticle}}</article>
+          </div>
+          <small class="news-cell-info float-right">STAR MOVIES<span class="news-date text-muted">{{item.newsDate}}</span></small>
         </div>
-        <div class="news-cell-detail float-left">
-          <a :href="item.newsLink" title="item.newsTitle" target="_blank">
-            <h5 class="news-cell-title two-line-text">{{item.newsTitle}}</h5>
-          </a>
-          <article class="news-cell-article three-line-text">{{item.newsArticle}}</article>
-        </div>
-        <small class="news-cell-info float-right">STAR MOVIES<span class="news-date text-muted">{{item.newsDate}}</span></small>
       </div>
-    </div>
-    <!--分页栏--每页10项，共50页-->
-    <div class="pag-nav">
-      <b-pagination align="center" :total-rows="500" v-model="currentPage" :per-page="10">
-      </b-pagination>
+      <!--分页栏--每页10项，共50页-->
+      <div class="pag-nav">
+        <b-pagination align="center" :total-rows="500" v-model="currentPage" :per-page="10">
+        </b-pagination>
+      </div>
     </div>
   </div>
 </template>
 <script scoped>
   export default {
-    head: {
-      'title': '全部资讯',
+    head() {
+      return{'title': '全部资讯'}
     },
     data () {
-      return {
-        project: 'default',
-        currentPage: 1,
-        allnewsdata: [
-          {
-            imgUrl:  require('~/assets/img/5.jpg'),
-            newsLink: 'javascript:viod 0',
-            newsTitle: '...',
-            newsDate: '00-00',
-            viewCount: '0',
-            newsArticle: '...',
-          },
-        ]
-      }
+      return {}
     },
     asyncData (context) {
       return {
@@ -65,10 +59,27 @@
 </script>
 <style>
   .all-news-container{
-    margin: 150px auto 50px auto;
+    margin: 50px auto 50px auto;
     text-align: center;
     height: 1400px;
     position: relative;
+  }
+  .nav-row {
+    height: 55px;
+    background-color: #282c37;
+    margin-top: 45px;
+    padding: 20px 50px 20px 50px;
+  }
+  .nav-row a{
+    color: #5D6D7E;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  .nav-row a:hover{
+    color: #dae9f4;
+  }
+  .nav-row a.active {
+    color: white;
   }
   .pag-nav {
     text-align: center;
