@@ -11,6 +11,7 @@
         </b-nav-item-dropdown>
         <b-nav-item href="/">首页</b-nav-item>
         <b-nav-item href="/cinema">影院</b-nav-item>
+<<<<<<< HEAD
         <b-nav-item-dropdown text="电影" left no-caret>
           <b-dropdown-item href="/movies">正在热映</b-dropdown-item>
           <b-dropdown-item href="/movies">即将上映</b-dropdown-item>
@@ -21,6 +22,10 @@
           <b-dropdown-item href="/all-news">全部资讯</b-dropdown-item>
           <b-dropdown-item href="/all-videos">全部视频</b-dropdown-item>
         </b-nav-item-dropdown>
+=======
+        <b-nav-item href="/movies">电影</b-nav-item>
+        <b-nav-item href="/hot-news">热点</b-nav-item>
+>>>>>>> 72ffd11f4797cc2b209dfb44a4bb300006c3a6e6
       </b-navbar-nav>
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
