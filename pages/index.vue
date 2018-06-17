@@ -93,8 +93,8 @@ export default {
 
 <style>
   .mycontainer {
+    margin-top: 50px;
     width: 100%;
-    background: url("../assets/img/background.jpg") no-repeat fixed;
   }
   #adcolum {
     margin-top: 0px;
