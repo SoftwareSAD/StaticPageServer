@@ -11,7 +11,7 @@
         </b-nav-item-dropdown>
         <b-nav-item href="/">首页</b-nav-item>
         <b-nav-item href="/cinema">影院</b-nav-item>
-        <b-nav-item href="movies">电影</b-nav-item>
+        <b-nav-item href="/movies">电影</b-nav-item>
         <b-nav-item href="/hot-news">热点</b-nav-item>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
