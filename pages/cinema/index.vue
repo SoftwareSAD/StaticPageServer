@@ -4,7 +4,10 @@
 
 <script>
   export default {
-    name: ""
+    name: "",
+    head: {
+        title: '影院'
+    }
   }
 </script>
 

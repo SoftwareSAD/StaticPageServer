@@ -1,52 +1,45 @@
 <template>
-  <div>
-    <b-row class="nav-row text-center " align-v="center">
-      <b-col><nuxt-link to="/hot-news" class="active">热点资讯</nuxt-link></b-col>
-      <b-col><nuxt-link to="/all-news">全部新闻</nuxt-link></b-col>
-      <b-col><nuxt-link to="/all-videos">全部视频</nuxt-link></b-col>
-    </b-row>
-    <div class="container hot-container clearfix">
-      <!--最新资讯-->
-      <div class="latest-box-container">
-        <div class="header">
-          <h4>最新资讯</h4>
+  <div class="container hot-container clearfix">
+    <!--最新资讯-->
+    <div class="latest-box-container">
+      <div class="header">
+        <h4>最新资讯</h4>
+      </div>
+      <div class="news-box-container clearfix" id="vue-app1">
+        <div class="news-box" v-for="item in newsdata" :key="item.id">
+          <a  :href="item.newsLink" target="_blank" :title="item.newsTitle">
+            <img class="news-box-img" :src="item.imgUrl" alt="news img">
+          </a>
+          <a  :href="item.newsLink" target="_blank" :title="item.newsTitle">
+            <p class="news-box-title two-line-text text-center">
+              {{item.newsTitle}}
+            </p>
+          </a>
+          <div class="news-box-info">
+            <small class="update-time text-muted float-left">STAR MOVIES</small>
+            <small class="view-count float-right"><span class="fa fa-eye"></span>{{item.viewCount}}</small>
+          </div>
         </div>
-        <div class="news-box-container clearfix" id="vue-app1">
-          <div class="news-box" v-for="item in newsdata" :key="item.id">
-            <a  :href="item.newsLink" target="_blank" :title="item.newsTitle">
-              <img class="news-box-img" :src="item.imgUrl" alt="news img">
-            </a>
-            <a  :href="item.newsLink" target="_blank" :title="item.newsTitle">
-              <p class="news-box-title two-line-text text-center">
-                {{item.newsTitle}}
-              </p>
-            </a>
-            <div class="news-box-info">
-              <small class="update-time text-muted float-left">STAR MOVIES</small>
-              <small class="view-count float-right"><span class="fa fa-eye"></span>{{item.viewCount}}</small>
+      </div>
+      <a href="/all-news" class="all-news-ref float-right">更多<span class="fa fa-arrow-right fa-lg"></span></a>
+    </div>
+    <!--最新视频-->
+    <div class="latest-box-container">
+      <div class="header">
+        <h4>最新视频</h4>
+      </div>
+      <div class="video-box-container clearfix" id="vue-app2">
+        <div class="video-box card img-fluid" v-for="item in videodata" :key="item.id">
+          <a :href="item.videoLink" :title="item.videoTitle" target="_blank">
+            <img class="video-box-img card-img-top" :src="item.imgUrl" alt="video image">
+            <div class="video-box-detail card-img-overlay">
+              <p class="video-box-title card-title two-line-text">{{item.videoTitle}}</p>
+              <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>{{item.viewCount}}</small>
             </div>
-          </div>
+          </a>
         </div>
-        <a href="/all-news" class="all-news-ref float-right">更多<span class="fa fa-arrow-right fa-lg"></span></a>
       </div>
-      <!--最新视频-->
-      <div class="latest-box-container">
-        <div class="header">
-          <h4>最新视频</h4>
-        </div>
-        <div class="video-box-container clearfix" id="vue-app2">
-          <div class="video-box card img-fluid" v-for="item in videodata" :key="item.id">
-            <a :href="item.videoLink" :title="item.videoTitle" target="_blank">
-              <img class="video-box-img card-img-top" :src="item.imgUrl" alt="video image">
-              <div class="video-box-detail card-img-overlay">
-                <p class="video-box-title card-title two-line-text">{{item.videoTitle}}</p>
-                <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>{{item.viewCount}}</small>
-              </div>
-            </a>
-          </div>
-        </div>
-        <a href="/all-videos" class="all-video-ref float-right">更多<span class="fa fa-arrow-right fa-lg"></span></a>
-      </div>
+      <a href="/all-videos" class="all-video-ref float-right">更多<span class="fa fa-arrow-right fa-lg"></span></a>
     </div>
   </div>
 </template>
@@ -145,24 +138,7 @@
 
 <style>
   .hot-container {
-    margin-top: 50px;
-  }
-  .nav-row {
-    height: 55px;
-    background-color: #282c37;
-    margin-top: 45px;
-    padding: 20px 50px 20px 50px;
-  }
-  .nav-row a{
-    color: #5D6D7E;
-    font-size: 16px;
-    text-decoration: none;
-  }
-  .nav-row a:hover{
-    color: #dae9f4;
-  }
-  .nav-row a.active {
-    color: white;
+    margin-top: 140px;
   }
   .latest-box-container {
     text-align: center;

@@ -5,14 +5,22 @@
     <b-collapse is-nav id="nav_collapse">
       <!--导航栏-->
       <b-navbar-nav>
-        <b-nav-item-dropdown class="city-name" text="广州" right>
+        <b-nav-item-dropdown class="city-name" text="广州" left open>
           <b-dropdown-item href="#">定位城市：<span class="city-name">广州</span></b-dropdown-item>
           <b-dropdown-item href="#"><b-list-group class="city-list"></b-list-group></b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item href="/">首页</b-nav-item>
         <b-nav-item href="/cinema">影院</b-nav-item>
-        <b-nav-item href="movies">电影</b-nav-item>
-        <b-nav-item href="/hot-news">热点</b-nav-item>
+        <b-nav-item-dropdown text="电影" left no-caret>
+          <b-dropdown-item href="/movies">正在热映</b-dropdown-item>
+          <b-dropdown-item href="/movies">即将上映</b-dropdown-item>
+          <b-dropdown-item href="/movies">经典影片</b-dropdown-item>
+        </b-nav-item-dropdown>
+        <b-nav-item-dropdown text="资讯" left no-caret>
+          <b-dropdown-item href="/hot-news">热点资讯</b-dropdown-item>
+          <b-dropdown-item href="/all-news">全部资讯</b-dropdown-item>
+          <b-dropdown-item href="/all-videos">全部视频</b-dropdown-item>
+        </b-nav-item-dropdown>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
@@ -37,7 +45,7 @@
 
 <script>
   export default {
-    name: ""
+    name: "top-nav"
   }
 </script>
 
