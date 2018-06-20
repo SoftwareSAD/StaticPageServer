@@ -1,5 +1,5 @@
 const pkg = require('./package')
-
+const bodyParser = require('body-parser')
 module.exports = {
   mode: 'universal',
   head: {
@@ -19,27 +19,29 @@ module.exports = {
     '~/assets/css/base.css',
     '~/assets/css/font-awesome/css/font-awesome.min.css'
   ],
+
   plugins: [
+    { src: '~/plugins/vuelidate' }
   ],
+
   modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
   ],
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-  },
+  serverMiddleware: [
+    bodyParser.json(),
+    '~/api'
+  ],
+
   build: {
-    /*
-    ** You can extend webpack config here
-    */
+    extractCSS: true,
+    vendor: ['axios'],
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
-          test: /\.(js|vue)$/,
+          test: /\.(js|vue|json)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })

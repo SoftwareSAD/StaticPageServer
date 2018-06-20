@@ -28,5 +28,6 @@ $ npx create-nuxt-app sad-project
 $ cd sad-project
 $ npm install
 $ npm run dev
+babel-plugin-component
 ```
 

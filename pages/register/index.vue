@@ -1,17 +1,17 @@
 <template>
-  <b-container class="login-container">
+  <b-container class="register-container">
     <b-header>
-      <h4>登录</h4>
+      <h4>注册</h4>
     </b-header>
     <b-form @submit.prevent="login" v-if="!$store.state.authUser">
-      <!--用户名-->
+      <!--手机-->
       <b-form-group id="emailInputGroup1" label="用户名:" label-for="emailInput1">
         <b-form-input id="emailInput1" type="text" v-model="form.email" placeholder="邮箱/手机" required>
         </b-form-input>
       </b-form-group>
       <!--密码-->
       <b-form-group id="passwordInputGroup2" label="密码:" label-for="passwordInput2">
-        <b-form-input id="passwordInput2" type="password" v-model="form.password"  placeholder="密码" required>
+        <b-form-input id="passwordInput2" type="password" v-model="form.password" placeholder="密码" required>
         </b-form-input>
       </b-form-group>
       <!--提交/重置-->
@@ -60,7 +60,7 @@
 </script>
 
 <style scoped>
-  .login-container{
+  .register-container{
     margin: 150px auto 50px auto;
     height: 320px;
     width: 400px;
