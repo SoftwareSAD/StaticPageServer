@@ -1,7 +1,7 @@
 const express = require('express')
 const jwt = require("jsonwebtoken")
 const expressWebToken = require("express-jwt")
-const InitAdmin  = require('../myproject.config').InitAdmin
+import {InitAdmin} from '../myproject.config'
 // Create express router
 const router = express.Router()
 
