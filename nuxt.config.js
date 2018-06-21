@@ -30,7 +30,7 @@ module.exports = {
   ],
   serverMiddleware: [
     bodyParser.json(),
-    '~/api'
+    '~/server/api'
   ],
 
   build: {

@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 
 
-const backendURL = 'http://127.0.0.1:3000';
+const backendURL = 'http://localhost:3000';
 
 let instance = axios.create({
   timeout: 1000,
@@ -47,6 +47,12 @@ export const actions = {
 
     }
   },
+  /**
+   * @param commit
+   * @param email
+   * @param password
+   * @desc 用户登录
+   */
   async login({ commit }, { email, password }) {
     try {
       const { data } = await axios.post('/api/login', { email, password });
@@ -61,6 +67,10 @@ export const actions = {
       throw error
     }
   },
+
+  /**
+   * @desc 注销登录
+   */
   async logout({ commit }) {
     Cookie.remove('token');
     commit('SET_USER', null);
@@ -74,6 +84,25 @@ export const actions = {
     } catch (error) {
       if (error.response && error.response.status === 401) {
         throw new Error('Bad credentials')
+      }
+      throw error
+    }
+  },
+  /**
+   * @param email
+   * @param password
+   * @desc 用户注册------------未完成
+   */
+  async register({ commit }, { email, password }) {
+    try {
+      const { data } = await axios.post('/api/login', { email, password });
+      let payload = jwtDecode(data.token);
+      Cookie.set('token', data.token, { expires: 1 / 24 * 6 });  // Expire for 6h
+      commit('SET_TOKEN', data.token);
+      commit('SET_USER', payload);
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        throw new Error('用户名或者密码错误')
       }
       throw error
     }

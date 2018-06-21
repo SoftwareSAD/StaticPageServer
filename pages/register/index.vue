@@ -3,7 +3,7 @@
     <b-header>
       <h4>注册</h4>
     </b-header>
-    <b-form @submit.prevent="login" v-if="!$store.state.authUser">
+    <b-form @submit.prevent="register" v-if="!$store.state.authUser">
       <!--手机-->
       <b-form-group id="emailInputGroup1" label="用户名:" label-for="emailInput1">
         <b-form-input id="emailInput1" type="text" v-model="form.email" placeholder="邮箱/手机" required>
@@ -30,6 +30,10 @@
 
 <script>
   export default {
+    head:{
+      title: '注册'
+    },
+    
     data() {
       return {
         form: {
@@ -40,9 +44,9 @@
       }
     },
     methods: {
-      async login() {
+      async register() {
         try {
-          await this.$store.dispatch('login', {
+          await this.$store.dispatch('register', {
             email: this.form.email,
             password: this.form.password
           })
