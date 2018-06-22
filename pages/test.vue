@@ -22,7 +22,7 @@
       <b-form-group>
         <div class="form-check">
           <input type="checkbox" :checked="form.checked">
-          同意<a href="#">《STAR MOVIE注册协议》</a>
+            同意<a href="#">《STAR MOVIE注册协议》</a>
         </div>
       </b-form-group>
       <b-button id="submit-button" type="submit">注册</b-button>
@@ -82,9 +82,9 @@
 
       check_code() {
         if(this.form.code!==this.curCode) {
-          this.error.code = "输入验证码错误"
+          error.code = "输入验证码错误"
         } else {
-          this.error.code = ""
+          error.code = ""
         }
       },
 
@@ -106,7 +106,7 @@
           this.curCode+=Math.floor(Math.random()*10)
         }
         try {
-          let {data} = await axios.post('/api/sms', {code: this.curCode, cellphone: this.form.cellphone});
+          let {data} = await axios.post('/api/test', {code: this.curCode, cellphone: this.form.cellphone});
         } catch (error) {
           if (error.response && error.response.status === 401) {
             throw new Error('发送验证码失败')
@@ -117,9 +117,9 @@
 
       async register() {
         if(this.form.cellphone!==this.curPhone){
-          this.error.phone = "手机号码变更"
+          error.phone = "手机号码变更"
         } else {
-          this.error.phone = ""
+          error.phone = ""
         }
         if(!error.phone || !error.code || !error.password1 || !error.password2 || !this.form.checked) {
           this.curError = "输入出错，请修改"

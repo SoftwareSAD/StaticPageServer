@@ -23,10 +23,19 @@ module.exports.config = {
  * @desc InitAdmin
  * */
 module.exports.InitAdmin = {
-  username: 'admin', // 管理员用户名称-隐藏信息
+  username: 'admin', // 管理员用户昵称
   password: 'admin', // 管理员密码
-  nickname: 'admin', // 昵称
+  // nickname: 'admin', // 昵称
   email: 'admin@vsorg.com', // email
   cellphone: '13711111111', // phone
-  portrait: '', // 头像
+  portrait: '../assets/img/logo/login-default-portrait.png', // 头像
+}
+
+/**
+ *@desc 短信发送
+ */
+module.exports.SMS = {
+  smsapi : "api.smsbao.com",
+  user : "susie",// 短信平台账号
+  password: "smsbaoshiwojia13", // 短信平台密码
 }

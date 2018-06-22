@@ -1,8 +1,6 @@
 <template>
   <b-container class="login-container">
-    <b-header>
-      <h4>登录</h4>
-    </b-header>
+    <h4>登录</h4>
     <b-form @submit.prevent="login" v-if="!$store.state.authUser">
       <!--用户名-->
       <b-form-group id="emailInputGroup1" label="用户名:" label-for="emailInput1">

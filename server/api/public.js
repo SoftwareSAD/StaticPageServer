@@ -6,7 +6,7 @@ const router = express.Router()
 var app = express()
 
 const jwtSecret = 'super_secret';
-const jwtExpire = '6h';
+const jwtExpire = '168h';
 
 router.use(expressWebToken({
   requestProperty: "account",

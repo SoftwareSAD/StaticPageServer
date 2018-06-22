@@ -57,37 +57,37 @@
         project: 'nuxt',
         newsdata: [
           {
-            imgUrl:  require('~/assets/img/4.jpg'),
+            imgUrl:  require('~/assets/img/7.jpg'),
             newsLink: 'http://baidu.com',
             newsTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
             viewCount: '200'
           },
           {
-            imgUrl:  require('~/assets/img/4.jpg'),
+            imgUrl:  require('~/assets/img/7.jpg'),
             newsLink: 'http://baidu.com',
             newsTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
             viewCount: '200'
           },
           {
-            imgUrl:  require('~/assets/img/4.jpg'),
+            imgUrl:  require('~/assets/img/7.jpg'),
             newsLink: 'http://baidu.com',
             newsTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
             viewCount: '200'
           },
           {
-            imgUrl:  require('~/assets/img/4.jpg'),
+            imgUrl:  require('~/assets/img/7.jpg'),
             newsLink: 'http://baidu.com',
             newsTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
             viewCount: '200'
           },
           {
-            imgUrl:  require('~/assets/img/4.jpg'),
+            imgUrl:  require('~/assets/img/7.jpg'),
             newsLink: 'http://baidu.com',
             newsTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
             viewCount: '200'
           },
           {
-            imgUrl:  require('~/assets/img/4.jpg'),
+            imgUrl:  require('~/assets/img/7.jpg'),
             newsLink: 'http://baidu.com',
             newsTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
             viewCount: '200'

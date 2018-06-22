@@ -57,7 +57,7 @@ export const actions = {
     try {
       const { data } = await axios.post('/api/login', { email, password });
       let payload = jwtDecode(data.token);
-      Cookie.set('token', data.token, { expires: 1 / 24 * 6 });  // Expire for 6h
+      Cookie.set('token', data.token, { expires: 1 / 24 * 168 });  // Expire for 7day
       commit('SET_TOKEN', data.token);
       commit('SET_USER', payload);
     } catch (error) {
@@ -77,34 +77,14 @@ export const actions = {
     commit('SET_TOKEN', null);
   },
   async statistics({ commit, state }) {
-    //instance.defaults.headers['Authorization'] = 'Bearer ' + state.token;
     try {
       const { data } = await instance.get('/api/statistics');
       commit('SET_STATISTICS', data);
-    } catch (error) {
-      if (error.response && error.response.status === 401) {
-        throw new Error('Bad credentials')
-      }
-      throw error
-    }
-  },
-  /**
-   * @param email
-   * @param password
-   * @desc 用户注册------------未完成
-   */
-  async register({ commit }, { email, password }) {
-    try {
-      const { data } = await axios.post('/api/login', { email, password });
-      let payload = jwtDecode(data.token);
-      Cookie.set('token', data.token, { expires: 1 / 24 * 6 });  // Expire for 6h
-      commit('SET_TOKEN', data.token);
-      commit('SET_USER', payload);
     } catch (error) {
       if (error.response && error.response.status === 401) {
         throw new Error('用户名或者密码错误')
       }
       throw error
     }
-  },
+  }
 }
