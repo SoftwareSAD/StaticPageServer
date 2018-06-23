@@ -1,35 +1,58 @@
 <template>
-  <b-container class="register-container">
-    <b-form class="register-form" v-if="!$store.state.authUser" @submit.prevent="register">
-      <h4>注册</h4>
-      <b-form-group label="手机号" label-for="phoneInput" id="phoneInputGroup">
-        <b-form-input id="phoneInput" type="text"  v-model="form.cellphone" required></b-form-input>
-        <small class="text-danger">{{error.phone}}</small>
-      </b-form-group>
-      <b-form-group label="验证码" label-for="codeInput" class="clearfix" id="codeInputGroup">
-        <b-form-input id="codeInput" type="text" v-model="form.code" required></b-form-input>
-        <small class="text-danger float-left code-error">{{error.code}}</small>
-        <b-button class="float-right code-button" @click="send_sms" type="button">发送短信验证码</b-button>
-      </b-form-group>
-      <b-form-group label="密码" label-for="passInput1" id="passInput1Group">
-        <b-form-input id="passInput1" type="password" v-model="form.password1" v-on:input="check_pass1" required></b-form-input>
-        <small class="text-danger code-error">{{error.password1}}</small>
-      </b-form-group>
-      <b-form-group label="重复密码" label-for="passInput2" id="passInput2Group">
-        <b-form-input id="passInput2" type="password" v-model="form.password2" v-on:input="check_pass2" required></b-form-input>
-        <small class="text-danger">{{error.password2}}</small>
-      </b-form-group>
-      <b-form-group id="checkInputGroup4">
-        <b-form-checkbox id="checkInput" :checked="form.checked" required>同意<a href="#">《STAR MOVIE注册协议》</a></b-form-checkbox>
-      </b-form-group>
-      <b-button id="submit-button" type="submit">注册</b-button>
-      <small class="text-danger">{{curError}}</small>
-    </b-form>
+  <div>
+    <b-container class="register-container" v-if="!$store.state.authUser" >
+      <b-form class="register-form" @submit.prevent="register">
+        <h4>注册</h4>
+        <!--输入手机号-->
+        <b-form-group label="手机号" label-for="phoneInput" id="phoneInputGroup">
+          <b-form-input id="phoneInput" type="text"  v-model="form.cellphone" required></b-form-input>
+          <small class="text-danger">{{error.phone}}</small>
+        </b-form-group>
+        <!--输入验证码-->
+        <b-form-group label="验证码" label-for="codeInput" class="clearfix" id="codeInputGroup">
+          <b-form-input id="codeInput" type="text" v-model="form.code" required></b-form-input>
+          <small class="text-danger float-left code-error">{{error.code}}</small>
+          <b-button class="float-right code-button" @click="send_sms" type="button">发送短信验证码</b-button>
+        </b-form-group>
+        <!--输入密码-->
+        <b-form-group label="密码" label-for="passInput1" id="passInput1Group">
+          <b-form-input id="passInput1" type="password" v-model="form.password1" v-on:input="check_pass1" required></b-form-input>
+          <small class="text-danger code-error">{{error.password1}}</small>
+        </b-form-group>
+        <!--输入重复密码-->
+        <b-form-group label="重复密码" label-for="passInput2" id="passInput2Group">
+          <b-form-input id="passInput2" type="password" v-model="form.password2" v-on:input="check_pass2" required></b-form-input>
+          <small class="text-danger">{{error.password2}}</small>
+        </b-form-group>
+        <!--注册协议单选框-->
+        <b-form-group id="checkInputGroup4">
+          <b-form-checkbox id="checkInput" :checked="form.checked" required>同意<a href="#" @click="showModal">《STAR MOVIE注册协议》</a></b-form-checkbox>
+        </b-form-group>
+        <b-button id="submit-button" type="submit">注册</b-button>
+        <small class="text-danger">{{curError}}</small>
+      </b-form>
+      <!--注册协议模态框-->
+      <b-modal ref="myModalRef1" header-bg-variant="info" title="STAR MOVIE注册协议" style="text-align: left" hide-footer >
+          <ol>
+            <li>第一，绝对不意气用事</li>
+            <li> 第二，绝对不漏判任何一件坏事</li>
+            <li>第三，绝对裁判的公正漂亮，裁判机器人蜻蜓队长前来晋见 这场争夺战，我来做裁判</li>
+          </ol>
+        <b-btn class="mt-1" variant="info" block @click="hideModal">Close Me</b-btn>
+      </b-modal>
+      <!--注册是否成功提示框-->
+      <b-modal ref="myModalRef2" hide-header>
+        <h5>{{registered}}</h5>
+        <!--<b-btn class="mt-1" variant="info" block @click="hideModal">Close Me</b-btn>-->
+      </b-modal>
 
-    <b-container class="register-container" v-else>
-      <p>你已经登录！</p>
     </b-container>
-  </b-container>
+
+    <b-container class="unregister-container" v-else>
+      <p>你已经登录！请先退出！</p>
+    </b-container>
+  </div>
+
 </template>
 
 <script>
@@ -55,11 +78,17 @@
         },
         curCode : "",
         curPhone: "",
-        curError: ""
+        curError: "",
+        registered: "注册失败"
       }
     },
     methods: {
-
+      showModal () {
+        this.$refs.myModalRef1.show()
+      },
+      hideModal () {
+        this.$refs.myModalRef1.hide()
+      },
       check_pass1() {
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
         if(!reg.test(this.form.password1)) {
@@ -108,7 +137,6 @@
         this.form.cellphone!==this.curPhone? this.error.phone = "手机号码变更":this.error.phone = "";
 
         if(!this.error.phone&&!this.error.checked&&!this.error.password2&&!this.error.password1&&!this.error.code) {
-            alert("注册成功")
             try {
               await this.$store.dispatch('login', {
                 email: "137111111111",
@@ -123,7 +151,7 @@
               this.form.error = e.message
             }
         } else {
-          alert("注册失败")
+          this.$refs.myModalRef2.show()
         }
       }
     }
@@ -135,6 +163,15 @@
     margin-top: 150px;
     margin-bottom: 150px;
     text-align: center;
+  }
+  .unregister-container{
+    margin-top: 250px;
+    margin-bottom: 250px;
+    height: 150px;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #2E294E;
   }
   .register-form {
     text-align: left;

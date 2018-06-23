@@ -25,12 +25,12 @@ router.use((req, res, next) => {
 const _public= {
   // Add POST - /api/login
   login: async (req, res, next) => {
-    if ((req.body.email === InitAdmin.cellphone || req.body.email === InitAdmin.email) && req.body.password === InitAdmin.password) {
-      let account = { id: 123, email: 'admin@vsorg.com' };
+    if (req.body.cellphone === InitAdmin.cellphone && req.body.password === InitAdmin.password) {
+      let account = { id: 123, cellphone : '13711111111' };
       const token = jwt.sign(account, jwtSecret, {
         expiresIn: jwtExpire
       });
-      return res.json({ email: 'demo', token })
+      return res.json({ cellphone: '13711111111', token })
     }
     return res.status(401).json({ message: '用户名或者密码错误' })
   },

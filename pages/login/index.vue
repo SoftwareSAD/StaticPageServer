@@ -1,38 +1,41 @@
 <template>
   <b-container class="login-container">
-    <h4>登录</h4>
-    <b-form @submit.prevent="login" v-if="!$store.state.authUser">
+    <b-form @submit.prevent="login" v-if="!$store.state.authUser" class="login-form">
+      <h4>登录</h4>
       <!--用户名-->
-      <b-form-group id="emailInputGroup1" label="用户名:" label-for="emailInput1">
-        <b-form-input id="emailInput1" type="text" v-model="form.email" placeholder="邮箱/手机" required>
+      <b-form-group id="phoneInputGroup" label="手机号:" label-for="phoneInput">
+        <b-form-input id="phoneInput" type="text" v-model="form.cellphone" required>
         </b-form-input>
       </b-form-group>
       <!--密码-->
-      <b-form-group id="passwordInputGroup2" label="密码:" label-for="passwordInput2">
-        <b-form-input id="passwordInput2" type="password" v-model="form.password"  placeholder="密码" required>
+      <b-form-group id="passInputGroup" label="密码:" label-for="passInput">
+        <b-form-input id="passInput" type="password" v-model="form.password" required>
         </b-form-input>
       </b-form-group>
       <!--提交/重置-->
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <b-button type="submit">Submit</b-button>
+      <b-button type="reset">Reset</b-button>
       <!--没有账号-注册-->
       <b-form-row>还没有账号？<b-link to="/register" target="_self">免费注册</b-link></b-form-row>
       <!--错误信息提示-->
       <b-form-row class="error" v-if="form.error">{{ form.error }}</b-form-row>
     </b-form>
     <div v-else>
-      Hello {{ $store.state.authUser.email }}!
+      Hello {{ $store.state.authUser.cellphone }}!
     </div>
   </b-container>
 </template>
 
 <script>
   export default {
+    head: {
+      title: "登录"
+    },
     data() {
       return {
         form: {
           error: '',
-          email: '',
+          cellphone: '',
           password: '',
         }
       }
@@ -41,10 +44,10 @@
       async login() {
         try {
           await this.$store.dispatch('login', {
-            email: this.form.email,
+            cellphone: this.form.cellphone,
             password: this.form.password
           })
-          this.form.email = ''
+          this.form.cellphone = ''
           this.form.password = ''
           this.form.error = null
           let path = this.$route.query.path || "/"
@@ -59,8 +62,14 @@
 
 <style scoped>
   .login-container{
-    margin: 150px auto 50px auto;
-    height: 320px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    text-align: center;
+  }
+  .login-form {
+    text-align: left;
+    margin:20px auto 50px auto;
+    height: fit-content;
     width: 400px;
     background-color: white;
     border-radius: 5px;
@@ -68,5 +77,10 @@
   }
   .error {
     color: red;
+  }
+  button {
+    color: white;
+    background-color: #2E294E;
+    width: 50%;
   }
 </style>

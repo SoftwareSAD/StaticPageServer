@@ -2,7 +2,6 @@ import axios from 'axios'
 import Cookie from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 
-
 const backendURL = 'http://localhost:3000';
 
 let instance = axios.create({
@@ -49,13 +48,13 @@ export const actions = {
   },
   /**
    * @param commit
-   * @param email
+   * @param cellphone
    * @param password
    * @desc 用户登录
    */
-  async login({ commit }, { email, password }) {
+  async login({ commit }, { cellphone, password }) {
     try {
-      const { data } = await axios.post('/api/login', { email, password });
+      const { data } = await axios.post('/api/login', { cellphone, password });
       let payload = jwtDecode(data.token);
       Cookie.set('token', data.token, { expires: 1 / 24 * 168 });  // Expire for 7day
       commit('SET_TOKEN', data.token);
