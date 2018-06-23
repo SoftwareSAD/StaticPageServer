@@ -28,5 +28,22 @@ $ npx create-nuxt-app sad-project
 $ cd sad-project
 $ npm install
 $ npm run dev
+# 附加依赖项
+babel-core
+babel-polyfill
+babel-preset-es2015
+cross-env
+
+@nuxtjs/axios
+body-parser
+bootstrap-vue
+express
+express-jwt
+js-cookie
+jsonwebtoken
+jwt-decode
+crypto
+http
+querystring
 ```
 
