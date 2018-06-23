@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       online_film_list: [
-        {film_name: "头号玩家", box_office: 1510.11, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "头号玩家", box_office: 1510.11, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "/movie-detail-page"},
         {film_name: "厉害了，我的国", box_office: 307.48, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
         {film_name: "环太平洋：雷霆再起", box_office: 153.74, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
         {film_name: "通勤营救", box_office: 101.76, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
