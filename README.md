@@ -45,5 +45,10 @@ jwt-decode
 crypto
 http
 querystring
+dotenv
+mongoose
+tracer
 ```
+
+参考结构：https://github.com/veaba/express-nuxt
 

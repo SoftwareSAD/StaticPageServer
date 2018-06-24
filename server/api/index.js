@@ -1,12 +1,36 @@
 import express from 'express'
-// import login from './login'
-const router = express.Router()
+import {config} from '../config'
+import mongoose from 'mongoose'
+import UsersModel from '../model/users'
+import {_dbError, _encryptedPWD} from '../function/function'
 import _public from './public'
 import  _smsverity from './smsverity'
 import _movie from './movie'
 import _cinema from './cinema'
 import _user from './user'
 import _news from './news'
+const router = express.Router()
+const logger = require('tracer').console()
+
+/**
+ * @desc db options
+ */
+let options = {
+  db: {native_parser: true},
+  user: config.username,
+  pass: config.password
+}
+
+//连接数据库
+mongoose.connect(config.url +'/' + config.database, options)
+mongoose.Promise = global.Promise;
+
+const connect = async function(){
+  /**
+   * 数据库用户登录连接
+   */
+}
+connect()
 
 
 /**

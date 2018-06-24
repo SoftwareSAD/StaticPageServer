@@ -1,5 +1,5 @@
-const _news = {
 
+const _news = {
 }
 
 export default _news
