@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="91d80519-0788-4abf-866d-087add3b0a39" name="Default" comment="" />
+=======
     <list default="true" id="91d80519-0788-4abf-866d-087add3b0a39" name="Default" comment="">
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -15,6 +18,7 @@
       <change beforePath="$PROJECT_DIR$/pages/movie-detail-page/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/movie-detail-page/index.vue" afterDir="false" />
 >>>>>>> c46454816d66e91779321badd9822c99858f9e89
     </list>
+>>>>>>> 2f383184c571b680e39120b68105d9a66235d4ae
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -34,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/pages/movie-detail-page/index.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="232">
-              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+              <caret line="87" selection-start-line="87" selection-end-line="87" />
             </state>
           </provider>
         </entry>
@@ -48,15 +52,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="66" column="25" lean-forward="true" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+            <state relative-caret-position="-200">
+              <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
               <folding>
                 <element signature="e#2149#2189#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/api/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="public.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/api/public.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-150" />
           </provider>
         </entry>
       </file>
@@ -125,7 +145,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="110" />
     <option name="y" value="146" />
     <option name="width" value="1193" />
@@ -166,6 +186,11 @@
               <item name="StaticPageServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="StaticPageServer" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StaticPageServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StaticPageServer" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -219,12 +244,22 @@
       <workItem from="1529747780678" duration="1102000" />
 =======
       <workItem from="1529738488801" duration="11039000" />
+<<<<<<< HEAD
+      <workItem from="1529815006606" duration="6848000" />
+=======
       <workItem from="1529815006606" duration="6114000" />
 >>>>>>> c46454816d66e91779321badd9822c99858f9e89
+>>>>>>> 2f383184c571b680e39120b68105d9a66235d4ae
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="42699000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+=======
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="26069000" />
   </component>
@@ -237,8 +272,9 @@
     <frame x="210" y="115" width="1193" height="788" extended-state="0" />
     <editor active="true" />
 >>>>>>> c46454816d66e91779321badd9822c99858f9e89
+>>>>>>> 2f383184c571b680e39120b68105d9a66235d4ae
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15064935" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23660715" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -247,9 +283,13 @@
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
 <<<<<<< HEAD
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.37190083" />
+=======
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31451613" />
 =======
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.33744222" />
+>>>>>>> 2f383184c571b680e39120b68105d9a66235d4ae
       <window_info id="Favorites" order="2" side_tool="true" />
 >>>>>>> c46454816d66e91779321badd9822c99858f9e89
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -474,19 +514,31 @@
 =======
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="66" column="25" lean-forward="true" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+        <state relative-caret-position="-200">
+          <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
           <folding>
             <element signature="e#2149#2189#0" expanded="true" />
           </folding>
 >>>>>>> c46454816d66e91779321badd9822c99858f9e89
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/api/public.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150" />
       </provider>
     </entry>
   </component>
