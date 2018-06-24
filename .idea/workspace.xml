@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="91d80519-0788-4abf-866d-087add3b0a39" name="Default" comment="" />
+=======
+    <list default="true" id="91d80519-0788-4abf-866d-087add3b0a39" name="Default" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/human.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/movie-detail-page/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/movie-detail-page/index.vue" afterDir="false" />
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
+    </list>
+>>>>>>> 2f383184c571b680e39120b68105d9a66235d4ae
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -13,6 +30,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
+    <leaf />
+=======
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/movie-detail-page/index.vue">
@@ -70,6 +90,7 @@
         </entry>
       </file>
     </leaf>
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -114,6 +135,13 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
+  <component name="ProjectFrameBounds">
+    <option name="x" value="70" />
+    <option name="y" value="3" />
+    <option name="width" value="1386" />
+    <option name="height" value="759" />
+=======
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
@@ -122,6 +150,7 @@
     <option name="y" value="146" />
     <option name="width" value="1193" />
     <option name="height" value="788" />
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -171,8 +200,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+=======
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.prettier" value="project" />
@@ -206,28 +239,61 @@
       <updated>1529138183058</updated>
       <workItem from="1529138185589" duration="13173000" />
       <workItem from="1529224023047" duration="11639000" />
+<<<<<<< HEAD
+      <workItem from="1529747586268" duration="155000" />
+      <workItem from="1529747780678" duration="1102000" />
+=======
       <workItem from="1529738488801" duration="11039000" />
+<<<<<<< HEAD
       <workItem from="1529815006606" duration="6848000" />
+=======
+      <workItem from="1529815006606" duration="6114000" />
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
+>>>>>>> 2f383184c571b680e39120b68105d9a66235d4ae
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="42699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="26069000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="70" y="3" width="1386" height="759" extended-state="0" />
+=======
+    <option name="totallyTimeSpent" value="41965000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="210" y="115" width="1193" height="788" extended-state="0" />
+    <editor active="true" />
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
+>>>>>>> 2f383184c571b680e39120b68105d9a66235d4ae
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23660715" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.43966943" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.37190083" />
+=======
+<<<<<<< HEAD
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31451613" />
+=======
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.33744222" />
+>>>>>>> 2f383184c571b680e39120b68105d9a66235d4ae
       <window_info id="Favorites" order="2" side_tool="true" />
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -236,6 +302,26 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289256" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.43966943" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.31570247" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289256" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25074404" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -246,6 +332,9 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pages/movie-detail-page/index.vue">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="594">
+=======
         <state relative-caret-position="1475">
           <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
         </state>
@@ -278,17 +367,23 @@
     <entry file="file://$PROJECT_DIR$/pages/movie-detail-page/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
           <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/index.vue">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="2486">
+          <caret line="113" column="4" lean-forward="true" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="26" />
+=======
         <state relative-caret-position="2825">
           <caret line="113" column="4" lean-forward="true" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="26" />
           <folding>
             <element signature="e#2149#2189#0" expanded="true" />
           </folding>
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
         </state>
       </provider>
     </entry>
@@ -303,9 +398,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="48" column="68" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="68" />
-          <folding>
-            <element signature="n#style#0;n#b-carousel#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -376,9 +468,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#b-carousel#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -404,6 +493,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/movie-detail-page/index.vue">
+<<<<<<< HEAD
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="113" column="4" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+=======
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="87" selection-start-line="87" selection-end-line="87" />
@@ -417,6 +525,7 @@
           <folding>
             <element signature="e#2149#2189#0" expanded="true" />
           </folding>
+>>>>>>> c46454816d66e91779321badd9822c99858f9e89
         </state>
       </provider>
     </entry>
