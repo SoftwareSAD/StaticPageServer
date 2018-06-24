@@ -18,6 +18,6 @@ const videoSchema = new Schema({
 /**
  * @desc构建表模型
  */
-const VideoModel = mongoose.model('videos', videoSchema)
+const VideoModel = mongoose.model('videos', videoSchema);
 
 export default VideoModel

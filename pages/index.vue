@@ -12,7 +12,7 @@
         <div class="box-body" id="box-body">
           <ul class="box-office-data list-unstyled">
             <li v-for="(film, index) in online_film_list" v-if="index < 10" :key="index">
-              <a class="box-list-link" v-bind:href="film.href" target="_blank">
+              <a class="box-list-link" v-bind:href="href" target="_blank">
                 <span class="rank">{{index + 1}}</span>
                 <span class="rank-film-name">{{film.film_name}}</span>
                 <span class="rank-film-tickets"><span class="rank-film-tickets-num">{{film.box_office}}</span>万</span>
@@ -34,7 +34,7 @@
         <div v-for="(film, index) in online_film_list" v-if="index < 8" class="film-context" :key="index">
           <img class="index-film-picture" v-bind:src="film.img_src" v-bind:alt="film.img_alt" />
           <span class="index-film_name">{{film.film_name}}</span>
-          <a class="ticket-link" :href="film.href" target="_blank"><span >购票</span></a>
+          <a class="ticket-link" :href="href" target="_blank"><span >购票</span></a>
         </div>
       </div>
       <!--即将上映-->
@@ -46,7 +46,7 @@
         <div v-for="(film, index) in ready_film_list" v-if="index < 8" class="film-context" :key="index">
           <img class="index-film-picture" v-bind:src="film.img_src" v-bind:alt="film.img_alt" />
           <span class="index-film_name">{{film.film_name}}</span>
-          <a class="ticket-link" :href="film.href" target="_blank"><span >购票</span></a>
+          <a class="ticket-link" :href="href" target="_blank"><span >购票</span></a>
         </div>
       </div>
     </div>
@@ -86,6 +86,8 @@ export default {
         {film_name: "七号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
         {film_name: "八号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
       ],
+      href: "/movie-detail-page",     //转到电影详情页面
+
     }
   }
 }

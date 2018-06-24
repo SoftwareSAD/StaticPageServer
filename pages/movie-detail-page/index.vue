@@ -82,7 +82,6 @@
             box_office: "8953",
             img_src: require("~/assets/img/film/best_player.jpg"),
             img_alt: "头号玩家",
-            href: "https://picsum.photos/1024/480/?image=55",
             tags: ["动作", "冒险", "科幻"],
             introduction: "侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。当岛上的休眠火山开始活跃以后，欧文（克里斯·帕拉特 饰）与克莱尔（布莱丝·达拉斯·霍华德 饰）发起了一场运动，想要保护岛上幸存的恐龙们免于灭绝。欧文一心想要找到自己依然失踪在野外的迅猛龙首领布鲁，克莱尔如今也尊重起这些生物，以保护它们为己任。两人在熔岩开始喷发时来到了危险的小岛，他们的冒险也揭开了一个可能让地球回到史前时代般混乱秩序的阴谋。",
 
@@ -132,6 +131,7 @@
     letter-spacing: 0.2em;
   }
   .ticket-button {
+    color: white;
     margin-top: 80px;
     border: none;
     background-color: #d10000;
