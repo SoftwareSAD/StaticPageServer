@@ -14,6 +14,10 @@
           <small class="text-danger float-left code-error">{{error.code}}</small>
           <b-button class="float-right code-button" @click="send_sms" type="button">发送短信验证码</b-button>
         </b-form-group>
+        <!--输入用户昵称-->
+        <b-form-group label="用户昵称" label-for="usernameInput1" id="usernameInput1Group">
+          <b-form-input id="usernameInput1" type="text" v-model="form.username" required></b-form-input>
+        </b-form-group>
         <!--输入密码-->
         <b-form-group label="密码" label-for="passInput1" id="passInput1Group">
           <b-form-input id="passInput1" type="password" v-model="form.password1" v-on:input="check_pass1" required></b-form-input>
@@ -66,6 +70,7 @@
         form: {
           cellphone: '',
           code: '',
+          username: '',
           password1: '',
           password2: ''
         },

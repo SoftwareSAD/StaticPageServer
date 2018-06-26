@@ -6,21 +6,21 @@
       <div class="news-cell clearfix" v-for="item in allnewsdata" :key="item.id">
         <div class="news-cell-img float-left">
           <a :href="item.newsLink" :title="item.newsTitle" target="_blank">
-            <img :src="item.imgUrl"/>
+            <img :src="item.cover_img_src"/>
           </a>
         </div>
         <div class="news-cell-detail float-left">
           <a :href="item.newsLink" title="item.newsTitle" target="_blank">
-            <h5 class="news-cell-title two-line-text">{{item.newsTitle}}</h5>
+            <h5 class="news-cell-title two-line-text">{{item.title}}</h5>
           </a>
-          <article class="news-cell-article three-line-text">{{item.newsArticle}}</article>
+          <article class="news-cell-article three-line-text">{{item.abstract}}</article>
         </div>
-        <small class="news-cell-info float-right">STAR MOVIES<span class="news-date text-muted">{{item.newsDate}}</span></small>
+        <small class="news-cell-info float-right">STAR MOVIES<span class="news-date text-muted">{{item.date}}</span></small>
       </div>
     </div>
     <!--分页栏--每页10项，共50页-->
     <div class="pag-nav">
-      <b-pagination align="center" :total-rows="500" v-model="currentPage" :per-page="10">
+      <b-pagination align="center" :total-rows="300" v-model="currentPage" :per-page="10">
       </b-pagination>
     </div>
   </div>
@@ -39,11 +39,74 @@
         currentPage: 1,
         allnewsdata: [
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            newsLink: 'http://baidu.com',
-            newsTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            newsDate: '04-13',
-            newsArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+          },
+          {
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+          },
+          {
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+          },
+          {
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+          },
+          {
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+          },
+          {
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+          },
+          {
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+          },
+          {
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+          },
+          {
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+          },
+          {
+            cover_img_src:  require('~/assets/img/6.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            date: '04-13',
+            abstract: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
           },
         ],
       }
@@ -52,19 +115,15 @@
 </script>
 <style>
   .all-news-container{
-    margin: 140px auto 50px auto;
+    margin: 150px auto 50px auto;
     text-align: center;
-    height: 1400px;
+    bottom: 50px;
     position: relative;
+    min-height: 300px;
   }
   .pag-nav {
-    text-align: center;
-    position: absolute;
-    width: 280px;
-    height: 50px;
-    left: 50%;
-    margin-left: -140px;
-    bottom: 0;
+    position: relative;
+    bottom: -50px;
   }
   .latest-header {
     text-align: center;

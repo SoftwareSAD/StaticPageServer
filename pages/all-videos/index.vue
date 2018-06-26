@@ -4,18 +4,18 @@
     <h4 class="latest-header">全部视频</h4>
     <div class="video-cell-group">
       <div class="video-cell card img-fluid" v-for="item in allvideodata" :key="item.id">
-        <a :href="item.videoLink" :title="item.videoTitle" target="_blank">
-          <img class="video-cell-img card-img-top" :src="item.imgUrl" alt="video image">
+        <a :href="item.url" :title="item.title" target="_blank">
+          <img class="video-cell-img card-img-top" :src="item.cover_img_src" alt="video image">
           <div class="video-cell-detail card-img-overlay">
-            <p class="video-cell-title card-title two-line-text">{{item.videoTitle}}</p>
-            <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>{{item.viewCount}}</small>
+            <p class="video-cell-title card-title two-line-text">{{item.title}}</p>
+            <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>{{item.view_count}}</small>
           </div>
         </a>
       </div>
     </div>
     <!--分页栏-->
     <div class="pag-nav">
-      <b-pagination align="center" :total-rows="5000" v-model="currentPage" :per-page="10">
+      <b-pagination align="center" :total-rows="300" v-model="currentPage" :per-page="15">
       </b-pagination>
     </div>
   </div>
@@ -36,265 +36,112 @@
         currentPage: 1,
         allvideodata: [//30个/页
           {
-            imgUrl:  require('~/assets/img/7.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/7.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
           {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
-          },
-          {
-            imgUrl:  require('~/assets/img/6.jpg'),
-            videoLink: 'http://baidu.com',
-            videoTitle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            videoDate: '04-13',
-            viewCount: '200',
-            videoArticle: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳'
+            cover_img_src:  require('~/assets/img/7.jpg'),
+            url: 'http://baidu.com',
+            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
+            view_count: '200'
           },
         ],
+
       }
     }
   }
 </script>
 <style>
   .all-video-container{
-    margin: 140px auto 50px auto;
+    margin: 150px auto 50px auto;
     text-align: center;
-    height: 2400px;
+    bottom: 50px;
+    min-height: 300px;
     position: relative;
   }
   .pag-nav {
-    text-align: center;
-    position: absolute;
-    width: 280px;
-    height: 20px;
-    left: 50%;
-    margin-left: -140px;
-    bottom: 0;
+    position: relative;
+    bottom: -50px;
   }
   .latest-header {
     text-align: center;
