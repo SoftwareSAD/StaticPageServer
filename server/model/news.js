@@ -8,8 +8,7 @@ const newsSchema = new Schema({
   title: String,  //新闻标题
   abstract: String,//新闻摘要
   article: String, //新闻作者
-  cover_img_src: String, //新闻封面图
-  content_img_src: Array,
+  img_src: Array, //新闻封面图
   url: String, //新闻链接
   date: String, //新闻发布时间
   view_count: String, //新闻浏览人数
