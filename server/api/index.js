@@ -7,31 +7,37 @@ import _public from './public'
 import  _smsverity from './smsverity'
 import _movie from './movie'
 import _cinema from './cinema'
-import _user from './user'
+// import users from './users'
 import _news from './news'
 const router = express.Router()
-const logger = require('tracer').console()
 
 /**
- * @desc db options
+ * 用户登录选择
  */
-let options = {
-  db: {native_parser: true},
-  user: config.username,
-  pass: config.password
-}
 
-//连接数据库
-mongoose.connect(config.url +'/' + config.database, options)
-mongoose.Promise = global.Promise;
+// Mock Users
+const users = [
+  { name: 'Alexandre' },
+  { name: 'Pooya' },
+  { name: 'Sébastien' }
+]
 
-const connect = async function(){
-  /**
-   * 数据库用户登录连接
-   */
-}
-connect()
+/* GET users listing. */
+router.get('/users', function (req, res, next) {
+  res.json(users)
+})
 
+/* GET user by ID. */
+router.get('/users/:id', function (req, res, next) {
+  const id = parseInt(req.params.id)
+  if (id >= 0 && id < users.length) {
+    res.json(users[id])
+  } else {
+    res.sendStatus(404)
+  }
+})
+
+// router.use('/api/users', users)
 
 /**
  * 登录注册
