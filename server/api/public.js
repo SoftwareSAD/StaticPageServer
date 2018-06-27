@@ -1,9 +1,9 @@
-const express = require('express')
-const jwt = require("jsonwebtoken")
-const expressWebToken = require("express-jwt")
+const express = require('express');
+const jwt = require("jsonwebtoken");
+const expressWebToken = require("express-jwt");
 import {InitAdmin} from '../config'
-const router = express.Router()
-var app = express()
+const router = express.Router();
+var app = express();
 
 const jwtSecret = 'super_secret';
 const jwtExpire = '168h';

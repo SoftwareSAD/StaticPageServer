@@ -14,6 +14,29 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+  import axios from '~/plugins/axios'
+  export default {
+    name: 'id',
+    data() {
+      return {user: {name: ''}}
+    },
+    asyncData ({ params, error }) {
+      return axios.get('/api/users/' + params.id)
+        .then((res) => {
+          return { user: res.data }
+        })
+        .catch((e) => {
+          error({ statusCode: 404, message: 'User not found' })
+        })
+    },
+    head () {
+      return {
+        title: `User: ${this.user.name}`
+      }
+    }
+  }
+=======
 import axios from '~/plugins/axios'
 
 export default {
@@ -36,6 +59,7 @@ export default {
     }
   }
 }
+>>>>>>> c9e8715cf694fffb7bf0b99c5de748b9f384880b
 </script>
 
 <style scoped>
@@ -44,6 +68,23 @@ export default {
     height: 400px;
     color: white;
   }
+<<<<<<< HEAD
+  .title
+  {
+    margin-top: 30px;
+  }
+  .info
+  {
+    font-weight: 300;
+    color: #9aabb1;
+    margin: 0;
+    margin-top: 10px;
+  }
+  .button
+  {
+    margin-top: 30px;
+  }
+=======
 .title
 {
   margin-top: 30px;
@@ -59,4 +100,5 @@ export default {
 {
   margin-top: 30px;
 }
+>>>>>>> c9e8715cf694fffb7bf0b99c5de748b9f384880b
 </style>
