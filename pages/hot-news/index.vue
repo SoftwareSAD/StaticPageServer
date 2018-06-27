@@ -58,7 +58,7 @@
     },
     created(){
       this.getHotNews()
-      this.getHotVideo()
+      this.getHotVideos()
     },
     methods: {
       async getHotNews() {
@@ -71,9 +71,9 @@
           console.log(e)
         }
       },
-      async getHotVideo() {
+      async getHotVideos() {
         try {
-          let {data} = await axios.get('/api/getAllVideos')
+          let {data} = await axios.get('/api/getHotVideos')
           if(data.errorCode == 0) {
             this.videodata = data.data
           }
