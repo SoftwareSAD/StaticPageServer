@@ -29,13 +29,21 @@ router.get('/users', function (req, res, next) {
 
 /* GET user by ID. */
 router.get('/users/:id', function (req, res, next) {
+<<<<<<< HEAD
   const id = parseInt(req.params.id);
+=======
+  const id = parseInt(req.params.id)
+>>>>>>> c9e8715cf694fffb7bf0b99c5de748b9f384880b
   if (id >= 0 && id < users.length) {
     res.json(users[id])
   } else {
     res.sendStatus(404)
   }
+<<<<<<< HEAD
 });
+=======
+})
+>>>>>>> c9e8715cf694fffb7bf0b99c5de748b9f384880b
 
 // router.use('/api/users', users)
 

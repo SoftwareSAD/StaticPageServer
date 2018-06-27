@@ -2,12 +2,12 @@
  * @desc db config
  * */
 module.exports.config = {
-  url: 'mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691', // 普通不授权模式链接mongodb
+  url: 'mongodb://localhost:27017', // 普通不授权模式链接mongodb
   domain: 'heroku.com', // 主域名
   scheme: 'mongodb', // 协议
-  database: 'maoyanmovie', // 数据库名称
-  username: 'heygrandpa', // 管理员用户名称
-  password: 'SYSU2018'// 管理员密码
+  database: 'saddb', // 数据库名称
+  username: 'admin', // 管理员用户名称
+  password: 'admin'// 管理员密码
 }
 
 /**
