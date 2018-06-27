@@ -106,7 +106,7 @@
           this.curCode+=Math.floor(Math.random()*10)
         }
         try {
-          let {data} = await axios.post('/api/test', {code: this.curCode, cellphone: this.form.cellphone});
+          let {data} = await axios.post('/api/users', {code: this.curCode, cellphone: this.form.cellphone});
         } catch (error) {
           if (error.response && error.response.status === 401) {
             throw new Error('发送验证码失败')

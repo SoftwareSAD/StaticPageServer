@@ -19,7 +19,7 @@
             </div>
           </div>
         </div>
-
+        <button :click="getFilmID()"> Test for Get Film ID </button>
       </div>
       <!--介绍-->
       <div class="main">
@@ -28,6 +28,7 @@
           <b-tabs>
             <b-tab title="剧情介绍" active>
               <br />{{film.introduction}}
+              <br />{{id}}
             </b-tab>
             <b-tab title="演职员" >
               <span class="info-header">导演</span><br />
@@ -46,6 +47,7 @@
 <script>
   import human from '~/components/human.vue'
     export default {
+      name: "movieDetailPage",
       components: { human },
       head() {
         return {'title': '电影详情'}
@@ -53,6 +55,7 @@
       data () {
         return {
           film: {
+            id: "-1",
             film_name: "头号玩家",
             country: "美国",
             director: [
@@ -87,6 +90,22 @@
 
           }
         }
+      },
+      asyncData ({ params, error }) {
+        return  { id: params.filmID }
+      },
+
+      methods: {
+        getFilmID() {
+          //let routerParams = this.$router.query.filmID;
+          //alert(this.$router.query.filmID);
+          //this.film.id = routerParams;
+        },
+      },
+      created: function() {
+        //let id = this.$route.query.filmID;
+        console.log(this.$router.params);
+        //this.film.id = id;
       },
     }
 </script>
