@@ -10,14 +10,14 @@ const newsSchema = new Schema({
   article: String, //新闻内容
   cover_img_src: String, //新闻封面图
   content_img_src: Array, //内容图片
-  url: String, //新闻链接
-  date: String, //新闻发布时间
+  news_url: String, //新闻链接
+  news_date: String, //新闻发布时间
   view_count: String, //新闻浏览人数
 })
 
 /**
  * @desc构建表模型
  */
-const NewsModel = mongoose.model('news', newsSchema)
+const NewsModel = mongoose.model('news', newsSchema, 'MaoYanNews')
 
 export default NewsModel
