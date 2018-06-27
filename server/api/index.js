@@ -10,19 +10,19 @@ import news from './news'
 const router = express.Router()
 
 /**@desc db options*/
-// let options = {
-//   user: 'heygrandpa',
-//   pass: 'SYSU2018',
-//   keepAlive: true,
-// }
-// mongoose.Promise = global.Promise
-//
-// mongoose.connect('mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691/maoyanmovie', options);
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, '数据库连接失败:'));
-// db.once('open', function() {
-//   console.log('数据库已连接');
-// });
+let options = {
+  user: 'heygrandpa',
+  pass: 'SYSU2018',
+  keepAlive: true,
+}
+mongoose.Promise = global.Promise
+
+mongoose.connect('mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691/maoyanmovie', options);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, '数据库连接失败:'));
+db.once('open', function() {
+  console.log('数据库已连接');
+});
 
 
 /**用户路由选择*/

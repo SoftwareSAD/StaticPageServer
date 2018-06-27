@@ -4,40 +4,6 @@ import { _dbError, _dbSuccess} from '../function/function'
 import { Router } from 'express'
 const router = Router();
 
-var mongoose = require('mongoose');
-
-/**
- * @desc db options
- */
-let options = {
-  user: 'heygrandpa',
-  pass: 'SYSU2018'
-}
-
-mongoose.connect('mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691/maoyanmovie', options, function(err) {
-  if (err) {
-    console.log('MongoDB数据库连接失败')
-  } else {
-    console.log('MongoDB数据库连接成功')
-  }
-})
-
-const Schema = mongoose.Schema
-/**
- * @desc 新闻表
- */
-// const newsSchema = new Schema({
-//   id: String,
-//   title: String,  //新闻标题
-//   abstract: String,//新闻摘要
-//   article: String, //新闻内容
-//   cover_img_src: String, //新闻封面图
-//   // content_img_src: Array, //内容图片
-//   news_url: String, //新闻链接
-//   news_date: String, //新闻发布时间
-//   view_count: String, //新闻浏览人数
-// })
-// const NewsModel = mongoose.model('news', newsSchema, 'MaoYanNews')
 /**
  * @desc 拉取新闻列表函数
  * @param page: int, 当前是第几页，规定每10个项为一页，共30页
