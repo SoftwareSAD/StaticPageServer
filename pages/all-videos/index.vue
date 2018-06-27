@@ -21,114 +21,29 @@
   </div>
 </template>
 <script scoped>
+  import axios from '~/plugins/axios'
+
   export default {
     head() {
       return {'title': '全部资讯'}
     },
+
     data () {
       return {
         currentPage: 1,
         allvideodata:{},
       }
     },
-    asyncData (context) {
-      return {
-        currentPage: 1,
-        allvideodata: [//30个/页
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-          {
-            cover_img_src:  require('~/assets/img/7.jpg'),
-            url: 'http://baidu.com',
-            title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-            view_count: '200'
-          },
-        ],
 
+    async asyncData() {
+      try {
+        let {data} = await axios.get('/api/getAllVideos', {params: {currentPage: 1}})
+        return {allvideodata: data.data}
+      } catch (e) {
+        console.log(e)
       }
     }
+
   }
 </script>
 <style>

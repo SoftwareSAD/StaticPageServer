@@ -1,46 +1,47 @@
 import express from 'express'
 import {config} from '../config'
 import mongoose from 'mongoose'
-import UsersModel from '../model/users'
-import {_dbError, _encryptedPWD} from '../function/function'
-import _public from './public'
-import  _smsverity from './smsverity'
-import _movie from './movie'
-import _cinema from './cinema'
+import login from './login'
+import  smsverity from './smsverity'
+import movie from './movie'
+import cinema from './cinema'
 import users from './users'
-import _news from './news'
+import news from './news'
 const router = express.Router()
 
+/**@desc db options*/
+// let options = {
+//   user: 'heygrandpa',
+//   pass: 'SYSU2018',
+//   keepAlive: true,
+// }
+// mongoose.Promise = global.Promise
+//
+// mongoose.connect('mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691/maoyanmovie', options);
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, '数据库连接失败:'));
+// db.once('open', function() {
+//   console.log('数据库已连接');
+// });
+
+
+/**用户路由选择*/
 router.use(users)
 
-/**
- * 登录注册
- **/
-router.post('/login', _public.login)
-router.get('/statistics', _public.getStatistics)
+/**登录注册*/
+router.use(login)
 
-/**
- * 手机注册验证
- */
-router.post('/sms', _smsverity.send_sms)
+/**手机注册验证*/
+router.use(smsverity)
 
-/**
- * 处理用户个人页面
- */
+/**处理电影页面*/
+router.use(movie)
 
 
-/**
- * 处理电影页面
- */
+/**处理影院页面*/
 
 
-/**
- * 处理影院页面
- */
-
-
-/**
- * 处理资讯页面
- */
+/**处理资讯页面*/
+router.use(news)
 
 export default router

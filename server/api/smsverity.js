@@ -2,6 +2,8 @@ import crypto from 'crypto'
 import http from 'http'
 import queryString from 'querystring'
 import {SMS} from '../config'
+import { Router } from 'express'
+const router = Router()
 
 //config
 const smsapi= SMS.smsapi
@@ -40,10 +42,9 @@ function statusStr(result){
       console.log('内容含有敏感字')
       break
   }
-};
+}
 
-const _smsverity = {
-  send_sms: async(req, res, next) => {
+router.post('/sms', async(req, res, next) => {
     var smscontent = "尊敬的用户，您的注册验证码为" + req.body.code;
     var phone = req.body.cellphone;
     var pass = md5.update(password).digest('hex');
@@ -74,6 +75,6 @@ const _smsverity = {
     request.end();
     return res.json({code: req.body.code})
   }
-}
+)
 
-export default _smsverity
+export default router

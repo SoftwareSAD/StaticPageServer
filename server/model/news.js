@@ -18,6 +18,6 @@ const newsSchema = new Schema({
 /**
  * @desc构建表模型
  */
-const NewsModel = mongoose.model('news', newsSchema)
+const NewsModel = mongoose.model('news', newsSchema, 'MaoYanNews')
 
 export default NewsModel

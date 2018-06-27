@@ -1,5 +1,5 @@
-const _cinema ={
+import { Router } from 'express'
 
-}
+const router = Router()
 
-export default _cinema
+export default router
