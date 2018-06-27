@@ -7,7 +7,7 @@ const Schema = mongoose.Schema
 const videoSchema = new Schema({
   id: String,
   title: String,  //视频标题
-  cover_img_src: String, //视频封面图
+  img_src: String, //视频封面图
   url: String, //视频链接 
   view_count: String, //视频播放人数
 })
@@ -15,6 +15,6 @@ const videoSchema = new Schema({
 /**
  * @desc构建表模型
  */
-const VideoModel = mongoose.model('videos', videoSchema, 'MaoYanVideos');
+const VideoModel = mongoose.model('videos', videoSchema);
 
 export default VideoModel

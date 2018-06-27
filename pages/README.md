@@ -78,7 +78,7 @@ videodata: [
 
 login():
 1. param: cellphone, password
-2. return: 10 / 20 是否用户存在
+2. return: True / False 是否用户存在
 
 ##register():
 1. param: cellphone, username, password
