@@ -5,15 +5,3 @@
 The components directory contains your Vue.js Components.
 
 _Nuxt.js doesn't supercharge these components._
-
-
-#### Adcolumn 组件
-
-需要从父组件获取一个adcolumn_list数组，数组内每个元素都是一个表示广告的object：
-{
-  img_alt: String;
-  img_src: String;
-  href: String;       // 暂时用了猫眼的已有网页
-}
-
-#### human组件

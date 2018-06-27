@@ -1,10 +1,9 @@
 <template>
   <div class="mycontainer">
     <div id="adcolum" class="carousel slide" data-ride="carousel">
-      <Adcolumn :adcolumn_list="adcolumn_list"></Adcolumn>
+      <Adcolumn></Adcolumn>
     </div>
     <!--侧边框: 票房-->
-    <!--route-link将对应的film id 传入详情页面-->
     <div class="aside">
       <div class="box-office">
         <div class="box-header">
@@ -13,11 +12,11 @@
         <div class="box-body" id="box-body">
           <ul class="box-office-data list-unstyled">
             <li v-for="(film, index) in online_film_list" v-if="index < 10" :key="index">
-              <nuxt-link class="box-list-link" :to="{ path: '/movie-detail-page/' , params: { filmID: film.id }}" target="_blank">
+              <a class="box-list-link" v-bind:href="href" target="_blank">
                 <span class="rank">{{index + 1}}</span>
                 <span class="rank-film-name">{{film.film_name}}</span>
                 <span class="rank-film-tickets"><span class="rank-film-tickets-num">{{film.box_office}}</span>万</span>
-              </nuxt-link>
+              </a>
             </li>
           </ul>
         </div>
@@ -35,9 +34,7 @@
         <div v-for="(film, index) in online_film_list" v-if="index < 8" class="film-context" :key="index">
           <img class="index-film-picture" v-bind:src="film.img_src" v-bind:alt="film.img_alt" />
           <span class="index-film_name">{{film.film_name}}</span>
-          <a class="ticket-link" href="/movie-detail-page" target="_blank">
-            <span >购票</span>
-          </a>
+          <a class="ticket-link" :href="href" target="_blank"><span >购票</span></a>
         </div>
       </div>
       <!--即将上映-->
@@ -49,10 +46,7 @@
         <div v-for="(film, index) in ready_film_list" v-if="index < 8" class="film-context" :key="index">
           <img class="index-film-picture" v-bind:src="film.img_src" v-bind:alt="film.img_alt" />
           <span class="index-film_name">{{film.film_name}}</span>
-          <a class="ticket-link" href="/movie-detail-page" target="_blank">
-            <span >购票</span>
-          </a>
-
+          <a class="ticket-link" :href="href" target="_blank"><span >购票</span></a>
         </div>
       </div>
     </div>
@@ -70,42 +64,32 @@ export default {
   },
   data() {
     return {
-      adcolumn_list: [
-        {img_alt: "First Slide", img_src:"http://p1.meituan.net/movie/b226085e2768a5379f4e6f21fe19615f416523.png@750w_1l", href:"http://maoyan.com/films/news/38723"},
-        {img_alt: "Second Slide", img_src:"http://p1.meituan.net/movie/c44e3020654434e5c97a15fc236e4c16406093.png@750w_1l", href:"http://maoyan.com/films/news/38754"},
-        {img_alt: "Third Slide", img_src:"http://p1.meituan.net/movie/671f86af1cb5c7cc583a4d1d830c078b332830.jpg@750w_1l", href:"http://maoyan.com/films/news/39223"},
-        {img_alt: "Forth Slide", img_src:"http://p1.meituan.net/movie/e1331da3af4c6e8319e977814e65d9cf1051652.png@750w_1l", href:"http://maoyan.com/films/news/39474"},
-      ],
-
       online_film_list: [
-        {id: "0",film_name: "头号玩家", box_office: 1510.11, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "1",film_name: "厉害了，我的国", box_office: 307.48, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "2",film_name: "环太平洋：雷霆再起", box_office: 153.74, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "3",film_name: "通勤营救", box_office: 101.76, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "4",film_name: "遇见你真好", box_office: 74.68, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "5",film_name: "红海行动", box_office: 64.17, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "6",film_name: "花滑女王", box_office: 50.27, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "7",film_name: "我说的都是真的", box_office: 41.29, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "8",film_name: "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊", box_office: 41.29, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "9",film_name: "我超爱易烊千玺的", box_office: 39.42, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
+        {film_name: "头号玩家", box_office: 1510.11, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "/movie-detail-page"},
+        {film_name: "厉害了，我的国", box_office: 307.48, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "环太平洋：雷霆再起", box_office: 153.74, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "通勤营救", box_office: 101.76, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "遇见你真好", box_office: 74.68, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "红海行动", box_office: 64.17, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "花滑女王", box_office: 50.27, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "我说的都是真的", box_office: 41.29, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊", box_office: 41.29, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "我超爱易烊千玺的", box_office: 39.42, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"}
       ],
       ready_film_list: [
-        {id: "11",film_name: "一号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "12",film_name: "二号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "13",film_name: "三号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "14",film_name: "四号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "15",film_name: "五号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "16",film_name: "六号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "17",film_name: "七号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
-        {id: "18",film_name: "八号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家"},
+        {film_name: "一号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "二号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "三号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "四号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "五号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "六号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "七号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
+        {film_name: "八号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
       ],
+      href: "/movie-detail-page",     //转到电影详情页面
 
     }
-  },
-  methods: {
-
-  },
-
+  }
 }
 </script>
 
@@ -115,7 +99,7 @@ export default {
     width: 100%;
   }
   #adcolum {
-    margin-top: 60px;
+    margin-top: 0px;
     overflow: hidden;
   }
   .aside {

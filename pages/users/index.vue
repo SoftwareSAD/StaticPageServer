@@ -18,20 +18,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-  import axios from '~/plugins/axios'
-  export default {
-    async asyncData () {
-      let { data } = await axios.get('/api/users')
-      return { users: data }
-    },
-    head () {
-      return {
-        title: 'Users'
-      }
-    }
-  }
-=======
 
 import axios from '~/plugins/axios'
 
@@ -47,7 +33,6 @@ export default {
     }
   }
 }
->>>>>>> c9e8715cf694fffb7bf0b99c5de748b9f384880b
 </script>
 
 <style scoped>
@@ -56,22 +41,6 @@ export default {
     height: 400px;
     color: white;
   }
-<<<<<<< HEAD
-  .title
-  {
-    margin: 30px 0;
-  }
-  .users
-  {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .user
-  {
-    margin: 10px 0;
-  }
-=======
 
 .title
 {
@@ -87,5 +56,4 @@ export default {
 {
   margin: 10px 0;
 }
->>>>>>> c9e8715cf694fffb7bf0b99c5de748b9f384880b
 </style>
