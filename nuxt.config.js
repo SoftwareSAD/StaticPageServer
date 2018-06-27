@@ -20,10 +20,6 @@ module.exports = {
     '~/assets/css/font-awesome/css/font-awesome.min.css'
   ],
 
-  plugins: [
-    { src: '~/plugins/vuelidate' }
-  ],
-
   modules: [
     '@nuxtjs/axios',
     'bootstrap-vue/nuxt',

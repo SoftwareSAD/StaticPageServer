@@ -3,41 +3,15 @@ import {config} from '../config'
 import mongoose from 'mongoose'
 import UsersModel from '../model/users'
 import {_dbError, _encryptedPWD} from '../function/function'
-import _public from './public'
-import  _smsverity from './smsverity'
-import _movie from './movie'
-import _cinema from './cinema'
-// import users from './users'
-import _news from './news'
+import public from './public'
+import  smsverity from './smsverity'
+import movie from './movie'
+import cinema from './cinema'
+import users from './users'
+import news from './news'
 const router = express.Router()
 
-/**
- * 用户登录选择
- */
-
-// Mock Users
-const users = [
-  { name: 'Alexandre' },
-  { name: 'Pooya' },
-  { name: 'Sébastien' }
-]
-
-/* GET users listing. */
-router.get('/users', function (req, res, next) {
-  res.json(users)
-})
-
-/* GET user by ID. */
-router.get('/users/:id', function (req, res, next) {
-  const id = parseInt(req.params.id)
-  if (id >= 0 && id < users.length) {
-    res.json(users[id])
-  } else {
-    res.sendStatus(404)
-  }
-})
-
-// router.use('/api/users', users)
+router.use(users)
 
 /**
  * 登录注册
