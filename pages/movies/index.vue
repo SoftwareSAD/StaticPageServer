@@ -1,13 +1,504 @@
 <template>
-  <div></div>
+  <!--电影筛选栏-->
+  <div class="container" id="app">
+    <div class="movies-channel">
+      <div class="tags-panel">
+        <ul class="tags-lines">
+          <li class="tags-line">
+            <div class="tags-title">类型 ：</div>
+            <ul class="tags">
+              <li v-for="(type, index) in type_list" v-if="index < 9" :key="index">
+                <a :href="type.href" :data-val="type.sort_ID" target="_self">{{type.type_name}}</a>
+              </li>
+            </ul>
+          </li>
+          <li class="tags-line tags-line-border">
+            <div class="tags-title">区域 ：</div>
+            <ul class="tags">
+              <li v-for="(position, index) in position_list" v-if="index < 10" :key="index">
+                <a :href="position.href" :data-val="position.sort_ID" target="_self">{{position.position_name}}</a>
+              </li>
+            </ul>
+          </li>
+          <li class="tags-line tags-line-border">
+            <div class="tags-title">年代 ：</div>
+            <ul class="tags">
+              <li v-for="(age, index) in age_list" v-if="index < 8" :key="index">
+                <a :href="age.href" :data-val="age.sort_ID" target="_self">{{age.age_name}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="movies-panel">
+        <div class="movies-sorter">
+          <div class="cat-sorter">
+            <ul>
+              <li v-for="(sort, index) in sort_choice" v-if="index < 3" :key="index">
+                <span class="sort-control-group">
+                  <span class="sort-control sort-radio"></span>
+                  <!--<span class="sort-control sort-radio sort-radio-checked"></span>-->
+                  <a class="sort-control-label" :data-val="sort.sort_ID" :href="sort.href" target="_self">{{sort.sort_type}}</a>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="movies-list">
+          <dl class="movie-list">
+            <dd v-for="(movie, index) in movie_list" v-if="index < 30" :key="index">
+              <div class="movie-item">
+                <a :href="movie.href" target="_blank">
+                  <div class="movie-poster">
+                    <img :src="movie.img_src" :title="movie.movie_name" :data-val="movie.film_ID">
+                  </div>
+                </a>
+                <div class="channel-action channel-action-sale">
+                  <a>购票</a>
+                </div>
+              </div>
+              <div class="channel-detail movie-item-title" :title="movie.movie_name">
+                <a :href="movie.href" :title="movie.movie_name" target="_blank" :data-val="movie.film_ID">{{movie.movie_name}}</a>
+              </div>
+              <div class="channel-detail channel-detail-orange">
+                <i class="integer">{{movie.score}}</i>
+              </div>
+            </dd>
+          </dl>
+        </div>
+        <div class="movies-pager">
+          <ul class="list-pager">
+            <li class="active">
+              <a class="page_1" href="" style="cursor: default">1</a>
+            </li>
+            <li>
+              <a class="page_2" href="">2</a>
+            </li>
+            <li>
+              <a class="page_3" href="">3</a>
+            </li>
+            <li>
+              <a class="page_4" href="">4</a>
+            </li>
+            <li>
+              <a class="page_5" href="">5</a>
+            </li>
+            <li class="sep">...</li>
+            <li>
+              <a class="page_50" href="">50</a>
+            </li>
+            <li>
+              <a class="page_2" href="">下一页</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
   export default {
-    name: ""
+    head() {
+      return {'title': '正在热映'}
+    },
+    data () {
+      return {
+        type_list: [
+          {type_name: "全部", href: '/movies', sort_ID: '1'},
+          {type_name: "爱情", href: '/movies', sort_ID: '2'},
+          {type_name: "喜剧", href: '/movies', sort_ID: '3'},
+          {type_name: "剧情", href: '/movies', sort_ID: '4'},
+          {type_name: "惊悚", href: '/movies', sort_ID: '5'},
+          {type_name: "动作", href: '/movies', sort_ID: '6'},
+          {type_name: "悬疑", href: '/movies', sort_ID: '7'},
+          {type_name: "科幻", href: '/movies', sort_ID: '8'},
+          {type_name: "纪录片", href: '/movies', sort_ID: '9'}
+        ],
+        position_list: [
+          {position_name: "全部", href: '/movies', sort_ID: '1'},
+          {position_name: "内地", href: '/movies', sort_ID: '2'},
+          {position_name: "美国", href: '/movies', sort_ID: '3'},
+          {position_name: "英国", href: '/movies', sort_ID: '4'},
+          {position_name: "日韩", href: '/movies', sort_ID: '5'},
+          {position_name: "香港", href: '/movies', sort_ID: '6'},
+          {position_name: "台湾", href: '/movies', sort_ID: '7'},
+          {position_name: "印度", href: '/movies', sort_ID: '8'},
+          {position_name: "欧洲", href: '/movies', sort_ID: '9'},
+          {position_name: "其他", href: '/movies', sort_ID: '10'}
+        ],
+        age_list: [
+          {age_name: "全部", href: '/movies', sort_ID: '1'},
+          {age_name: "2018", href: '/movies', sort_ID: '2'},
+          {age_name: "2011-2017", href: '/movies', sort_ID: '3'},
+          {age_name: "2000-2010", href: '/movies', sort_ID: '4'},
+          {age_name: "90年代", href: '/movies', sort_ID: '5'},
+          {age_name: "80年代", href: '/movies', sort_ID: '6'},
+          {age_name: "70年代", href: '/movies', sort_ID: '7'},
+          {age_name: "更早", href: '/movies', sort_ID: '8'}
+        ],
+        sort_choice: [
+          {sort_type: "按热门排序", href: '/movies', sort_ID: '1'},
+          {sort_type: "按时间排序", href: '/movies', sort_ID: '2'},
+          {sort_type: "按评价排序", href: '/movies', sort_ID: '3'}
+        ],
+        movie_list: [
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
+
+        ],
+      }
+    },
+    asyncData (context) {
+      return {
+        project: 'nuxt',
+
+      }
+    }
   }
 </script>
 
-<style scoped>
+<style>
+  div{
+    display: block;
+  }
+  body {
+    background: none;
+    background-size: cover;
+  }
+  img{
+    border-style: none;
+  }
+  i, cite, em, var, address, dfn{
+    font-style: italic;
+  }
+  .movie-subnav{
+    background-color: #23272b;
+    height: 60px;
+    width: 100%;
+    min-width: 1200px;
+    text-align: center;
+  }
+  .movie-subnav .movie-navbar{
+    display: inline-block;
+    overflow: hidden;
+  }
+  .movie-subnav .movie-navbar li{
+    display: inline-block;
+    float: left;
+  }
+  .movie-subnav li, .movie-subnav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .movie-subnav .movie-navbar li .active{
+    color: #c82333;
+    position: relative;
+    cursor: default;
+  }
+  .movie-subnav .movie-navbar li a{
+    display: block;
+    font-size: 16px;
+    color: #adb5bd;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 40px;
+    float: left;
+  }
+  a{
+    text-decoration: none;
+  }
+  a{
+    background-color: transparent;
+  }
+  a:link {
+    color:#dbe1ec;
+    cursor: pointer;
+  }
+  a:visited{
+    color: darksalmon;
+  }
+  a:hover{
+    color: darkred ;
+  }
+  li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+  }
+  .container{
+    width:1200px;
+    margin-top: 60px;
+  }
+  .movies-channel{
+    width: 1120px;
+    margin: auto;
+    overflow: hidden;
+  }
+  .tags-panel{
+    border: 1px solid #d3d9df;
+    padding: 0 20px;
+    margin-top: 40px;
+  }
+  .tags-panel li, .tags-panel ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  .tags-line{
+    padding: 10px 0!important;
+  }
+  .tags-title{
+    height: 24px;
+    line-height: 24px;
+    float: left;
+    color: #f7f8fb;
+    font-size: 14px;
+  }
+  .tags{
+    margin-left: 40px!important;
+  }
+  .tags li.active{
+    background: #c82333;
+    color: #f7f8fb;
+  }
+  .tags li{
+    border-radius: 14px;
+    padding: 3px 9px;
+    display: inline-block;
+    margin-left: 12px;
+  }
 
+  .tag li a{
+    color: #fff;
+    font-size: 14px;
+  }
+  .tags-line-border{
+    border-top: 1px dotted #d3d9df;
+  }
+  .movies-panel{
+    margin-top: 40px;
+  }
+  .movies-sorter{
+    overflow: hidden;
+  }
+  .movies-sorter .cat-sorter{
+    float: left;
+    padding-left: 2px;
+  }
+  .movies-sorter .play-sorter{
+    text-align: right;
+    padding-right: 10px;
+    display: none;
+  }
+  .movies-sorter ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .movies-sorter li{
+    display: inline-block;
+    height: 16px;
+    line-height: 18px;
+    margin-right: 30px;
+  }
+  .sort-control-group{
+    cursor: pointer;
+    line-height: 16px;
+  }
+  .sort-control{
+    display: inline-block;
+    vertical-align: top;
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+  }
+  .sort-radio{
+    background: url("../../assets/img/radiobutton/up.png") no-repeat;
+  }
+  .sort-radio-checked{
+    background: url("../../assets/img/radiobutton/down.png") no-repeat;
+  }
+  .sort-control-label{
+    font-size: 14px;
+    vertical-align: top;
+    color: #dbe1ec;
+  }
+  .movies-list{
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .movie-list{
+    margin: -29px 0 20px -20px;
+  }
+  dl{
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+  }
+  .movies-list dd{
+    margin: 30px 0 0 25px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+  }
+  dd{
+    display: block;
+    -webkit-margin-start: 40px;
+  }
+  .movie-item{
+    position: relative;
+    border: 1px solid #e2e3e5;
+    margin: -1px;
+  }
+  .movie-poster{
+    background-color: #fcfcfc;
+    width: 160px;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+  .movie-poster .poster-default{
+    top: 50%;
+    left: 50%;
+    width: 68px;
+    height: 62px;
+    margin-top: -31px;
+    margin-left: -34px;
+  }
+  .movie-poster .movie-overlay, .movie-poster img{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .channel-action-sale{
+    background-color: #e4606d;
+  }
+  .channel-action{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    padding: 0 3px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 1px;
+  }
+  .channel-action a{
+    color: #dae0e5;
+    font-size: 12px;
+    vertical-align: top;
+  }
+  .movie-ver{
+    position: absolute;
+    top: 4px;
+    left: -2px;
+    font-size: 12px;
+    color: #dbe1ec;
+  }
+  .movie-ver i.imax3d{
+    width: 69px;
+    height: 25px;
+    background-image: url("");
+  }
+  .movie-ver i{
+    display: inline-block;
+  }
+  .channel-detail{
+    width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 16px;
+    color: #f7f8fb;
+    margin-top: 10px;
+  }
+  .channel-detail a{
+    color: #f7f8fb;
+  }
+  .channel-detail{
+    width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 16px;
+    color: #eeeeee;
+    margin-top: 10px;
+  }
+  .channel-detail-orange{
+    color: darksalmon;
+  }
+  .channel-detail-orange .integer{
+    font-size: 18px;
+  }
+  .channel-detail-orange .fraction{
+    font-size: 14px;
+  }
+  .movies-pager{
+    text-align: center;
+  }
+  .list-pager{
+    list-style: none;
+  }
+  .list-pager li.active{
+    border-color: #e4606d;
+    background-color: #e4606d;
+  }
+  .list-pager li{
+    display: inline-block;
+    height: 32px;
+    margin: 0 4px;
+    border: 1px solid #d8d8d8;
+    line-height: 30px;
+    text-align: center;
+    color: #999999;
+    background-color: #dbe1ec;
+  }
+  .list-pager a{
+    display: block;
+    padding: 0 12px;
+    color: #333;
+  }
+  .list-pager li.active a{
+    color: #dbe1ec;
+  }
+  .list-pager li.sep{
+    padding: 0 12px;
+  }
 </style>
+
