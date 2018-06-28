@@ -14,8 +14,8 @@
             <li v-for="(film, index) in hotFilms" v-if="index < 10" :key="index">
               <a class="box-list-link" v-bind:href="href" target="_blank">
                 <span class="rank">{{index + 1}}</span>
-                <span class="rank-film-name">{{film.film_name}}</span>
-                <span class="rank-film-tickets"><span class="rank-film-tickets-num">{{film.box_office}}</span>万</span>
+                <span class="rank-film-name">{{film.movie_name}}</span>
+                <span class="rank-film-tickets"><span class="rank-film-tickets-num">{{film.movie_total_price}}</span></span>
               </a>
             </li>
           </ul>
@@ -32,8 +32,8 @@
           <a href=""><span class="film-more">更多></span></a>
         </div>
         <div v-for="(film, index) in hotFilms" v-if="index < 8" class="film-context" :key="index">
-          <img class="index-film-picture" v-bind:src="film.img_src" v-bind:alt="film.img_alt" />
-          <span class="index-film_name">{{film.film_name}}</span>
+          <img class="index-film-picture" v-bind:src="film.img" v-bind:alt="film.movie_name" />
+          <span class="index-film_name">{{film.movie_name}}</span>
           <a class="ticket-link" :href="href" target="_blank"><span >购票</span></a>
         </div>
       </div>
@@ -43,9 +43,9 @@
           <span>即将上映</span>
           <a href=""><span class="film-more">更多></span></a>
         </div>
-        <div v-for="(film, index) in ready_film_list" v-if="index < 8" class="film-context" :key="index">
-          <img class="index-film-picture" v-bind:src="film.img_src" v-bind:alt="film.img_alt" />
-          <span class="index-film_name">{{film.film_name}}</span>
+        <div v-for="(film, index) in readyFilms" v-if="index < 8" class="film-context" :key="index">
+          <img class="index-film-picture" v-bind:src="film.img" v-bind:alt="film.movie_name" />
+          <span class="index-film_name">{{film.movie_name}}</span>
           <a class="ticket-link" :href="href" target="_blank"><span >购票</span></a>
         </div>
       </div>
@@ -69,46 +69,53 @@ export default {
       currentPage: 1,
       numEachPage: 10,
       hotFilms: [],
+      readyFilms: [],
       adcolumn_list: [
         {img_alt: "First Slide", img_src:"http://p1.meituan.net/movie/b226085e2768a5379f4e6f21fe19615f416523.png@750w_1l", href:"http://maoyan.com/films/news/38723"},
         {img_alt: "Second Slide", img_src:"http://p1.meituan.net/movie/c44e3020654434e5c97a15fc236e4c16406093.png@750w_1l", href:"http://maoyan.com/films/news/38754"},
         {img_alt: "Third Slide", img_src:"http://p1.meituan.net/movie/671f86af1cb5c7cc583a4d1d830c078b332830.jpg@750w_1l", href:"http://maoyan.com/films/news/39223"},
         {img_alt: "Forth Slide", img_src:"http://p1.meituan.net/movie/e1331da3af4c6e8319e977814e65d9cf1051652.png@750w_1l", href:"http://maoyan.com/films/news/39474"},
       ],
-      online_film_list: [
-        {film_name: "头号玩家", box_office: 1510.11, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "/movie-detail-page"},
-        {film_name: "厉害了，我的国", box_office: 307.48, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "环太平洋：雷霆再起", box_office: 153.74, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "通勤营救", box_office: 101.76, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "遇见你真好", box_office: 74.68, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "红海行动", box_office: 64.17, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "花滑女王", box_office: 50.27, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "我说的都是真的", box_office: 41.29, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊", box_office: 41.29, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "我超爱易烊千玺的", box_office: 39.42, img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"}
-      ],
-      ready_film_list: [
-        {film_name: "一号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "二号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "三号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "四号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "五号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "六号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "七号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-        {film_name: "八号玩家", img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", href: "https://picsum.photos/1024/480/?image=55"},
-      ],
       href: "/movie-detail-page",     //转到电影详情页面
 
     }
   },
+/*
   async asyncData() {
     try {
-      let {data} = await axios.get('/api/getHomeHotFilms');
+      let {data} = await axios.get('/api/getHomeHotMovies');
       return {hotFilms: data.data}
     } catch (e) {
       console.log(e)
     }
   },
+  */
+  async created(){
+    await this.getHotMovies()
+    await this.getReadyMovies()
+  },
+  methods: {
+    async getHotMovies() {
+      try {
+        let {data} = await axios.get('/api/getHomeHotMovies')
+        if(!data.errorCode) {
+          this.hotFilms = data.data
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getReadyMovies() {
+      try {
+        let {data} = await axios.get('/api/getHomeReadyMovies')
+        if(!data.errorCode) {
+          this.readyFilms = data.data
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
 }
 </script>
 

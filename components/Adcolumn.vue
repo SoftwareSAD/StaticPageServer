@@ -9,9 +9,10 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-      <a class="Big-block-size" v-for="(ad, index) in adcolumn_list" :key="index" :href="ad.href" target="_blank">
+
+      <a v-for="(ad, index) in adcolumn_list" :key="index" :href="ad.href" target="_blank">
         <b-carousel-slide  class="block-size" :img-src="ad.img_src" :img-alt="ad.img_alt"
-                           img-width="100%" img-height="100%"></b-carousel-slide>
+                           img-width="100%" img-height="auto"></b-carousel-slide>
       </a>
 
     </b-carousel>
@@ -44,10 +45,7 @@
   }
 </script>
 <style scoped>
-  .Big-block-size {
-    width: 100%;
-    height: 500px;
-  }
+
   .block-size {
     width: 100%;
     height: 500px;

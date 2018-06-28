@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="334640ce-524b-434f-8765-b1126cd78a49" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/server/model/movies.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Adcolumn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Adcolumn.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/components/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/api/movie.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/movie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/model/film.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,20 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/index.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="3" column="58" selection-start-line="3" selection-start-column="58" selection-end-line="3" selection-end-column="58" />
+              <caret line="69" column="22" lean-forward="true" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
               <folding>
                 <element signature="e#2118#2158#0" expanded="true" />
               </folding>
@@ -41,11 +33,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Adcolumn.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/movie-detail-page/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="45" column="8" lean-forward="true" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/hot-news/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="800">
+              <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Adcolumn.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/Adcolumn.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+            <state relative-caret-position="200">
+              <caret line="14" column="60" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
               <folding>
                 <element signature="n#style#0;n#b-carousel#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -56,8 +66,8 @@
       <file leaf-file-name="news.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/api/news.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1125">
-              <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+            <state relative-caret-position="225">
+              <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -65,18 +75,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="film.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/model/film.js">
+      <file leaf-file-name="function.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/function/function.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-376" />
+            <state relative-caret-position="75">
+              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movies.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/model/movies.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="17" column="5" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="5" />
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="movie.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/api/movie.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+            <state relative-caret-position="146">
+              <caret line="32" column="70" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -84,12 +105,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/api/users.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>film</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -97,10 +118,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/api/movie.js" />
         <option value="$PROJECT_DIR$/components/README.md" />
-        <option value="$PROJECT_DIR$/pages/index.vue" />
         <option value="$PROJECT_DIR$/components/Adcolumn.vue" />
+        <option value="$PROJECT_DIR$/server/model/film.js" />
+        <option value="$PROJECT_DIR$/server/model/movies.js" />
+        <option value="$PROJECT_DIR$/server/api/movie.js" />
+        <option value="$PROJECT_DIR$/pages/index.vue" />
       </list>
     </option>
   </component>
@@ -116,9 +139,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="115" />
-    <option name="y" value="-13" />
-    <option name="width" value="1357" />
+    <option name="x" value="-38" />
+    <option name="y" value="98" />
+    <option name="width" value="1069" />
     <option name="height" value="788" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -150,6 +173,12 @@
               <item name="StaticPageServer" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="all-news" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StaticPageServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StaticPageServer" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="hot-news" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="StaticPageServer" type="b2602c69:ProjectViewProjectNode" />
@@ -232,18 +261,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530197580700</updated>
-      <workItem from="1530197590384" duration="5149000" />
+      <workItem from="1530197590384" duration="10599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5149000" />
+    <option name="totallyTimeSpent" value="10599000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
@@ -251,7 +280,7 @@
       <window_info anchor="bottom" id="Version Control" />
       <window_info id="npm" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.12396694" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.38677686" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -262,6 +291,26 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.3289256" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.25" />
+      <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.21157025" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -275,13 +324,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/movies/index.vue">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/movie-detail-page/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1375">
-          <caret line="29" column="41" lean-forward="true" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/README.md">
       <provider selected="true" editor-type-id="text-editor">
@@ -305,41 +347,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/api/news.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1125">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/model/film.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-376" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/all-news/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/api/users.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/api/movie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
@@ -347,22 +354,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/index.vue">
+    <entry file="file://$PROJECT_DIR$/test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="58" selection-start-line="3" selection-start-column="58" selection-end-line="3" selection-end-column="58" />
+        <state relative-caret-position="250">
+          <caret line="16" column="2" selection-end-line="16" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/api/users.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/Adcolumn.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="14" column="60" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
           <folding>
-            <element signature="e#2118#2158#0" expanded="true" />
+            <element signature="n#style#0;n#b-carousel#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/Adcolumn.vue">
+    <entry file="file://$PROJECT_DIR$/server/function/function.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+        <state relative-caret-position="75">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/all-news/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="46" column="7" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/model/movies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/api/news.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
           <folding>
-            <element signature="n#style#0;n#b-carousel#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/api/movie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="32" column="70" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/hot-news/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/movie-detail-page/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="45" column="8" lean-forward="true" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="69" column="22" lean-forward="true" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
+          <folding>
+            <element signature="e#2118#2158#0" expanded="true" />
           </folding>
         </state>
       </provider>
