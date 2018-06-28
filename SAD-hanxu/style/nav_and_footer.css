@@ -1,0 +1,138 @@
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: black;
+}
+body {
+    background: url("../img/background/bg.jpg") no-repeat fixed;
+    background-size: cover;
+}
+.header {
+    height: 100px;
+    width: 100%;
+    min-width: 1400px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background-color: #343A40;
+    color: white;
+}
+.header-inner {
+    width: 92%;
+    height: inherit;
+    margin: 0 auto;
+}
+.logo-container {
+    display: inline-block;
+    font-size:  0;
+    float:  left;
+}
+#logo {
+    width: 80px;
+    height: 80px;
+    margin: 10px 0px;
+    border-radius: 50%;
+    font-size: 0;
+}
+.city-container {
+    display: inline-block;
+    line-height: 100px;
+    float: left;
+}
+.choose-city {
+    width: 60px;
+    margin-left: 40px;
+    height: inherit;
+}
+.nav {
+    display: inline-block;
+    margin: 0 40px;
+    height: inherit;
+    float: left;
+}
+.nav ul {
+    height: inherit;
+    line-height: 100px;
+    margin-bottom:0;
+}
+.list-inline > li {
+    display: inline-block;
+    font-size: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+    letter-spacing: 0.2em;
+}
+.nav-list > li > a {
+    color: white;
+}
+.search-container {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    float: right;
+    margin:30px 70px 0 0;
+}
+
+#submit {
+    border-radius: 50%;
+    border: 0px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../img/logo/search.png");
+    background-size: contain;
+    cursor: pointer;
+    background-color: white;
+    position: absolute;
+    left: 200px;
+    bottom: 0px;
+    outline: none;
+}
+
+#search {
+    border: 0px solid #ccc;
+    border-radius: 20px;
+    width: 240px;
+    height: 40px;
+    padding: 0 40px 0 20px;
+    line-height: 1.3em;
+    outline: none;
+}
+.user-info {
+    display: inline-block;
+    float: right;
+    margin:0px auto;
+}
+.user-menu > li > a:link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+#user {
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
+    border-radius: 50%;
+}
+
+.footer {
+    background-color:#383A3F;
+    color: #6c757d;
+    width: 100%;
+    height: fit-content;
+}
+
+.footer-grid {
+    float: left;
+    height: 250px;
+    text-align: left;
+    padding: 50px;
+}
+.footer-grid ul li{
+    list-style-type:none;
+    padding:0;
+    margin:10px 0px 10px 0px;
+}
+
+.footer_copy {
+    text-align: center;
+    margin: 25px;
+}

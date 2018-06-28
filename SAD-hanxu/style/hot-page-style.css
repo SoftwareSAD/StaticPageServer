@@ -1,0 +1,109 @@
+html, body{
+    background-size: cover;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.latest-news-container,
+.latest-video-container
+{
+    margin: 50px 0px 100px 0px;
+    text-align: center;
+    color: white;
+}
+.latest-news-box
+{
+    width: 300px;
+    height: 410px;
+    margin: 30px 30px 30px 30px;
+    padding: 0;
+    float: left;
+    color: #16181b;
+    -moz-box-shadow: 0px 0px 12px #888888; /* 老的 Firefox */
+    box-shadow: 0px 0px 12px #888888;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=0, Color='#888888')";/* For IE 8 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=0, Color='#888888');/* For IE 5.5 - 7 */
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: white;
+    opacity: 50%;
+}
+.latest-news-box-detail {
+    padding: 10px;
+    width: 100%;
+    height: 135px;
+}
+.latest-news-info
+{
+    padding: 10px;
+}
+.latest-news-img
+{
+    width: 100%;
+    height: 235px;
+}
+.two-line-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.three-line-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+span.fa{
+    line-height: 3px;
+    margin: 0px 3px 0px 3px;
+}
+.latest-video-box {
+    width: 300px;
+    height: 235px;
+    margin: 30px 30px 30px 30px;
+    padding: 0;
+    float: left;
+    -moz-box-shadow: 0px 0px 10px #888888; /* 老的 Firefox */
+    box-shadow: 0px 0px 10px #888888;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=0, Color='#888888')";/* For IE 8 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=0, Color='#888888');/* For IE 5.5 - 7 */
+    border-width: 0px;
+    overflow: hidden;
+}
+.latest-video-img {
+    width: 100%;
+    height: 235px;
+}
+.latest-video-title {
+    margin-top: 130px;
+}
+.latest-video-box-detail:hover {
+    background-color:  rgba(0,0,0,0.5);
+    color: floralwhite;
+    font-size: 16px;
+}
+.latest-video-box-detail{
+    background-color:  rgba(0,0,0,0.1);
+    color: white;
+    font-size: 16px;
+}
+.change-pager ul
+{
+    text-align: center;
+    width: min-content;
+    margin: 50px auto 50px auto;
+}
+
+#HelloText {
+    font-size: 50px;
+    margin: 150px auto 50px auto;
+    text-align: center;
+    color: white;
+}

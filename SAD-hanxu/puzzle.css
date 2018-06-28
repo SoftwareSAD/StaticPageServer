@@ -1,0 +1,277 @@
+body, html {
+    font-family: "Century Gothic",sans-serif, "Arial";
+}
+body {
+    background-color: white;
+}
+/*Puzzle Game*/
+#para1{
+    text-align: center;
+    font-size: 28px;
+}
+/*动态提示*/
+#para2{
+    text-align: center;
+    font-size: 22px;
+}
+
+/*显示功能按钮块区*/
+#at-first {
+    margin: auto;
+    position: relative;
+    height: 50px;
+    width: 320px;
+    cursor: pointer;
+}
+#at-first div{
+    border: 0.5px solid lightgray;
+    position: absolute;
+    border-radius: 2px;
+}
+#start{
+    font-size:12px;
+    left: 0;
+    top:0;
+    padding-left: 4px;
+    width:160px;
+    box-shadow: 1px 1px 0 2px rgba(79,79,79,0.2);
+}
+
+#timetxt{
+    width:30px;
+    left:200px;
+    top:0px;
+    border:none!important;
+}
+#time{
+    left:42px;
+    top:0;
+    width:70px;
+    height:18px;
+    padding-left: 4px;
+    box-shadow: 1px 1px 0 2px rgba(79,79,79,0.2);
+}
+#playing {
+    left:0;
+    top:24px;
+    width:77px;
+    height:18px;
+    font-size:12px;
+    padding-left: 4px;
+    box-shadow: 1px 1px 0 2px rgba(79,79,79,0.2);
+}
+#clickstxt{
+    left:190px;
+    top:24px;
+    border:none!important;
+}
+#clicks{
+    left:52px;
+    top:0;
+    width:66px;
+    height:18px;
+    padding-left: 4px;
+    box-shadow: 1px 1px 0 2px rgba(79,79,79,0.2);
+}
+/*拼图部分外框*/
+#total{
+    height: 358px;
+    width: 350px;
+    padding: 3px;
+    margin: auto;
+    position: relative;
+    top:35px;
+}
+/*拼图*/
+#main{
+	/*background-image: url(images/panda.jpg);*/
+    height: 349px;
+    width: 349px;
+    padding: 0;
+    margin: auto;
+    position: relative;
+    /*border: 1px solid black;*/
+}
+
+/*单元格*/
+#main div {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    list-style:none;
+    display: block;
+    float: left;
+    height: 87px;
+    text-decoration: none;
+    width: 87px;
+    transition: all 0.8s;
+}
+/*绝对位置*/
+#pos1{
+    top:0;
+    left:0;
+}
+#pos2 {
+    top:0;
+    left:87px;
+}
+#pos3 {
+    top:0;
+    left: 174px;
+}
+#pos4 {
+    top: 0;
+    left: 261px;
+}
+#pos5 {
+    top: 87px;
+    left:0;
+}
+#pos6 {
+    top: 87px;
+    left: 87px;
+}
+#pos7 {
+    top: 87px;
+    left: 174px;
+}
+#pos8 {
+    top: 87px;
+    left: 261px;
+}
+#pos9 {
+    top: 174px;
+    left: 0;
+}
+#pos10 {
+    top:174px;
+    left:87px;
+}
+#pos11 {
+    top: 174px;
+    left: 174px;
+}
+#pos12 {
+    top: 174px;
+    left: 261px;
+}
+#pos13 {
+    top: 261px;
+    left: 0;
+}
+#pos14 {
+    top: 261px;
+    left: 87px;
+}
+#pos15 {
+    top: 261px;
+    left: 174px;
+}
+#pos16 {
+    top: 261px;
+    left: 261px;
+}
+
+
+/*单元格内部圆圈按钮修饰*/
+#main div input[type="button"]{
+	opacity: 1;
+    display: block;
+    background-image: url(images/panda.jpg);
+    background-color: white;
+    width: 87px;
+    height: 87px;
+    margin: 0;
+    border:1px solid lightgray;
+    /*transition: all 1s;*/
+}
+#main div input[type="button"]:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+/*背景图片位置*/
+.block{
+    top:0;
+    left:0;
+}
+#block1{
+	background-position: -6px -3px;
+
+}
+#block2{
+	background-position: -90px -4px;
+}
+
+#block3{
+	background-position: -178px -4px;	
+}
+
+#block4{
+	background-position: -266px -4px;	
+}
+
+#block5{
+	background-position: -5px -93px;	
+}
+#block6{
+	background-position: -92px -93px;	
+}
+#block7{
+	background-position: -180px -93px;	
+}
+#block8{
+	background-position: -266px -93px;	
+}
+#block9{
+	background-position: -6px -181px;	
+}
+#block10{
+	background-position: -92px -181px;	
+}
+#block11{
+	background-position: -180px -181px;	
+}
+#block12{
+	background-position: -266px -181px;	
+}
+#block13{
+	background-position: -6px -268px;	
+}
+#block14{
+	background-position: -92px -268px;	
+}
+#block15{
+	background-position: -180px -268px;	
+}
+#block16{
+	background-image: none!important;
+    border:1px solid white!important;
+	background-position: -266px -268px;
+    /*opacity: 0!important;*/
+    display: none!important;
+}
+
+/*下方文字*/
+.instruction {
+    position:relative;
+    margin: auto;
+    margin:1em auto;
+    width: 400px;
+    top:48px;
+}
+
+#tip {
+    margin-left: 18px;
+}
+/*底部restart按钮*/
+#restart{
+	position:relative;
+    margin: auto;
+    width:70px;
+    height:18px;
+    text-align: center;
+    box-shadow: 1px 1px 0 2px rgba(79,79,79,0.2);
+    top:48px;
+    cursor: pointer;
+}
