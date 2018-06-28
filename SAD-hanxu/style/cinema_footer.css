@@ -118,8 +118,9 @@ body {
     color: #6c757d;
     width: 100%;
     height: fit-content;
-    position: fixed;
+    position: relative;
     bottom: 0px;
+    /* 此处有问题 */
 }
 
 .footer-grid {
