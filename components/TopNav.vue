@@ -35,7 +35,7 @@
             <img  v-if="$store.state.authUser" class="portrait rounded-circle" src="../assets/img/logo/login-default-portrait.png">
             <img  class="portrait rounded-circle" src="../assets/img/logo/logout-default-portrait.png" v-else>
           </template>
-          <b-dropdown-item v-if="$store.state.authUser"><nuxt-link to="/login">个人主页</nuxt-link></b-dropdown-item>
+          <b-dropdown-item v-if="$store.state.authUser"><nuxt-link to="/users">个人主页</nuxt-link></b-dropdown-item>
           <b-dropdown-item v-if="$store.state.authUser" v-on:click="logout()">退出</b-dropdown-item>
           <b-dropdown-item v-else><nuxt-link to="/login">登录</nuxt-link>/<nuxt-link to="register">注册</nuxt-link></b-dropdown-item>
         </b-nav-item-dropdown>

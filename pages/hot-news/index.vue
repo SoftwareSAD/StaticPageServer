@@ -56,9 +56,9 @@
         videodata: []
       }
     },
-    created(){
-      this.getHotNews()
-      this.getHotVideos()
+    async created(){
+      await this.getHotNews()
+      await this.getHotVideos()
     },
     methods: {
       async getHotNews() {
@@ -82,99 +82,6 @@
         }
       }
     }
-  //   async asyncData() {
-  //     try {
-  //       let {data} = await axios.get('/api/getHotNews')
-  //       // let {video} = await axios.get('/api/getHotVideos')
-  //       return {
-  //         newsdata: data.data
-  //       }
-  //     } catch(e) {
-  //     console.log(e)
-  //     }
-  // }
-
-    // asyncData (context) {
-    //   return {
-    //     project: 'nuxt',
-    //     newsdata: [
-    //       {
-    //         cover_img_scr:  require('~/assets/img/7.jpg'),
-    //         url: 'http://baidu.com',
-    //         title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_scr:  require('~/assets/img/7.jpg'),
-    //         url: 'http://baidu.com',
-    //         title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_scr:  require('~/assets/img/7.jpg'),
-    //         url: 'http://baidu.com',
-    //         title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_scr:  require('~/assets/img/7.jpg'),
-    //         url: 'http://baidu.com',
-    //         title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_scr:  require('~/assets/img/7.jpg'),
-    //         url: 'http://baidu.com',
-    //         title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_scr:  require('~/assets/img/7.jpg'),
-    //         url: 'http://baidu.com',
-    //         title: '《动物世界》举行发布会，李易峰骑摩托炫酷登场，与粉丝玩猜拳',
-    //         view_count: '200'
-    //       },
-    //     ],
-    //     videodata:[
-    //       {
-    //         cover_img_src:  require('~/assets/img/2.jpg'),
-    //         url: 'https://v.qq.com/x/cover/twu995cadnasuk0/o0636w67b39.html',
-    //         title: 'Battle战？争A班？坐C位？《创造101》里你不能错过的小细节！',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_src:  require('~/assets/img/2.jpg'),
-    //         url: 'https://v.qq.com/x/cover/twu995cadnasuk0/o0636w67b39.html',
-    //         title: 'Battle战？争A班？坐C位？《创造101》里你不能错过的小细节！',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_src:  require('~/assets/img/2.jpg'),
-    //         url: 'https://v.qq.com/x/cover/twu995cadnasuk0/o0636w67b39.html',
-    //         title: 'Battle战？争A班？坐C位？《创造101》里你不能错过的小细节！',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_src:  require('~/assets/img/2.jpg'),
-    //         url: 'https://v.qq.com/x/cover/twu995cadnasuk0/o0636w67b39.html',
-    //         title: 'Battle战？争A班？坐C位？《创造101》里你不能错过的小细节！',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_src:  require('~/assets/img/2.jpg'),
-    //         url: 'https://v.qq.com/x/cover/twu995cadnasuk0/o0636w67b39.html',
-    //         title: 'Battle战？争A班？坐C位？《创造101》里你不能错过的小细节！',
-    //         view_count: '200'
-    //       },
-    //       {
-    //         cover_img_src:  require('~/assets/img/2.jpg'),
-    //         url: 'https://v.qq.com/x/cover/twu995cadnasuk0/o0636w67b39.html',
-    //         title: 'Battle战？争A班？坐C位？《创造101》里你不能错过的小细节！',
-    //         view_count: '200'
-    //       },
-    //     ]
-    //   }
-    // }
   }
 </script>
 
