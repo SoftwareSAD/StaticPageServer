@@ -2,14 +2,15 @@ import express from 'express'
 import { Nuxt, Builder } from 'nuxt'
 import api from './api'
 import bodyParser from 'body-parser'
-
+import Vue from 'vue'
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
-
+const eventBus = new Vue();
 const app = express()
 app.set('port', port)
 app.use(bodyParser.json())
 app.use('/api', api)
+app.set("eventBus", eventBus)
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
