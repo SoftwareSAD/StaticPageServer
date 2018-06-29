@@ -29,24 +29,26 @@
       <div class="online" id="hot_online">
         <div class="box-header">
           <span>正在热映</span>
-          <a href=""><span class="film-more">更多></span></a>
+          <!--按热门排序-->
+          <a href="/movies?sort_ID=1"><span class="film-more">更多></span></a>
         </div>
         <div v-for="(film, index) in hotFilms" v-if="index < 8" class="film-context" :key="index">
           <img class="index-film-picture" v-bind:src="film.img" v-bind:alt="film.movie_name" />
           <span class="index-film_name">{{film.movie_name}}</span>
-          <a class="ticket-link" :href="href" target="_blank"><span >购票</span></a>
+          <a class="ticket-link" :href="href + '?filmName=' + film.movie_name" target="_blank"><span >购票</span></a>
         </div>
       </div>
       <!--即将上映-->
       <div class="online" id="ready_online">
         <div class="box-header">
           <span>即将上映</span>
-          <a href=""><span class="film-more">更多></span></a>
+          <!--按时间排序-->
+          <a href="/movies?sort_ID=2"><span class="film-more">更多></span></a>
         </div>
         <div v-for="(film, index) in readyFilms" v-if="index < 8" class="film-context" :key="index">
           <img class="index-film-picture" v-bind:src="film.img" v-bind:alt="film.movie_name" />
           <span class="index-film_name">{{film.movie_name}}</span>
-          <a class="ticket-link" :href="href" target="_blank"><span >购票</span></a>
+          <a class="ticket-link" :href="href + '?filmName=' + film.movie_name" target="_blank"><span >购票</span></a>
         </div>
       </div>
     </div>
@@ -57,7 +59,6 @@
 import Logo from '~/components/Logo.vue'
 import Adcolumn from '~/components/Adcolumn.vue'
 import axios from '~/plugins/axios'
-import bus from '~/assets/eventBus';
 //import Vue from 'vue';
 
 export default {
