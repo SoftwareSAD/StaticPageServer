@@ -47,24 +47,6 @@
       }
     },
 
-    // created() {
-    //   this.getAllNews()
-    // },
-    // methods: {
-    //   async getAllNews() {
-    //     try {
-    //       let {data} = await axios.get('/api/getAllNews', {params: {currentPage: 1}})
-    //       if(data.errorCode == 0) {
-    //         this.allnewsdata = data.data
-    //       }
-    //     } catch (e) {
-    //       console.log(e)
-    //     }
-    //   }
-    // }
-
-
-
   }
 </script>
 <style>
@@ -73,7 +55,6 @@
     text-align: center;
     bottom: 50px;
     position: relative;
-    min-height: 300px;
   }
   .pag-nav {
     position: relative;

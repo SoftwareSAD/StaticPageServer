@@ -84,16 +84,18 @@
         curCode : "",
         curPhone: "",
         curError: "",
-        registered: "注册失败"
+        registered: "注册成功"
       }
     },
     methods: {
       showModal () {
         this.$refs.myModalRef1.show()
       },
+
       hideModal () {
         this.$refs.myModalRef1.hide()
       },
+
       check_pass1() {
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
         if(!reg.test(this.form.password1)) {
@@ -137,26 +139,33 @@
       },
 
       async register() {
-        this.form.code!==this.curCode ? this.error.code = "输入验证码错误": this.error.code = "";
-
-        this.form.cellphone!==this.curPhone? this.error.phone = "手机号码变更":this.error.phone = "";
+        if(this.form.code!==this.curCode) {
+          this.error.code = "输入验证码错误"
+          return;
+        } else {
+          this.error.code = ""
+        }
+        if(this.form.cellphone!==this.curPhone) {
+          this.error.code = "手机号码变更"
+          return;
+        } else {
+          this.error.phone = "";
+        }
 
         if(!this.error.phone&&!this.error.checked&&!this.error.password2&&!this.error.password1&&!this.error.code) {
-            try {
-              await this.$store.dispatch('login', {
-                email: "137111111111",
-                password: "admin"
-              })
-              this.form.email = ''
-              this.form.password = ''
-              this.form.error = null
-              let path = this.$route.query.path || "/"
-              this.$router.replace(path)
-            } catch (e) {
-              this.form.error = e.message
-            }
-        } else {
-          this.$refs.myModalRef2.show()
+          try {
+            await this.$store.dispatch('register', {
+              cellphone: this.form.cellphone,
+              password: this.form.password1,
+              username: this.form.username
+            })
+            this.registered = "注册成功"
+            this.$refs.myModalRef1.show()
+            // let path = this.$route.query.path || "/"
+            // this.$router.replace(path)
+          } catch (e) {
+            this.curError = e.message
+          }
         }
       }
     }

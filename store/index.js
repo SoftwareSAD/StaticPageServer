@@ -75,6 +75,19 @@ export const actions = {
     commit('SET_USER', null);
     commit('SET_TOKEN', null);
   },
+
+
+  async register({ commit }, { cellphone, password, username}) {
+    try {
+      const { data } = await axios.post('/api/register', { cellphone, password ,username});
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        throw new Error('注册失败')
+      }
+      throw error
+    }
+  },
+
   async statistics({ commit, state }) {
     try {
       const { data } = await instance.get('/api/statistics');
