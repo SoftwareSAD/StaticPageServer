@@ -3,19 +3,18 @@
       <!--电影导栏-->
       <div class="banner">
         <div class="info">
-          <img id="movie-img" :src="film.img_src" :alt="film.img_alt" />
+          <img id="movie-img" :src="film.img" :alt="film.movie_name" />
           <div id="movie-info">
-            <span class="info-font name-font">{{film.film_name}}</span><br />
-            <span class="info-font" v-for="(tag, index) in film.tags" v-if="index+1 < film.tags.length" :key="index">{{tag}} , </span>
-            <span class="info-font" v-for="(tag, index) in film.tags" v-if="index+1 == film.tags.length" :key="index">{{tag}}</span><br />
-            <span class="info-font">{{film.country}} / {{film.time}}分钟</span><br />
-            <span class="info-font">{{film.online_time}}上映</span><br />
+            <span class="info-font name-font">{{film.movie_name +' / ' + film.movie_ename}}</span><br />
+            <span class="info-font">{{film.movie_type}} </span><br />
+            <span class="info-font">{{film.country}} / {{film.movie_time}}</span><br />
+            <span class="info-font">{{film.online_time}}</span><br />
             <button class="ticket-button">购票</button>
             <div class="movie-review">
               <span class="some-title">用户评分</span><br />
-              <span class="some-result">{{film.score}}</span><br />
+              <span class="some-result">{{film.movie_star}}</span><br />
               <span class="some-title">票房</span><br />
-              <span class="some-result">{{film.box_office}}万</span><br />
+              <span class="some-result">{{film.movie_total_price}}万</span><br />
             </div>
           </div>
         </div>
@@ -31,9 +30,9 @@
             </b-tab>
             <b-tab title="演职员" >
               <span class="info-header">导演</span><br />
-              <human v-for="(item, index) in film.director" :key="index" :humanItem="item"></human>
+              <human :humanItem="{name: film.director, img_src: film.director_src}"></human>
               <br /><span  class="info-header">部分演员</span><br />
-              <human v-for="(item, index) in film.actors" :key="index" :humanItem="item"></human>
+              <human v-for="(item, index) in film.actor" :key="index" :humanItem="{name: item, img_src: film.actor_src[index]}"></human>
             </b-tab>
           </b-tabs>
         </div>
@@ -45,6 +44,8 @@
 
 <script>
   import human from '~/components/human.vue'
+  import bus from '~/assets/eventBus';
+  import axios from '~/plugins/axios'
     export default {
       components: { human },
       head() {
@@ -52,42 +53,22 @@
       },
       data () {
         return {
-          film: {
-            film_name: "头号玩家",
-            country: "美国",
-            director: [
-              {
-                name: "胡安·安东尼奥·巴亚纳",
-                img_src: require("~/assets/img/human/胡安·安东尼奥·巴亚纳.jpg"),
-              },
-            ],
-            actors: [
-              {
-                name: "克里斯·帕拉特",
-                img_src: require("~/assets/img/human/克里斯·帕拉特.jpg"),
-              },
-              {
-                name: "布莱斯·达拉斯·霍华德",
-                img_src: require("~/assets/img/human/布莱斯·达拉斯·霍华德.jpg"),
-              },
-              {
-                name: "拉菲·斯波",
-                img_src: require("~/assets/img/human/拉菲·斯波.jpg"),
-              },
-
-            ],
-            time: "150",
-            online_time: "2018-06-08",
-            score: "8.2",
-            box_office: "8953",
-            img_src: require("~/assets/img/film/best_player.jpg"),
-            img_alt: "头号玩家",
-            tags: ["动作", "冒险", "科幻"],
-            introduction: "侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。当岛上的休眠火山开始活跃以后，欧文（克里斯·帕拉特 饰）与克莱尔（布莱丝·达拉斯·霍华德 饰）发起了一场运动，想要保护岛上幸存的恐龙们免于灭绝。欧文一心想要找到自己依然失踪在野外的迅猛龙首领布鲁，克莱尔如今也尊重起这些生物，以保护它们为己任。两人在熔岩开始喷发时来到了危险的小岛，他们的冒险也揭开了一个可能让地球回到史前时代般混乱秩序的阴谋。",
-
-          }
+          film: {},
         }
       },
+
+      async asyncData({context, route}) {
+        let nowfilm = {};
+        try {
+          let {data} = await axios.get('/api/getSingleFilm', {params: {name: route.query.filmName}})
+          if(!data.errorCode) {
+            nowfilm = data.data[0]
+          }
+        } catch (e) {
+          console.log(e)
+        }
+        return {film: nowfilm}
+      }
     }
 </script>
 
@@ -128,7 +109,7 @@
   .name-font {
     font-size: 28px;
     font-weight: bold;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.13em;
   }
   .ticket-button {
     color: white;

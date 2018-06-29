@@ -51,7 +51,7 @@
               <div class="movie-item">
                 <a :href="movie.href" target="_blank">
                   <div class="movie-poster">
-                    <img :src="movie.img_src" :title="movie.movie_name" :data-val="movie.film_ID">
+                    <img :src="movie.img" :title="movie.movie_name" :data-val="movie.id">
                   </div>
                 </a>
                 <div class="channel-action channel-action-sale">
@@ -59,10 +59,10 @@
                 </div>
               </div>
               <div class="channel-detail movie-item-title" :title="movie.movie_name">
-                <a :href="movie.href" :title="movie.movie_name" target="_blank" :data-val="movie.film_ID">{{movie.movie_name}}</a>
+                <a :href="movie.href" :title="movie.movie_name" target="_blank" :data-val="movie.id">{{movie.movie_name}}</a>
               </div>
               <div class="channel-detail channel-detail-orange">
-                <i class="integer">{{movie.score}}</i>
+                <i class="integer">{{movie.movie_star}}</i>
               </div>
             </dd>
           </dl>
@@ -99,6 +99,7 @@
 </template>
 
 <script>
+  import axios from '~/plugins/axios'
   export default {
     head() {
       return {'title': '正在热映'}
@@ -180,11 +181,22 @@
         ],
       }
     },
-    asyncData (context) {
-      return {
-        project: 'nuxt',
 
+    async asyncData({context, route}) {
+      // 根据sortID值（排序方法）获取电影列表，默认1：热度排序
+      let sortID = route.query.sort_ID == null ? 1 : route.query.sort_ID;
+      let movieList = [];
+      try {
+        // getFilmList未实现
+        let {data} = await axios.get('/api/getFilmList', {params: {sortID: sortID}});
+        if(!data.errorCode) {
+          movieList = data.data
+        }
+      } catch (e) {
+        console.log(e)
       }
+      // 连上数据库后用这个return
+       return {movie_list: movieList}
     }
   }
 </script>
