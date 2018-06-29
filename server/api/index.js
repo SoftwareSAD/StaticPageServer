@@ -39,7 +39,7 @@ router.use(movie)
 
 
 /**处理影院页面*/
-
+router.use(cinema)
 
 /**处理资讯页面*/
 router.use(news)
