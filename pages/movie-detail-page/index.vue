@@ -5,7 +5,8 @@
         <div class="info">
           <img id="movie-img" :src="film.img" :alt="film.movie_name" />
           <div id="movie-info">
-            <span class="info-font name-font">{{film.movie_name +' / ' + film.movie_ename}}</span><br />
+            <span class="info-font name-font">{{film.movie_name}}</span><br />
+            <span class="info-font name-font">{{film.movie_ename}}</span><br />
             <span class="info-font">{{film.movie_type}} </span><br />
             <span class="info-font">{{film.country}} / {{film.movie_time}}</span><br />
             <span class="info-font">{{film.online_time}}</span><br />
@@ -107,9 +108,11 @@
     padding: 4px 0;
 }
   .name-font {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
-    letter-spacing: 0.1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .ticket-button {
     color: white;
