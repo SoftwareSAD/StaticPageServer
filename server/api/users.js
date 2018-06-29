@@ -60,6 +60,11 @@ router.post('/login', async (req, res, next) => {
  * */
 router.post('/register', async (req, res, next) => {
   console.log('########用户注册#########');
+  cell = req.body.cellphone
+  let findUser = await UsersModel.find({cellphone: cell}).exec()
+  if (findUser.length != 0) {
+    res.status(401).json({ message: '注册失败: 该手机号已注册' })
+  }
   var newUser = new UsersModel ({
     username: req.body.username,
     cellphone: req.body.cellphone,
@@ -73,6 +78,26 @@ router.post('/register', async (req, res, next) => {
     } else {
       console.log('成功')
       return res.json({ cellphone: req.body.cellphone, username: req.body.username })
+    }
+  })
+});
+
+/**
+ * @desc 删除用户
+ * @param  cellphone：手机号
+ * @return 返回 删除信息
+ * */
+router.post('/delete', async (req, res, next) => {
+  console.log('########删除用户#########');
+  var deleUser = {cellphone: req.body.cellphone}
+
+  newUser.remove(deleUser, function (err){
+    if (err) {
+      console.log('失败')
+      res.status(401).json({ message: '删除失败' })
+    } else {
+      console.log('删除成功')
+      return _dbSuccess(res, '删除用户成功')
     }
   })
 });
