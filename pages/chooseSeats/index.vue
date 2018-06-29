@@ -51,7 +51,17 @@
                             <div class="c-screen-line"></div>
                         </div>
                         <div class="seats-wrapper">
-                            <div id="seatWrap"></div>
+                            <div id="seatWrap">
+                                <div class="seat" v-for="n in 19" :key="n.id" :class="{'seatChoosed': clickIndex==n }"  v-on:click="addClassFun(n)">
+                                  {{ n }}
+                                </div>
+                                <div class="seatSold" v-for="n in 2" :key="n.id">
+                                  {{ n }}
+                                </div>
+                                <div class="seat" v-for="n in 27" :key="n.id">
+                                  {{ n }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,11 +150,23 @@ import axios from '~/plugins/axios'
 //import Vue from 'vue';
 
 export default {
-  components: {Logo, Adcolumn},
-  head: {
-    'title': 'cinema-detail',
-  }
+    components: {Logo, Adcolumn},
+    head: {
+        'title': 'cinema-detail',
+    },
+    data() {
+        clickIndex: 0
+    },
+    methods: {
+      addClassFun: function(n) {
+          this.clickIndex = n;
+          alert(this.clickIndex);
+      }
+    }
+
+
 }
+
 
 </script>
 
@@ -321,6 +343,7 @@ div {
   top: 0;
   bottom: 0;
   z-index: -1;
+  overflow: hidden;
 }
 
 .seats-container .screen-container .screen {
