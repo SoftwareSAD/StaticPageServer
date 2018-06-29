@@ -1,6 +1,7 @@
 import MovieModel  from '../model/movies'
 import { _dbError, _dbSuccess} from '../function/function'
 import { Router } from 'express'
+import CinemaModel from "../model/cinema";
 const router = Router();
 
 
@@ -59,6 +60,28 @@ router.get("/getSingleFilm", async (req, res, next) =>{
     return _dbError(res, err)
   })
 });
+
+/**
+ * @desc 获取单个电影信息的函数
+ * @param src: 电影图片链接
+ * @return 电影对象
+ * */
+router.get("/getFilmByImg", async (req, res, next) =>{
+  let src = req.query.src;
+  console.log(src)
+  console.log('########通过图片链接拉取电影#########')
+  let MovieArr = await MovieModel.find({img: src}).exec()
+  let findMovies = []
+  for (let item of MovieArr) {
+    let ob = JSON.parse(JSON.stringify(item))
+    findMovies.push(ob)
+  }
+  console.log(findMovies)
+  return _dbSuccess(res, '获取电影成功', findMovies)
+
+});
+
+
 
 /**
  * @desc 根据电影类型查询电影
