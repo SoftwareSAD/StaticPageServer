@@ -1,5 +1,6 @@
 import CinemaModel  from '../model/cinema'
 import { Router } from 'express'
+import { _dbError, _dbSuccess} from '../function/function'
 
 const router = Router()
 
@@ -27,6 +28,7 @@ router.get('/getCinemaByDistrict', async (req, res, next) => {
 	} else {
 		let cinemaArr = await CinemaModel.find({district: key}).limit(page_length).skip(count).exec()
 		let findCinemas = []
+    // console.log(cinemaArr)
 		for (let item of cinemaArr) {
 			let ob = JSON.parse(JSON.stringify(item))
 			findCinemas.push(ob)
@@ -60,6 +62,7 @@ router.get('/getCinemaByBrand', async (req, res, next) => {
 	} else {
 		// 在电影院的名字中模糊搜索
 		let cinemaArr = await CinemaModel.find({cinema_name: {$regex: key}}).limit(page_length).skip(count).sort({cinema_name: -1}).exec()
+    console.log(cinemaArr)
 		let findCinemas = []
 		for (let item of cinemaArr) {
 			let ob = JSON.parse(JSON.stringify(item))
