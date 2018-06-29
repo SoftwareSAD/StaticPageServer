@@ -1,5 +1,4 @@
 import MovieModel  from '../model/movies'
-import  VideoModel from '../model/videos'
 import { _dbError, _dbSuccess} from '../function/function'
 import { Router } from 'express'
 const router = Router();
@@ -26,6 +25,12 @@ router.get('/getHomeHotMovies', async (req, res, next) => {
   return _dbSuccess(res, '获取热映电影成功', findMovies)
 
 });
+
+/**
+ * @desc 拉取首页待上映电影列表函数
+ * @param 无
+ * @return 返回前8个待上映电影
+ * */
 
 router.get('/getHomeReadyMovies', async (req, res, next) => {
   console.log('########获取前8个待上映电影#########');
