@@ -18,10 +18,9 @@
         <small class="news-cell-info float-right">STAR MOVIES<span class="news-date text-muted">{{item.date}}</span></small>
       </div>
     </div>
-    <!--分页栏--每页10项，共50页-->
+    <!--分页栏--每页10项，共30页-->
     <div class="pag-nav">
-      <b-pagination align="center" :total-rows="300" v-model="currentPage" :per-page="10">
-      </b-pagination>
+      <b-pagination align="center" :total-rows="300" v-model="currentPage" :per-page="10" @click.native="getNewsByPage()"></b-pagination>
     </div>
   </div>
 </template>
@@ -38,14 +37,28 @@
       }
     },
 
-    async asyncData({currentPage}) {
-      try {
-        let {data} = await axios.get('/api/getAllNews', {params: {currentPage: 1}})
-        return {allnewsdata: data.data}
-      } catch (e) {
-        console.log(e)
-      }
+    async created(){
+      await this.initNewsData()
     },
+
+    methods: {
+      async initNewsData() {
+        try {
+          let {data} = await axios.get('/api/getAllNews', {params: {currentPage: 1}})
+          this.allnewsdata=data.data
+        } catch (e) {
+          console.log(e)
+        }
+      },
+      async getNewsByPage() {
+        try {
+          let {data} = await axios.get('/api/getAllNews', {params: {currentPage: this.currentPage}})
+          this.allnewsdata=data.data
+        } catch (e) {
+          console.log(e)
+        }
+      },
+    }
 
   }
 </script>
