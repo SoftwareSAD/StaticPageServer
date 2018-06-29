@@ -15,6 +15,7 @@
           <b-dropdown-item href="/movies">正在热映</b-dropdown-item>
           <b-dropdown-item href="/movies">即将上映</b-dropdown-item>
           <b-dropdown-item href="/movies">经典影片</b-dropdown-item>
+          <b-dropdown-item href="/cinema-detail-page">购买影票</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown text="资讯" left no-caret>
           <b-dropdown-item href="/hot-news">热点资讯</b-dropdown-item>
