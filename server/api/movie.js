@@ -14,14 +14,45 @@ const router = Router();
 router.get('/getHomeHotMovies', async (req, res, next) => {
   console.log('########获取前10个热映电影#########');
   let page_length = 10;   // 获取前10个
-  let MoviesArr = await MovieModel.find({online_time: {$regex: '2018-06'}}).limit(page_length).exec();
+  let MoviesArr = await MovieModel.find({online_time: {$regex: '2018-06'}}).exec();
   let findMovies = [];
+  let YiArr = []    // 单位：亿
+  let WanArr = []   // 单位：万
   for (let item of MoviesArr) {
-    let ob = JSON.parse(JSON.stringify(item));
-    findMovies.push(ob)
+    let movie_price = item.movie_total_price
+    if (movie_price.indexOf('亿') != -1) {
+      let YiStr = item.movie_total_price.split('亿')[0]
+      let YiNum = Number(YiStr)
+      YiArr.push(YiNum)
+    } else if (movie_price.indexOf('万') != -1) {
+      let WanStr = item.movie_total_price.split('万')[0]
+      let WanNum = Number(WanStr)
+      WanArr.push(WanNum)
+    }
+  }
+  function compare(value1, value2) {
+    return value2 - value1
+  }
+  YiArr.sort(compare)
+  WanArr.sort(compare)
+  for (var i = 0; i < page_length; i++) {
+    if (i < YiArr.length) {
+      let price = String(YiArr[i]) + '亿'
+      let Arr = await MovieModel.find({movie_total_price: price}).exec();
+      for (let item of Arr) {
+        let ob = JSON.parse(JSON.stringify(item));
+        findMovies.push(ob)
+      }
+    } else {
+      let price = String(WanArr[i - YiArr.length]) + '万'
+      let Arr = await MovieModel.find({movie_total_price: price}).exec();
+      for (let item of Arr) {
+        let ob = JSON.parse(JSON.stringify(item));
+        findMovies.push(ob)
+      }
+    }
   }
   return _dbSuccess(res, '获取热映电影成功', findMovies)
-
 });
 
 /**
