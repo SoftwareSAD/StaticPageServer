@@ -13,7 +13,7 @@ const router = Router();
 router.get('/getHomeHotMovies', async (req, res, next) => {
   console.log('########获取前10个热映电影#########');
   let page_length = 10;   // 获取前10个
-  let MoviesArr = await MovieModel.find({}).limit(page_length).exec();
+  let MoviesArr = await MovieModel.find({online_time: {$regex: '2018-06'}}).limit(page_length).exec();
   let findMovies = [];
   for (let item of MoviesArr) {
     let ob = JSON.parse(JSON.stringify(item));
@@ -32,7 +32,7 @@ router.get('/getHomeHotMovies', async (req, res, next) => {
 router.get('/getHomeReadyMovies', async (req, res, next) => {
   console.log('########获取前8个待上映电影#########');
   let page_length = 8;   // 获取前8个
-  let MoviesArr = await MovieModel.find({}).limit(page_length).skip(10).exec();
+  let MoviesArr = await MovieModel.find({movie_total_price: '暂无'}).limit(page_length).exec();
   let findMovies = [];
   for (let item of MoviesArr) {
     let ob = JSON.parse(JSON.stringify(item));
@@ -70,9 +70,9 @@ router.get("/getSingleFilm", async (req, res, next) =>{
 router.get('/getMoviesByType', async (req, res, next) => {
   console.log('########获取30个待上映电影#########');
   let page_length = 30;   // 获取30个
-  let key = req.query.type
-  let page = req.query.currentPage
-  let count = (page - 1) * page_length
+  let key = req.query.type;
+  let page = req.query.currentPage;
+  let count = (page - 1) * page_length;
   if (key == '全部') {
     let MoviesArr = await MovieModel.find({}).limit(page_length).skip(count).exec();
     let findMovies = [];
@@ -156,7 +156,7 @@ router.get('/getHomeReadyMoviesByDate', async (req, res, next) => {
     }
     return _dbSuccess(res, '获取电影成功', findMovies)
   }
-  
+
 
 });
 

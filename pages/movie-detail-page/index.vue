@@ -62,7 +62,7 @@
         try {
           let {data} = await axios.get('/api/getSingleFilm', {params: {name: route.query.filmName}})
           if(!data.errorCode) {
-            nowfilm = data.data
+            nowfilm = data.data[0]
           }
         } catch (e) {
           console.log(e)
