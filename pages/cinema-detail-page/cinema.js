@@ -16,5 +16,6 @@ var cinema_map = function() {
 }
 
 $(document).ready(function() {
+    alert();
     cinema_map();
 });

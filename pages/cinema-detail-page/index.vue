@@ -513,7 +513,7 @@ body, html {
 }
 .movie.active {
     transform: scale(1);
-    border-color: #f24030;
+    border-color: #9966CC;
 }
 
 .movie-list-container .pointer {
@@ -597,7 +597,7 @@ body, html {
 }
 .show-list .show-date .date-item.active {
     color: #fff;
-    background-color: #f03d37;
+    background-color: #9966CC;
 }
 
 .show-list .plist-container {
@@ -674,7 +674,7 @@ tbody {
 
 .show-list .plist tbody .sell-price {
     font-size: 18px;
-    color: #f03d37;
+    color: #9966CC;
     font-weight: 700;
 }
 
@@ -684,7 +684,7 @@ tbody {
 }
 
 .show-list .plist tbody .buy-btn.normal {
-    box-shadow: 0 2px 10px -2px #f03d37;
+    box-shadow: 0 2px 10px -2px #9966CC;
 }
 
 .show-list .plist tbody .buy-btn {
@@ -692,7 +692,7 @@ tbody {
     width: 80px;
     height: 30px;
     color: #fff;
-    background-color: #f03d37;
+    background-color: #9966CC;
     font-size: 14px;
     line-height: 30px;
     border-radius: 100px;
