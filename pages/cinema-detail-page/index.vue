@@ -272,7 +272,6 @@ export default {
       let src = nowcinema.online_moive[0];
       try {
         let {data} = await axios.get('/api/getFilmByImg', {params: {src: src}})
-        console.log(data)
         if(!data.errorCode) {
           nowfilm = data.data[0]
         }
@@ -289,7 +288,6 @@ export default {
         console.log(e)
       }
     }
-    console.log(nowfilm)
     return {cinema: nowcinema,
             film: nowfilm,
             filmSrc: nowfilm == undefined ? "" : nowfilm.img,
