@@ -1,7 +1,5 @@
 import express from 'express'
-import {config} from '../config'
 import mongoose from 'mongoose'
-import login from './login'
 import  smsverity from './smsverity'
 import movie from './movie'
 import cinema from './cinema'
@@ -25,11 +23,9 @@ db.once('open', function() {
 });
 
 
-/**用户路由选择*/
+/**用户注册登录选择*/
 router.use(users)
 
-/**登录注册*/
-router.use(login)
 
 /**手机注册验证*/
 router.use(smsverity)

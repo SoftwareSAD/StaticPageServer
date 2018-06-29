@@ -87,8 +87,7 @@
 
 <style>
   .hot-container {
-    margin-top: 140px;
-    min-height: 300px;
+    margin-top: 150px;
   }
   .latest-box-container {
     text-align: center;

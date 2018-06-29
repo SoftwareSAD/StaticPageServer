@@ -134,13 +134,16 @@
 </script>
 
 <style>
+  .container {
+    min-width: max-content;
+  }
   div{
     display: block;
   }
-  body {
-    background: none;
-    background-size: cover;
-  }
+  /*body {*/
+    /*background: none;*/
+    /*background-size: cover;*/
+  /*}*/
   li{
     display: list-item;
     text-align: -webkit-match-parent;

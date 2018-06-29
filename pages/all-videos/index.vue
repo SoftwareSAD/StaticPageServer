@@ -51,7 +51,6 @@
     margin: 150px auto 50px auto;
     text-align: center;
     bottom: 50px;
-    min-height: 300px;
     position: relative;
   }
   .pag-nav {
