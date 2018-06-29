@@ -1,4 +1,5 @@
 import UsersModel from '../model/news'
+import { _dbError, _dbSuccess} from '../function/function'
 import { Router } from 'express'
 
 const router = Router()

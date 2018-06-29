@@ -11,7 +11,7 @@
             <div class="cinema-brief-container">
                 <h3 class="name text-ellipsis">烽禾影城(祈福新邨店)</h3>
                 <div class="address text-ellipsis">番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）</div>
-                <div class="telphone">电话：020-39108189 020-39108150</div>
+                <div class="telephone">电话：020-39108189 020-39108150</div>
                 
                 <div class="features-group">
                     <div class="group-title">
@@ -322,7 +322,7 @@ body, html {
     background-color: rgba(153,170,200,0.9);
     width: 100%;
     min-width: 1200px;
-    top: 100px;
+    top: 50px;
     /*overflow: hidden;*/
     position: relative;
 }
@@ -429,7 +429,7 @@ body, html {
 }
 
 .banner p, .banner ul {
-    margin: 0;
+    margin-left: 10px;
     padding: 0;
     list-style: none;
     line-height: 1;
@@ -467,7 +467,7 @@ body, html {
 }
 
 .movie-container {
-    top: 100px;
+    top: 50px;
     position: relative;
     width: 1200px;
     margin: 0 auto;
@@ -513,7 +513,7 @@ body, html {
 }
 .movie.active {
     transform: scale(1);
-    border-color: #9966CC;
+    border-color: #2A5CAA;
 }
 
 .movie-list-container .pointer {
@@ -597,7 +597,7 @@ body, html {
 }
 .show-list .show-date .date-item.active {
     color: #fff;
-    background-color: #9966CC;
+    background-color: #2A5CAA;
 }
 
 .show-list .plist-container {
@@ -674,7 +674,7 @@ tbody {
 
 .show-list .plist tbody .sell-price {
     font-size: 18px;
-    color: #9966CC;
+    color: #2A5CAA;
     font-weight: 700;
 }
 
@@ -684,7 +684,7 @@ tbody {
 }
 
 .show-list .plist tbody .buy-btn.normal {
-    box-shadow: 0 2px 10px -2px #9966CC;
+    box-shadow: 0 2px 10px -2px #2A5CAA;
 }
 
 .show-list .plist tbody .buy-btn {
@@ -692,7 +692,7 @@ tbody {
     width: 80px;
     height: 30px;
     color: #fff;
-    background-color: #9966CC;
+    background-color: #2A5CAA;
     font-size: 14px;
     line-height: 30px;
     border-radius: 100px;
