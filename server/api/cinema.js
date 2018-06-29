@@ -9,7 +9,7 @@ const router = Router()
  		 page: 当前是第几页
  * @return 返回10家电影院
  * */
- router.get('/getCinemaByDistrict', async (req, res, next) => {
+router.get('/getCinemaByDistrict', async (req, res, next) => {
 	console.log('########按照行政区搜索：获取10个电影院#########');
 	let key = req.query.district
 	let page = req.query.currentPage

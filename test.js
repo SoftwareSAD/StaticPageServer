@@ -98,6 +98,34 @@ const cinemaSchema = new Schema({
 const CinemaModel = mongoose.model('cinema', cinemaSchema, 'cinema')
 
 /**
+ * @desc 用户表
+ */
+const usersSchema = new Schema({
+  id: String,
+  username: { type: String, default: "default-xxx"}, // 用户名
+  password: {type: String}, // 密码
+  email: {type: String, default: ""}, // email
+  cellphone: {type: String}, // phone
+  portrait: {type: String, default: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4109623050,3824746291&fm=27&gp=0.jpg"} // 头像
+})
+
+/**
+ * @desc构建表模型
+ */
+const UsersModel = mongoose.model('users', usersSchema, 'users')
+
+var newUser = new UsersModel ({cellphone: '18675433499', password: 'SYSU2018'})
+
+newUser.save(function (err){
+	if (err) {
+		console.log(error);
+	} else {
+		console.log('成功创建用户');
+	}
+
+})
+
+/**
  * @desc 热点资讯及预告片 测试
  */
 
