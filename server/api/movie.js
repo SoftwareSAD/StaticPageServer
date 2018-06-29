@@ -1,6 +1,7 @@
 import MovieModel  from '../model/movies'
 import { _dbError, _dbSuccess} from '../function/function'
 import { Router } from 'express'
+import CinemaModel from "../model/cinema";
 const router = Router();
 
 
@@ -61,6 +62,28 @@ router.get("/getSingleFilm", async (req, res, next) =>{
 });
 
 /**
+ * @desc 获取单个电影信息的函数
+ * @param src: 电影图片链接
+ * @return 电影对象
+ * */
+router.get("/getFilmByImg", async (req, res, next) =>{
+  console.log('########通过图片链接拉取电影#########')
+  let img = req.query.src
+  if (img.indexOf('@') != -1) {
+    img = img.split('@')[0]
+  }
+  MovieModel.find({img: {$regex: img, $options: 'i'}})
+  .then(function (resDb) {
+    return _dbSuccess(res, '获取电影成功', resDb)
+  })
+  .catch(function (err) {
+    return _dbError(res, err)
+  })
+});
+
+
+
+/**
  * @desc 根据电影类型查询电影
  * @param key: 电影类型
   currentPage: 当前是第几页
@@ -68,7 +91,7 @@ router.get("/getSingleFilm", async (req, res, next) =>{
  * */
 
 router.get('/getMoviesByType', async (req, res, next) => {
-  console.log('########获取30个待上映电影#########');
+  console.log('########根据电影类型查询电影#########');
   let page_length = 30;   // 获取30个
   let key = req.query.type;
   let page = req.query.currentPage;
@@ -99,8 +122,8 @@ router.get('/getMoviesByType', async (req, res, next) => {
  * @return 返回30个电影
  * */
 
-router.get('/getHomeReadyMoviesByCountry', async (req, res, next) => {
-  console.log('########获取30个电影#########');
+router.get('/getMoviesByCountry', async (req, res, next) => {
+  console.log('########根据国家查询电影#########');
   let page_length = 30;   // 获取30个
   let key = req.query.country
   let page = req.query.currentPage
@@ -133,8 +156,8 @@ router.get('/getHomeReadyMoviesByCountry', async (req, res, next) => {
  * @return 返回30个电影
  * */
 
-router.get('/getHomeReadyMoviesByDate', async (req, res, next) => {
-  console.log('########获取30个电影#########');
+router.get('/getMoviesByDate', async (req, res, next) => {
+  console.log('########根据时间查询电影#########');
   let page_length = 30;   // 获取30个
   let key = req.query.online_time
   let page = req.query.currentPage
@@ -147,7 +170,7 @@ router.get('/getHomeReadyMoviesByDate', async (req, res, next) => {
       findMovies.push(ob)
     }
     return _dbSuccess(res, '获取电影成功', findMovies)
-  } else {
+  } else if (key == '2018'){
     let MoviesArr = await MovieModel.find({online_time: {$regex: key}}).limit(page_length).skip(count).exec();
     let findMovies = [];
     for (let item of MoviesArr) {
@@ -155,8 +178,20 @@ router.get('/getHomeReadyMoviesByDate', async (req, res, next) => {
       findMovies.push(ob)
     }
     return _dbSuccess(res, '获取电影成功', findMovies)
-  }
+  } else if (key == '2011-2017') {
+    
+  } else if (key == '2000-2010') {
 
+  } else if (key == '90年代') {
+
+  } else if (key == '80年代') {
+
+  } else if (key == '70年代') {
+
+  } else if (key == '更早') {
+
+  }
+  
 
 });
 

@@ -72,4 +72,23 @@ router.get('/getCinemaByBrand', async (req, res, next) => {
 	}
 });
 
+/**
+ * @desc 按照影院名获取影院数据
+ * @param cinemaName：影院名
+ * @return 影院信息
+ * */
+router.get('/getCinemaByName', async (req, res, next) => {
+  let cinemaName = req.query.cinemaName
+  console.log('########获取' + cinemaName + '数据#########');
+  let cinemaArr = await CinemaModel.find({cinema_name: cinemaName}).exec()
+  let findCinemas = []
+  for (let item of cinemaArr) {
+    let ob = JSON.parse(JSON.stringify(item))
+    findCinemas.push(ob)
+  }
+  return _dbSuccess(res, '获取' + cinemaName + '数据成功', findCinemas[0])
+});
+
+
+
 export default router

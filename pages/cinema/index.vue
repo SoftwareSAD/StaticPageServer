@@ -25,11 +25,11 @@
       <div v-for="(theatre, index) in distCinemas" v-if="index < 10" class="cinema-cell" :key="theatre.cinema_name">
         <!--<div class="cinema-cell" v-for="item in theatredata" :key="item.id">-->
         <div class="cinema-info">
-          <a  class="cinema-name" :href="theatre.href" target="_blank" :title="theatre.theatre_name">{{theatre.cinema_name}}</a>
+          <a  class="cinema-name" :href="theatre.href" target="_blank" :title="theatre.cinema_name">{{theatre.cinema_name}}</a>
           <p class="cinema-address">{{theatre.address}}</p>
         </div>
         <div class="buy-btn">
-          <a :href="theatre.buy_link" target="_blank">选座购票</a>
+          <a :href="href + '?filmName=' + filmName + '&cinemaName=' + theatre.cinema_name" target="_blank">选座购票</a>
         </div>
         <div class="price">
           <span class="rmb red">￥</span>
@@ -62,18 +62,7 @@
         numEachPage: 10,
         distCinemas: [],
         brandCinemas: [],
-        theatre_list: [
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'},
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'},
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'},
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'},
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'},
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'},
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'},
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'},
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'},
-          {theatre_name: "烽禾影城", href: 'http://baidu.com', theatre_address: "地址：番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）", least_price: "23", buy_link: 'http://baidu.com'}
-        ],
+        href: '/cinema-detail-page',    // 转到影院详情页面
         brand_list: [
           {brand_name: "全部", href: '/cinema', sort_ID: '1'},
           {brand_name: "飞扬影城", href: '/cinema', sort_ID: '2'},
@@ -102,6 +91,11 @@
     },
     async created(){
       await this.getCinemaAll()
+    },
+    async asyncData({context, route}) {
+      let choosedFilmName = route.query.filmName == null ? "" : route.query.filmName;
+      console.log(choosedFilmName)
+      return {filmName: choosedFilmName}
     },
     methods: {
       async getCinemabydist(name){
@@ -134,12 +128,6 @@
           // console.log(e)
         }
       },
-      async asyncData({context, route}) {
-        let choosedFilmName = route.query.filmName ? "" : route.query.filmName;
-        console.log(choosedFilmName)
-        return {filmName: choosedFilmName}
-      }
-
     },
 
   }

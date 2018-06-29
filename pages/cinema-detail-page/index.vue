@@ -4,15 +4,13 @@
         <div class="wrapper clearfix">
             <div class="cinema-left">
                 <div class="avatar-shadow">
-                    <img class="avatar" src="http://p0.meituan.net/deal/03424d20d989cba8ca5b6051a90f20aa352409.jpg@292w_292h_1e_1c">
-                    <div class="avatar-num">查看全部11张图片</div>
+                    <img class="avatar" :src="cinema.img_url">
                 </div>
             </div>
             <div class="cinema-brief-container">
-                <h3 class="name text-ellipsis">烽禾影城(祈福新邨店)</h3>
-                <div class="address text-ellipsis">番禺区钟屏路钟福广场3层（祈福新村祈福医院旁）</div>
-                <div class="telephone">电话：020-39108189 020-39108150</div>
-                
+                <h3 class="name text-ellipsis">{{cinema.cinema_name}}</h3>
+                <div class="address text-ellipsis">{{cinema.address}}</div>
+                <div class="telephone">{{cinema.telephone}}</div>
                 <div class="features-group">
                     <div class="group-title">
                         影院服务
@@ -39,28 +37,13 @@
     <div class="movie-container" id="app">
         <div class="movie-list-container" data-cinemaid="2161">
             <div class="movie-list">
-                <div class="movie active" data-index="0">
-                    <img src="http://p1.meituan.net/movie/6383f5cb72f994370f9e817eaa495aaf428644.jpg@170w_235h_1e_1c" alt="">
-                </div>
-                <div class="movie " data-index="1" >
-                    <img src="http://p1.meituan.net/movie/3d17aa5ee07f5d66239d8393bcb8fe5196556.jpg@170w_235h_1e_1c" alt="">
-                </div>
-                <div class="movie " data-index="2">
-                    <img src="http://p1.meituan.net/movie/95f246163e1b11702685fd8b01421182466294.jpg@170w_235h_1e_1c" alt="">
-                </div>
-                <div class="movie " data-index="3">
-                    <img src="http://p0.meituan.net/movie/c6382117be87ac04fcc81fa02df815944946929.jpg@170w_235h_1e_1c" alt="">
-                </div>
-                <div class="movie " data-index="4">
-                    <img src="http://p1.meituan.net/movie/4e8f02b04bf755da8b888952392b9729968669.jpg@170w_235h_1e_1c" alt="">
-                </div>
-                <div class="movie " data-index="5">
-                    <img src="http://p0.meituan.net/movie/95c285648d7b6a97930b68765e80b6dc1272917.jpg@170w_235h_1e_1c" alt="">
-                </div>
-                <div class="movie " data-index="6">
-                    <img src="http://p1.meituan.net/movie/b86e91da87f856f39851859c162b10723253838.jpg@170w_235h_1e_1c" alt="">
-                </div>
-                <span class="pointer" style="left: 71.0138px;"></span>
+              <div class="movie active">
+                <img :src="film.img" :alt="film.movie_name" />
+              </div>
+              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="notSameFilm(film.img,movie_img)" :key="index" :data-index="index">
+                <img :src="movie_img" alt="movie_img" />
+              </div>
+              <span class="pointer" style="left: 71.0138px;"></span>
 
             </div>
             <span class="scroll-prev scroll-btn"></span>
@@ -69,21 +52,21 @@
         <div class="show-list active" data-index=0>
             <div class="movie-info">
                 <div>
-                    <h3 class="movie-name">超人总动员2</h3>
-                    <span class="score sc">9.0</span>
+                    <h3 class="movie-name">{{film.movie_name}}</h3>
+                    <span class="score sc">{{film.movie_star}}</span>
                 </div>
                 <div class="movie-desc">
                     <div>
-                        <span class="key">时长</span>
-                        <span class="value">126分钟</span>
+                        <span class="key">时长：</span>
+                        <span class="value">{{film.movie_time}}</span>
                     </div>
                     <div>
-                        <span class="key">类型</span>
-                        <span class="value">动画</span>
+                        <span class="key">类型：</span>
+                        <span class="value">{{film.movie_type}}</span>
                     </div>
                     <div>
-                        <span class="key">主演</span>
-                        <span class="value">格雷格·T·尼尔森</span>
+                        <span class="key">主演：</span>
+                      <span class="value" v-for="(actorName, index) in film.actor" v-if="index < 5" :key="index">{{actorName}} </span>
                     </div>
                 </div>
             </div>
@@ -263,7 +246,69 @@ export default {
   components: {Logo, Adcolumn},
   head: {
     'title': 'cinema-detail',
+  },
+  data() {
+    return {
+      cinema: {},
+      film: "",   //当前选中的电影对象
+      filmSrc: "",    //当前选中的电影图片src
+    }
+  },
+
+  async asyncData({context, route}) {
+    let filmName = route.query.filmName;      //取得电影名字
+    let cinemaName = route.query.cinemaName;  //取得影院名字
+    let nowcinema = {};
+    let nowfilm = {};
+    try {
+      let {data} = await axios.get('/api/getCinemaByName', {params: {cinemaName: cinemaName}})
+      if(!data.errorCode) {
+        nowcinema = data.data
+      }
+    } catch (e) {
+      console.log(e)
+    }
+    if (filmName == '') {   //未选择电影，自动选择影院内的第一个
+      let src = nowcinema.online_moive[0];
+      try {
+        let {data} = await axios.get('/api/getFilmByImg', {params: {src: src}})
+        console.log(data)
+        if(!data.errorCode) {
+          nowfilm = data.data[0]
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    } else {      //已经选择了电影直接获取
+      try {
+        let {data} = await axios.get('/api/getSingleFilm', {params: {name: filmName}})
+        if(!data.errorCode) {
+          nowfilm = data.data[0]
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    console.log(nowfilm)
+    return {cinema: nowcinema,
+            film: nowfilm,
+            filmSrc: nowfilm == undefined ? "" : nowfilm.img,
+            }
+  },
+  methods: {
+    notSameFilm(imgSrc1, imgSrc2) {
+      let img1 = (imgSrc1.split('@'))[0]
+      let img2 = (imgSrc2.split('@'))[0]
+      if (img1 == img2) {
+        return false
+      } else {
+        return true
+      }
+    }
   }
+
+
+
 }
 
 </script>
@@ -407,8 +452,8 @@ export default {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      
-      
+
+
   }
 
   .group-title {
@@ -662,7 +707,7 @@ export default {
       font-size: 14px;
       line-height: 30px;
       border-radius: 100px;
-      text-align: center;    
+      text-align: center;
   }
 
   .cut {

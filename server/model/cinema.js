@@ -7,10 +7,10 @@ const cinemaSchema = new Schema({
   id: String,
   cinema_name: String,  //电影院名字
   district: String,     //区
-  online_moive: Array,  //上映电影图片地址
+  online_moive: Array,  //上映电影的图片地址
   address: String,      //电影院地址
-  telephone: Array,     //电话
-  img_url: String,      //电影图片地址
+  telephone: String,     //电话
+  img_url: String,      //电影院的图片地址
 })
 
 /**
