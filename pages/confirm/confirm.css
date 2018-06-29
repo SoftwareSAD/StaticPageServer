@@ -1,0 +1,180 @@
+div {
+	display: block;
+}
+.maincontainer {
+	top: 100px;
+	position: relative;
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.order-progress-bar {
+	height: 60px;
+	width: 100%;
+	margin: 40px 0;
+	text-align: center;
+}
+
+.order-progress-bar .step {
+	float: left;
+	width: 25%;
+}
+
+.order-progress-bar .step-num {
+	color: #fff;
+	font-size: 12px;
+	display: inline-block;
+	width: 16px;
+	line-height: 16px;
+	border-radius: 10px;
+	text-align: center;
+	background-color: #ffd8d7;
+	position: relative;
+	top: 10px;
+}
+
+.order-progress-bar .done .step-num {
+	background-color: #f03d37;
+}
+
+.order-progress-bar .bar {
+	width: 0;
+	height: 4px;
+	border-left: 150px solid #ffd8d7;
+	border-right: 150px solid #ffd8d7;
+}
+
+.order-progress-bar .first .bar {
+	border-left-color: transparent!important;
+}
+
+.order-progress-bar .done .bar {
+	border-color: #f03d37;
+}
+
+
+.order-progress-bar .step-text {
+	font-size: 14px;
+	color: #999;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.order-progress-bar .done .step-text {
+	color: #f03d37;
+}
+
+.order-progress-bar .last .bar {
+	border-right-color: transparent!important;
+}
+
+/*主框*/
+.main {
+	width: 100%;
+	border: 1px solid #e5e5e5;
+	font-size: 0;
+}
+
+.clearfix:after, .clearfix:before {
+	content: " ";
+	display: table;
+}
+
+/* 支付提示 */
+.count-down-wrapper {
+	width: 100%;
+	height: 90px;
+	padding-top: 20px;
+	margin-bottom: 40px;
+	background-color: #fff3f3;
+}
+
+table {
+	display: table;
+	border-collapse: separate;
+}
+
+table {
+	width: 1200px;
+	border: 1px solid #e5e5e5;
+	border-spacing: 0;
+	margin-bottom: 60px;
+}
+
+thead {
+	display: table-header-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+.order-table thead {
+	background-color: #f7f7f7;
+}
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+.order-table thead th {
+	font-size: 16px;
+	color: #333;
+	width: 25%;
+	padding: 14px 0;
+	font-weight: 400;
+}
+
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+.order-table thead th {
+	font-size: 16px;
+	color: #333;
+	width: 25%;
+	padding: 14px 0;
+	font-weight: 400;
+	text-align: center;
+}
+
+
+td {
+	text-align: center;
+	padding: 20px 0;
+	color: #333;
+}
+
+.order-table .seats {
+	display: inline-block;
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.right .price-wrapper {
+	font-size: 14px;
+	color: #333;
+	margin-bottom: 17px;
+}
+
+.right .price-wrapper .price {
+	font-size: 36px;
+	color: #f03d37;
+}
+
+.pay-btn {
+	cursor: pointer;
+	display: inline-block;
+	width: 90px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	color: #fff;
+	background-color: #f03d37;
+	border-radius: 100px;	
+}
