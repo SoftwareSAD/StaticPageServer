@@ -40,7 +40,7 @@
               <div class="movie active">
                 <img :src="film.img" :alt="film.movie_name" />
               </div>
-              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="film.img != movie_img" :key="index" :data-index="index">
+              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="notSameFilm(film.img,movie_img)" :key="index" :data-index="index">
                 <img :src="movie_img" alt="movie_img" />
               </div>
               <span class="pointer" style="left: 71.0138px;"></span>
@@ -294,6 +294,17 @@ export default {
             film: nowfilm,
             filmSrc: nowfilm == undefined ? "" : nowfilm.img,
             }
+  },
+  methods: {
+    notSameFilm(imgSrc1, imgSrc2) {
+      let img1 = (imgSrc1.split('@'))[0]
+      let img2 = (imgSrc2.split('@'))[0]
+      if (img1 == img2) {
+        return false
+      } else {
+        return true
+      }
+    }
   }
 
 
