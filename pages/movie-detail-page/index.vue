@@ -12,7 +12,7 @@
             <span class="info-font">{{film.online_time}}</span><br />
             <a :href="href + '?filmName=' + film.movie_name" class="ticket-button">购票</a>
             <div class="movie-review">
-              <span class="some-title">用户评分</span><br />
+              <span class="some-title">{{film.movie_total_price == '暂无' ? '想看人数' : '用户评分'}}</span><br />
               <span class="some-result">{{film.movie_star}}</span><br />
               <span class="some-title">票房</span><br />
               <span class="some-result">{{film.movie_total_price}}</span><br />

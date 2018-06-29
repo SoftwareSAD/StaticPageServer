@@ -6,7 +6,7 @@
           <div class="tags-title">品牌：</div>
           <ul class="tags">
             <li v-for="(brand, index) in brand_list" v-if="index < 10" :key="index">
-              <button :href="brand.href" v-on:click="getCinemabybrandname(brand.brand_name)" target="_self">{{brand.brand_name}}</button>
+              <button v-on:click="getCinemabybrandname(brand.brand_name)" target="_self">{{brand.brand_name}}</button>
             </li>
           </ul>
         </li>

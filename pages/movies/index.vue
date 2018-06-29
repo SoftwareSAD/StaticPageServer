@@ -8,7 +8,7 @@
             <div class="tags-title">类型 ：</div>
             <ul class="tags">
               <li v-for="(type, index) in type_list" v-if="index < 9" :key="index">
-                <a :href="type.href" :data-val="type.sort_ID" target="_self">{{type.type_name}}</a>
+                <button @click="changeLimit(type.type_name, Distriction)" target="_self">{{type.type_name}}</button>
               </li>
             </ul>
           </li>
@@ -16,7 +16,7 @@
             <div class="tags-title">区域 ：</div>
             <ul class="tags">
               <li v-for="(position, index) in position_list" v-if="index < 10" :key="index">
-                <a :href="position.href" :data-val="position.sort_ID" target="_self">{{position.position_name}}</a>
+                <button @click="changeLimit(MovieType, position.position_name)" target="_self">{{position.position_name}}</button>
               </li>
             </ul>
           </li>
@@ -49,7 +49,7 @@
           <dl class="movie-list">
             <dd v-for="(movie, index) in movie_list" v-if="index < 30" :key="index">
               <div class="movie-item">
-                <a :href="movie.href" target="_blank">
+                <a :href="href + '?filmName=' + movie.movie_name"  target="_blank">
                   <div class="movie-poster">
                     <img :src="movie.img" :title="movie.movie_name" :data-val="movie.id">
                   </div>
@@ -59,7 +59,7 @@
                 </div>
               </div>
               <div class="channel-detail movie-item-title" :title="movie.movie_name">
-                <a :href="movie.href" :title="movie.movie_name" target="_blank" :data-val="movie.id">{{movie.movie_name}}</a>
+                <a :href="href + '?filmName=' + movie.movie_name" :title="movie.movie_name" target="_blank" :data-val="movie.id">{{movie.movie_name}}</a>
               </div>
               <div class="channel-detail channel-detail-orange">
                 <i class="integer">{{movie.movie_star}}</i>
@@ -106,6 +106,11 @@
     },
     data () {
       return {
+        href: "/movie-detail-page",
+        movie_list: [],
+        MovieType: '全部',
+        Distriction: '全部',
+        currentPage: "1",
         type_list: [
           {type_name: "全部", href: '/movies', sort_ID: '1'},
           {type_name: "爱情", href: '/movies', sort_ID: '2'},
@@ -144,41 +149,7 @@
           {sort_type: "按时间排序", href: '/movies', sort_ID: '2'},
           {sort_type: "按评价排序", href: '/movies', sort_ID: '3'}
         ],
-        movie_list: [
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
-          {film_ID: "1",movie_name: "头号玩家", href: '/movie-detail-page', img_src: require("~/assets/img/film/best_player.jpg"), img_alt: "头号玩家", type: "悬疑", distriction: "美国", age: "2018", released: "20180506", box_office: "1500", score: "8.5"},
 
-        ],
       }
     },
 
@@ -197,6 +168,22 @@
       }
       // 连上数据库后用这个return
        return {movie_list: movieList}
+    },
+    methods: {
+      async changeLimit(type_name, country) {
+        this.MovieType = type_name;
+        this.Distriction = country;
+        let nowfilm = [];
+        try {
+          let {data} = await axios.get('/api/getMoviesByCountry', {params: {movieType: this.MovieType, country: this.Distriction, currentPage: this.currentPage}})
+          if(!data.errorCode) {
+            nowfilm = data.data
+          }
+        } catch (e) {
+          console.log(e)
+        }
+        this.movie_list = nowfilm;
+  }
     }
   }
 </script>
