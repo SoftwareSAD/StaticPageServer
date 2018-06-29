@@ -10,12 +10,12 @@
             <span class="info-font">{{film.movie_type}} </span><br />
             <span class="info-font">{{film.country}} / {{film.movie_time}}</span><br />
             <span class="info-font">{{film.online_time}}</span><br />
-            <button class="ticket-button">购票</button>
+            <a :href="href + '?filmName=' + film.movie_name" class="ticket-button">购票</a>
             <div class="movie-review">
               <span class="some-title">用户评分</span><br />
               <span class="some-result">{{film.movie_star}}</span><br />
               <span class="some-title">票房</span><br />
-              <span class="some-result">{{film.movie_total_price}}万</span><br />
+              <span class="some-result">{{film.movie_total_price}}</span><br />
             </div>
           </div>
         </div>
@@ -55,6 +55,7 @@
       data () {
         return {
           film: {},
+          href: "/cinema", // 跳到影院处选择影院
         }
       },
 
@@ -78,6 +79,7 @@
     width: 100%;
     margin-top: 60px;
     background-color: beige;
+    text-decoration: none;
   }
 .banner {
   width: 100%;
@@ -115,12 +117,16 @@
     text-overflow: ellipsis;
   }
   .ticket-button {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
     color: white;
     margin-top: 80px;
     border: none;
     background-color: #d10000;
     width: 160px;
     height: 40px;
+    line-height: 40px;
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 0.3em;

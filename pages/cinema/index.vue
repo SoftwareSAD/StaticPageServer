@@ -57,6 +57,7 @@
     },
     data () {
       return {
+        filmName: "",   // 从电影详情页面跳转过来选影院
         currentPage: 1,
         numEachPage: 10,
         distCinemas: [],
@@ -133,6 +134,12 @@
           // console.log(e)
         }
       },
+      async asyncData({context, route}) {
+        let choosedFilmName = route.query.filmName ? "" : route.query.filmName;
+        console.log(choosedFilmName)
+        return {filmName: choosedFilmName}
+      }
+
     },
 
   }

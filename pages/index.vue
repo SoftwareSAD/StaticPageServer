@@ -198,6 +198,7 @@ export default {
     height: 35px;
     line-height: 35px;
     text-align: center;
+    text-decoration: none;
     position: absolute;
     top: 220px;
     left: 0;
