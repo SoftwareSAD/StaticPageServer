@@ -16,6 +16,6 @@ const usersSchema = new Schema({
 /**
  * @desc构建表模型
  */
-const UsersModel = mongoose.model('users', usersSchema)
+const UsersModel = mongoose.model('users', usersSchema, 'users')
 
 export default UsersModel
