@@ -13,10 +13,9 @@
         </a>
       </div>
     </div>
-    <!--分页栏-->
+    <!--分页栏,每页15项，共20页-->
     <div class="pag-nav">
-      <b-pagination align="center" :total-rows="300" v-model="currentPage" :per-page="15">
-      </b-pagination>
+      <b-pagination align="center" :total-rows="300" v-model="currentPage" :per-page="15" @click.native="getVideoByPage()"></b-pagination>
     </div>
   </div>
 </template>
@@ -35,13 +34,27 @@
       }
     },
 
-    async asyncData() {
-      try {
-        let {data} = await axios.get('/api/getAllVideos', {params: {currentPage: 1}})
-        return {allvideodata: data.data}
-      } catch (e) {
-        console.log(e)
-      }
+    async created() {
+      await this.initVideoData()
+    },
+
+    methods:{
+      async initVideoData() {
+        try {
+          let {data} = await axios.get('/api/getAllVideos', {params: {currentPage: 1}})
+          this.allvideodata = data.data
+        } catch (e) {
+          console.log(e)
+        }
+      },
+      async getVideoByPage() {
+        try {
+          let {data} = await axios.get('/api/getAllVideos', {params: {currentPage: this.currentPage}})
+          this.allvideodata = data.data
+        } catch (e) {
+          console.log(e)
+        }
+      },
     }
 
   }
