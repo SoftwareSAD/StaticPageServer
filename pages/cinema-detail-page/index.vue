@@ -258,7 +258,6 @@
 import Logo from '~/components/Logo.vue'
 import Adcolumn from '~/components/Adcolumn.vue'
 import axios from '~/plugins/axios'
-//import Vue from 'vue';
 
 export default {
   components: {Logo, Adcolumn},
@@ -271,403 +270,403 @@ export default {
 
 <style>
 
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 14px;
-  background-image: none;
-}
-
-.banner {
-    background-color: rgba(153,170,200,0.9);
-    width: 100%;
-    min-width: 1200px;
-    top: 50px;
-    /*overflow: hidden;*/
-    position: relative;
-}
-
-/*影院信息*/
-.banner .wrapper {
-    width: 1200px;
-    margin: 0 auto;
-    height: 320px;
-    position: relative;
-    top: 70px;
-}
-.clearfix:before {
-    content: " ";
-    display: table;
-}
-/*影院图片*/
-.cinema-left {
-    float:left;
-    width: 360px;
-    height: 340px;
-    overflow: hidden;
-    z-index: 9;
-}
-/*影院图片内容*/
-.cinema-left .avatar-shadow {
-    border-width:4px;
-    color: white;
-    border-style:solid;
-
-    position: relative;
-    margin: 0 30px;
-    width: 300px;
-    height: 300px;
-    padding-bottom: 40px;
-}
-
-
-.avatar-num {
-    position: absolute;
-    bottom: 0px;
-    width: 292px;
-    line-height: 32px;
-    background-color: rgba(0,0,0,.6);
-    color: white;
-    font-size: 14px;
-    text-align: center;
-}
-
-.cinema-brief-container {
-    float: left;
-}
-
-.banner .cinema-brief-container .name {
+  body, html {
     margin: 0;
-    font-size: 26px;
-    margin-bottom: 9px;
-    font-weight: 400;
-}
-.features-group {
-    position: relative;
-}
-.banner .cinema-brief-container .address {
-    font-size: 14px;
-    margin-bottom: 6px;
-}
-
-.telephone {
-    margin-bottom: 20px;
-}
-.banner .cinema-brief-container .features-group .group-title {
-    font-size: 14px;
-    margin-bottom: 5px;
-    overflow: hidden;
-    width: 410px;
-}
-
-
-
-.feature {
-    font-size: 12px;
-    margin-bottom: 5px;
-}
-
-.group-title::after {
-    border-top: 1px solid;
-    display: block;
-    content: "";
-    position: relative;
-    top: -10px;
-    left: 70px;
-}
-
-.tag {
-    display: inline-block;
-    border: 1px solid;
-    border-radius: 2px;
-    min-width: 80px;
-    height: 22px;
-    line-height: 23px;
-    text-align: center;
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-.banner p, .banner ul {
-    margin-left: 10px;
     padding: 0;
-    list-style: none;
-    line-height: 1;
-}
-
-.desc {
-    display: inline-block;
-    max-width: 438px;
-    margin-left: 5px;
-    vertical-align: middle;
-}
-
-.text-ellipsis {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    
-    
-}
-
-.group-title {
-    margin-bottom: 5px;
-}
-
-/*影院定位*/
-#cinema-map {
-    border-width:4px;
-    color: white;
-    border-style:solid;
-
-    width: 200px;
-    height: 200px;
-    float: right;
-    margin-right: 40px;
-}
-
-.movie-container {
-    top: 50px;
-    position: relative;
-    width: 1200px;
-    margin: 0 auto;
-    margin-top: 120px;
-}
-
-.movie-list-container {
-    width: 1200px;
-    margin: 0 auto;
-    height: 280px;
-    padding: 22px 5px;
-    box-sizing: border-box;
-    overflow: hidden;
-    box-shadow: inset 0 0 100px 80px #ededed;
-    position: relative;
-}
-
-.movie-list-container .movie-list {
-    white-space: nowrap;
-    position: relative;
-    display: table;
-    left: 0;
-    transition: left .2s ease;
-    margin: auto;
-}
-
-.movie {
-    width: 162px;
-    height: 227px;
-    border: 4px solid #fff;
-    box-shadow: 0 1px 3px 0 hsla(0, 0%, 66%, .5);
-    display: inline-block;
-    transform-origin: 50%;
-    transform: scale(.82);
-    transition: transform, .1s, -webkit-transform .1s;
-    word-spacing: 0;
-    white-space: nowrap;
-}
-
-.movie img {
     width: 100%;
     height: 100%;
-}
-.movie.active {
-    transform: scale(1);
-    border-color: #2A5CAA;
-}
-
-.movie-list-container .pointer {
-    position: absolute;
-    display: block;
-    content: "";
-    bottom: -32px;
-    border-style: solid;
-    border-width: 11px 14px;
-    border-color: transparent transparent #fff;
-}
-
-/*movie-list翻页箭头*/
-.movie-list-container .scroll-prev {
-    left: 0;
-}
-
-.movie-list-container .scroll-next {
-
-}
-
-/*show-list*/
-.show-list.active {
-    display: block;
-}
-
-.show-list .movie-info {
-    margin-top: 20px;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.show-list .movie-info .movie-name {
-    display: inline-block;
-    margin: 0 20px 20px 0;
-    font-size: 26px;
-    font-weight: 400;
-    color: #333;
-}
-
-.show-list .movie-info .score {
-    display: inline-block;
-    font-size: 24px;
-    color: #faaf00;
-}
-
-.show-list .movie-info .sc:after {
-    content: "\5206";
-    font-size: 12px;
-}
-
-.show-list .movie-info .movie-desc>div {
-    display: inline-block;
     font-size: 14px;
-    color: #151515;
-    margin-bottom: 20px;
-    margin-right: 40px;
-}
-.show-list .movie-info .key {
-    color: #999;
-}
+    background-image: none;
+  }
 
-.show-list .movie-info .value {
-    font-size: 14px;
-    color: #151515;
-}
+  .banner {
+      background-color: rgba(153,170,200,0.9);
+      width: 100%;
+      min-width: 1200px;
+      top: 50px;
+      /*overflow: hidden;*/
+      position: relative;
+  }
 
-.show-list .show-date {
-    padding: 30px 0;
-    font-size: 14px;
-    color: #999;
-}
+  /*影院信息*/
+  .banner .wrapper {
+      width: 1200px;
+      margin: 0 auto;
+      height: 320px;
+      position: relative;
+      top: 70px;
+  }
+  .clearfix:before {
+      content: " ";
+      display: table;
+  }
+  /*影院图片*/
+  .cinema-left {
+      float:left;
+      width: 360px;
+      height: 340px;
+      overflow: hidden;
+      z-index: 9;
+  }
+  /*影院图片内容*/
+  .cinema-left .avatar-shadow {
+      border-width:4px;
+      color: white;
+      border-style:solid;
 
-.show-list .show-date .date-item {
-    display: inline-block;
-    background-color: transparent;
-    border-radius: 100px;
-    color: #333;
-    padding: 2px 10px;
-    margin-left: 12px;
-    cursor: default;
-}
-.show-list .show-date .date-item.active {
-    color: #fff;
-    background-color: #2A5CAA;
-}
+      position: relative;
+      margin: 0 30px;
+      width: 300px;
+      height: 300px;
+      padding-bottom: 40px;
+  }
 
-.show-list .plist-container {
-    display: none;
-}
 
-.show-list .plist-container.active {
-    display: block;
-}
+  .avatar-num {
+      position: absolute;
+      bottom: 0px;
+      width: 292px;
+      line-height: 32px;
+      background-color: rgba(0,0,0,.6);
+      color: white;
+      font-size: 14px;
+      text-align: center;
+  }
 
-table {
-    display: table;
-    border-collapse: separate;
-}
-.show-list .plist {
+  .cinema-brief-container {
+      float: left;
+  }
+
+  .banner .cinema-brief-container .name {
+      margin: 0;
+      font-size: 26px;
+      margin-bottom: 9px;
+      font-weight: 400;
+  }
+  .features-group {
+      position: relative;
+  }
+  .banner .cinema-brief-container .address {
+      font-size: 14px;
+      margin-bottom: 6px;
+  }
+
+  .telephone {
+      margin-bottom: 20px;
+  }
+  .banner .cinema-brief-container .features-group .group-title {
+      font-size: 14px;
+      margin-bottom: 5px;
+      overflow: hidden;
+      width: 410px;
+  }
+
+
+
+  .feature {
+      font-size: 12px;
+      margin-bottom: 5px;
+  }
+
+  .group-title::after {
+      border-top: 1px solid;
+      display: block;
+      content: "";
+      position: relative;
+      top: -10px;
+      left: 70px;
+  }
+
+  .tag {
+      display: inline-block;
+      border: 1px solid;
+      border-radius: 2px;
+      min-width: 80px;
+      height: 22px;
+      line-height: 23px;
+      text-align: center;
+      padding-left: 4px;
+      padding-right: 4px;
+  }
+
+  .banner p, .banner ul {
+      margin-left: 10px;
+      padding: 0;
+      list-style: none;
+      line-height: 1;
+  }
+
+  .desc {
+      display: inline-block;
+      max-width: 438px;
+      margin-left: 5px;
+      vertical-align: middle;
+  }
+
+  .text-ellipsis {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      
+      
+  }
+
+  .group-title {
+      margin-bottom: 5px;
+  }
+
+  /*影院定位*/
+  #cinema-map {
+      border-width:4px;
+      color: white;
+      border-style:solid;
+
+      width: 200px;
+      height: 200px;
+      float: right;
+      margin-right: 40px;
+  }
+
+  .movie-container {
+      top: 50px;
+      position: relative;
+      width: 1200px;
+      margin: 0 auto;
+      margin-top: 120px;
+  }
+
+  .movie-list-container {
+      width: 1200px;
+      margin: 0 auto;
+      height: 280px;
+      padding: 22px 5px;
+      box-sizing: border-box;
+      overflow: hidden;
+      box-shadow: inset 0 0 100px 80px #ededed;
+      position: relative;
+  }
+
+  .movie-list-container .movie-list {
+      white-space: nowrap;
+      position: relative;
+      display: table;
+      left: 0;
+      transition: left .2s ease;
+      margin: auto;
+  }
+
+  .movie {
+      width: 162px;
+      height: 227px;
+      border: 4px solid #fff;
+      box-shadow: 0 1px 3px 0 hsla(0, 0%, 66%, .5);
+      display: inline-block;
+      transform-origin: 50%;
+      transform: scale(.82);
+      transition: transform, .1s, -webkit-transform .1s;
+      word-spacing: 0;
+      white-space: nowrap;
+  }
+
+  .movie img {
+      width: 100%;
+      height: 100%;
+  }
+  .movie.active {
+      transform: scale(1);
+      border-color: #2A5CAA;
+  }
+
+  .movie-list-container .pointer {
+      position: absolute;
+      display: block;
+      content: "";
+      bottom: -32px;
+      border-style: solid;
+      border-width: 11px 14px;
+      border-color: transparent transparent #fff;
+  }
+
+  /*movie-list翻页箭头*/
+  .movie-list-container .scroll-prev {
+      left: 0;
+  }
+
+  .movie-list-container .scroll-next {
+
+  }
+
+  /*show-list*/
+  .show-list.active {
+      display: block;
+  }
+
+  .show-list .movie-info {
+      margin-top: 20px;
+      border-bottom: 1px solid #e5e5e5;
+  }
+
+  .show-list .movie-info .movie-name {
+      display: inline-block;
+      margin: 0 20px 20px 0;
+      font-size: 26px;
+      font-weight: 400;
+      color: #333;
+  }
+
+  .show-list .movie-info .score {
+      display: inline-block;
+      font-size: 24px;
+      color: #faaf00;
+  }
+
+  .show-list .movie-info .sc:after {
+      content: "\5206";
+      font-size: 12px;
+  }
+
+  .show-list .movie-info .movie-desc>div {
+      display: inline-block;
+      font-size: 14px;
+      color: #151515;
+      margin-bottom: 20px;
+      margin-right: 40px;
+  }
+  .show-list .movie-info .key {
+      color: #999;
+  }
+
+  .show-list .movie-info .value {
+      font-size: 14px;
+      color: #151515;
+  }
+
+  .show-list .show-date {
+      padding: 30px 0;
+      font-size: 14px;
+      color: #999;
+  }
+
+  .show-list .show-date .date-item {
+      display: inline-block;
+      background-color: transparent;
+      border-radius: 100px;
+      color: #333;
+      padding: 2px 10px;
+      margin-left: 12px;
+      cursor: default;
+  }
+  .show-list .show-date .date-item.active {
+      color: #fff;
+      background-color: #2A5CAA;
+  }
+
+  .show-list .plist-container {
+      display: none;
+  }
+
+  .show-list .plist-container.active {
+      display: block;
+  }
+
+  table {
+      display: table;
+      border-collapse: separate;
+  }
+  .show-list .plist {
+      width: 100%;
+      border: none;
+      border-spacing: 0;
+  }
+
+  thead {
+      display: table-header-group;
+      vertical-align: middle;
+      border-color: inherit;
+  }
+
+  .show-list .plist thead {
+      background-color: #f7f7f7;
+      color: #333;
+      font-size: 16px;
+      padding: 18px 0;
+  }
+
+  th {
+      font-weight: bold;
+      text-align: center;
+  }
+  .show-list .plist thead th {
+      padding: 16px 0;
+  }
+
+
+  tr {
+      display: table-row;
+      vertical-align: inherit;
+      border-color: inherit;
+  }
+
+  tbody {
+      display: table-row-group;
+      vertical-align: middle;
+      border-color: inherit;
+  }
+
+  tbody .even {
+    background-color: #f9f9f9;
+  }
+
+
+  .show-list .plist tbody tr {
+      height: 82px;
+  }
+
+  .show-list .plist tbody td {
+      text-align: center;
+      width: 20%;
+  }
+
+  .show-list .plist tbody .begin-time {
+      font-size: 18px;
+      color: #333;
+      font-weight: 700;
+  }
+
+  .show-list .plist tbody .end-time {
+      font-size: 12px;
+      color: #999;
+  }
+
+  .show-list .plist tbody .sell-price {
+      font-size: 18px;
+      color: #2A5CAA;
+      font-weight: 700;
+  }
+
+  .show-list .plist tbody .sell-price:before {
+      content: "\FFE5";
+      font-size: 12px;
+  }
+
+  .show-list .plist tbody .buy-btn.normal {
+      box-shadow: 0 2px 10px -2px #2A5CAA;
+  }
+
+  .show-list .plist tbody .buy-btn {
+      display: inline-block;
+      width: 80px;
+      height: 30px;
+      color: #fff;
+      background-color: #2A5CAA;
+      font-size: 14px;
+      line-height: 30px;
+      border-radius: 100px;
+      text-align: center;    
+  }
+
+  .cut {
     width: 100%;
-    border: none;
-    border-spacing: 0;
-}
-
-thead {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-
-.show-list .plist thead {
-    background-color: #f7f7f7;
-    color: #333;
-    font-size: 16px;
-    padding: 18px 0;
-}
-
-th {
-    font-weight: bold;
-    text-align: center;
-}
-.show-list .plist thead th {
-    padding: 16px 0;
-}
-
-
-tr {
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
-}
-
-tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-
-tbody .even {
-  background-color: #f9f9f9;
-}
-
-
-.show-list .plist tbody tr {
-    height: 82px;
-}
-
-.show-list .plist tbody td {
-    text-align: center;
-    width: 20%;
-}
-
-.show-list .plist tbody .begin-time {
-    font-size: 18px;
-    color: #333;
-    font-weight: 700;
-}
-
-.show-list .plist tbody .end-time {
-    font-size: 12px;
-    color: #999;
-}
-
-.show-list .plist tbody .sell-price {
-    font-size: 18px;
-    color: #2A5CAA;
-    font-weight: 700;
-}
-
-.show-list .plist tbody .sell-price:before {
-    content: "\FFE5";
-    font-size: 12px;
-}
-
-.show-list .plist tbody .buy-btn.normal {
-    box-shadow: 0 2px 10px -2px #2A5CAA;
-}
-
-.show-list .plist tbody .buy-btn {
-    display: inline-block;
-    width: 80px;
-    height: 30px;
-    color: #fff;
-    background-color: #2A5CAA;
-    font-size: 14px;
-    line-height: 30px;
-    border-radius: 100px;
-    text-align: center;    
-}
-
-.cut {
-  width: 100%;
-  height: 200px;
-}
+    height: 200px;
+  }
 </style>
