@@ -129,7 +129,7 @@ router.get('/getCinemaByAll', async (req, res, next) => {
 		}
 		return _dbSuccess(res, '获取电影院成功', findCinemas)
 	} else {
-		let cinemaArr = await CinemaModel.find({cinema_name: {$regex: brand}}, {district: key}).limit(page_length).skip(count).exec()
+		let cinemaArr = await CinemaModel.find({cinema_name: {$regex: brand}, district: key}).limit(page_length).skip(count).exec()
 		let findCinemas = []
 		for (let item of cinemaArr) {
 			let ob = JSON.parse(JSON.stringify(item))
