@@ -407,8 +407,8 @@ router.get('/getOnlineSortedMovies', async (req, res, next) => {
  * @return 返回30项
  * */
 
-router.get('/getEvalSortedMovies', async (req, res, next) => {
-  console.log('########按照评价对电影排序#########');
+router.get('/getOldGoodMovies', async (req, res, next) => {
+  console.log('########获取经典电影#########');
   let page_length = 30;   // 获取30个
   let page = req.query.currentPage
   let count = (page - 1) * page_length
