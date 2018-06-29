@@ -109,7 +109,7 @@
   .name-font {
     font-size: 28px;
     font-weight: bold;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.1em;
   }
   .ticket-button {
     color: white;

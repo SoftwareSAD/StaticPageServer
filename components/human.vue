@@ -32,13 +32,11 @@
     height: 170px;
    }
   .name-type {
-    position: absolute;
     display: inline-block;
+    text-align: center;
+
     width: 140px;
     overflow: hidden;
-    top: 180px;
-    left: 75px;
-    transform: translate(-50%);
     padding: auto;
     white-space: nowrap;
     text-overflow: ellipsis;
