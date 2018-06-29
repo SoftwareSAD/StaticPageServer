@@ -110,44 +110,6 @@
 
                     <tbody>
                         <tr class="">
-                            <td>
-                                <span class="begin-time">12:20</span>
-                                <br>
-                                <span class="end-time">14:28散场</span>
-                            </td>
-                            <td>
-                                <span class="lang">英语3D</span>
-                            </td>
-                            <td>
-                                <span class="hall">1号厅</span>
-                            </td>
-                            <td>
-                                <span class="sell-price"><span class="stonefont">28</span></span>
-                            </td>
-                            <td>
-                                <a href="chooseSeats.html" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
-                            </td>
-                        </tr>
-                        <tr class="even">
-                          <td>
-                            <span class="begin-time">13:10</span>
-                            <br>
-                            <span class="end-time">15:18散场</span>
-                          </td>
-                          <td>
-                            <span class="lang">英语3D</span>
-                          </td>
-                          <td>
-                            <span class="hall">2号厅</span>
-                          </td>
-                          <td>
-                            <span class="sell-price"><span class="stonefont">28</span></span>
-                          </td>
-                          <td>
-                            <a href="chooseSeats.html" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
-                          </td>
-                        </tr>
-                        <tr class="">
                           <td>
                             <span class="begin-time">14:40</span>
                             <br>
@@ -651,6 +613,11 @@ tbody {
     vertical-align: middle;
     border-color: inherit;
 }
+
+tbody .even {
+  background-color: #f9f9f9;
+}
+
 
 .show-list .plist tbody tr {
     height: 82px;
