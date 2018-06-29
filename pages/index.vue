@@ -12,7 +12,7 @@
         <div class="box-body" id="box-body">
           <ul class="box-office-data list-unstyled">
             <li v-for="(film, index) in hotFilms" v-if="index < 10" :key="index">
-              <a class="box-list-link" v-bind:href="href" target="_blank">
+              <a class="box-list-link" :href="href + '?filmName=' + film.movie_name" target="_blank">
                 <span class="rank">{{index + 1}}</span>
                 <span class="rank-film-name">{{film.movie_name}}</span>
                 <span class="rank-film-tickets"><span class="rank-film-tickets-num">{{film.movie_total_price}}</span></span>
@@ -57,6 +57,7 @@
 import Logo from '~/components/Logo.vue'
 import Adcolumn from '~/components/Adcolumn.vue'
 import axios from '~/plugins/axios'
+import bus from '~/assets/eventBus';
 //import Vue from 'vue';
 
 export default {
@@ -80,16 +81,6 @@ export default {
 
     }
   },
-/*
-  async asyncData() {
-    try {
-      let {data} = await axios.get('/api/getHomeHotMovies');
-      return {hotFilms: data.data}
-    } catch (e) {
-      console.log(e)
-    }
-  },
-  */
   async created(){
     await this.getHotMovies()
     await this.getReadyMovies()
@@ -114,7 +105,7 @@ export default {
       } catch (e) {
         console.log(e)
       }
-    }
+    },
   }
 }
 </script>

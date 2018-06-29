@@ -16,7 +16,6 @@
 <script>
   import TopNav from '~/components/TopNav.vue'
   import BottomFooter from '~/components/BottomFooter.vue'
-
   export default {
     components: {
       TopNav,

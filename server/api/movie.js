@@ -4,9 +4,6 @@ import { Router } from 'express'
 const router = Router();
 
 
-
-
-
 /**
  * @desc 拉取首页正在热映电影列表函数
  * @param 无
@@ -44,4 +41,124 @@ router.get('/getHomeReadyMovies', async (req, res, next) => {
   return _dbSuccess(res, '获取待上映电影成功', findMovies)
 
 });
+
+/**
+ * @desc 获取单个电影信息的函数
+ * @param name: 电影中文名
+ * @return 电影对象
+ * */
+router.get("/getSingleFilm", async (req, res, next) =>{
+  let name = req.query.name;
+
+  console.log('########拉取电影-' + name + '#########')
+  MovieModel.find({movie_name: name})
+  .then(function (resDb) {
+    return _dbSuccess(res, '获取电影成功', resDb)
+  })
+  .catch(function (err) {
+    return _dbError(res, err)
+  })
+});
+
+/**
+ * @desc 根据电影类型查询电影
+ * @param key: 电影类型
+  currentPage: 当前是第几页
+ * @return 返回30个电影
+ * */
+
+router.get('/getMoviesByType', async (req, res, next) => {
+  console.log('########获取30个待上映电影#########');
+  let page_length = 30;   // 获取30个
+  let key = req.query.type
+  let page = req.query.currentPage
+  let count = (page - 1) * page_length
+  if (key == '全部') {
+    let MoviesArr = await MovieModel.find({}).limit(page_length).skip(count).exec();
+    let findMovies = [];
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', findMovies)
+  } else {
+    let MoviesArr = await MovieModel.find({movie_type: {$regex: key}}).limit(page_length).skip(count).exec();
+    let findMovies = [];
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', findMovies)
+  }
+});
+
+/**
+ * @desc 根据国家查询电影
+ * @param   country: 国家
+        currentPage: 当前是第几页
+ * @return 返回30个电影
+ * */
+
+router.get('/getHomeReadyMoviesByCountry', async (req, res, next) => {
+  console.log('########获取30个电影#########');
+  let page_length = 30;   // 获取30个
+  let key = req.query.country
+  let page = req.query.currentPage
+  let count = (page - 1) * page_length
+  if (key == '全部') {
+    let MoviesArr = await MovieModel.find({}).limit(page_length).skip(count).exec();
+    let findMovies = [];
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', findMovies)
+  } else {
+    let MoviesArr = await MovieModel.find({country: {$regex: key}}).limit(page_length).skip(count).exec();
+    let findMovies = [];
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', findMovies)
+  }
+});
+
+
+// TODO：此功能还未完善
+/**
+ * @desc 根据时间查询电影
+ * @param   online_time: 上映时间
+            currentPage: 当前是第几页
+ * @return 返回30个电影
+ * */
+
+router.get('/getHomeReadyMoviesByDate', async (req, res, next) => {
+  console.log('########获取30个电影#########');
+  let page_length = 30;   // 获取30个
+  let key = req.query.online_time
+  let page = req.query.currentPage
+  let count = (page - 1) * page_length
+  if (key == '全部') {
+    let MoviesArr = await MovieModel.find({}).limit(page_length).skip(count).exec();
+    let findMovies = [];
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', findMovies)
+  } else {
+    let MoviesArr = await MovieModel.find({online_time: {$regex: key}}).limit(page_length).skip(count).exec();
+    let findMovies = [];
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', findMovies)
+  }
+  
+
+});
+
+
 export default router
