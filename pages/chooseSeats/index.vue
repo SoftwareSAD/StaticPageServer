@@ -117,7 +117,7 @@
                     </div>
                     <div class="total-price">
                         <span>总价 :</span>
-                        <span class="price">{{ticketPrice * seatNum}}</span>
+                        <span class="price">{{totalPrice}}</span>
                     </div>
                 </div>
                 <div class="confirm-order">
@@ -129,7 +129,7 @@
                         </div>
                     </form>
                     <div class="confirm-btn" data-act="confirm-click" data-bid="b_0a0ep6pp">
-                        <a :href="'/confirm?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" >确认选座</a>
+                        <a :href="'/confirm?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name+'&totalPrice='+totalPrice" >确认选座</a>
                     </div>
                 </div>
             </div>
@@ -155,6 +155,7 @@ export default {
       return {
         clickIndex: 0,
         ticketPrice: 28,
+        totalPrice: 0,
         clickList:[
           0, 0, 0, 0, 0, 0, 0, 0,
           0, 0, 0, 0, 0, 0, 0, 0,
@@ -212,6 +213,7 @@ export default {
             this.isTicketActive = false;
           }
         }
+        this.totalPrice = this.ticketPrice * this.seatNum;
       },
       getSeatState: function(index) {
         if (this.clickList[index] == 0) {

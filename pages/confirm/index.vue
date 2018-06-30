@@ -53,7 +53,7 @@
         <div class="right">
             <div class="price-wrapper">
                 <span>实际支付 :</span>
-                <span class="price">28</span>
+                <span class="price">{{total_price}}</span>
             </div>
             <div>
                 <div class="pay-btn" data-order-id="3206359556" data-act="pay-click" data-bid="b_u30afks6">确认支付</div>
@@ -84,8 +84,10 @@ export default {
   async asyncData({context, route}) {
     let filmName = route.query.filmName;      //取得电影名字
     let cinemaName = route.query.cinemaName;  //取得影院名字
+    let totalprice = route.query.totalPrice;  //总价
     return {cinema_name: cinemaName,
       film_name: filmName,
+      total_price: totalprice
     }
   }
 }
