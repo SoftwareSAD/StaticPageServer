@@ -68,37 +68,14 @@
           </dl>
         </div>
         <div class="movies-pager">
-          <ul class="list-pager">
-            <li class="active">
-              <a class="page_1" href="" style="cursor: default">1</a>
-            </li>
-            <li>
-              <a class="page_2" href="">2</a>
-            </li>
-            <li>
-              <a class="page_3" href="">3</a>
-            </li>
-            <li>
-              <a class="page_4" href="">4</a>
-            </li>
-            <li>
-              <a class="page_5" href="">5</a>
-            </li>
-            <li class="sep">...</li>
-            <li>
-              <a class="page_50" href="">50</a>
-            </li>
-            <li>
-              <a class="page_2" href="">下一页</a>
-            </li>
-          </ul>
+          <b-pagination align="center" :total-rows="900" v-model="currentPage" :per-page="30" @click.native="changeLimit(MovieType, Distriction, onlineTime)"></b-pagination>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script scoped>
   import axios from '~/plugins/axios'
   export default {
     head() {
@@ -111,7 +88,7 @@
         MovieType: '全部',
         Distriction: '全部',
         onlineTime: '全部',
-        currentPage: "1",
+        currentPage: 1,
         sortType: "",
         type_list: [
           {type_name: "全部"},

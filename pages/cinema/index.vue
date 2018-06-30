@@ -43,13 +43,12 @@
     </div>
     <!--分页栏--每页10项，共50页-->
     <div class="pag-nav">
-      <b-pagination align="center" :total-rows="500" v-model="currentPage" :per-page="10">
-      </b-pagination>
+      <b-pagination align="center" :total-rows="500" v-model="currentPage" :per-page="10" @click.native="changeLimit(cinemaBrand, cinemaDis)"></b-pagination>
     </div>
   </div>
 </template>
 
-<script scope>
+<script scoped>
   import axios from '~/plugins/axios'
   export default {
     head() {
