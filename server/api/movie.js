@@ -463,11 +463,13 @@ router.get('/getFilmList', async (req, res, next) => {
   //let currentPage = req.query.currentPage;  //当前页面
   let page_length = 30;   // 每页30个
   let sortID = req.query.sortID;  //排序方式
-  let MoviesArr = await MovieModel.find({}).limit(page_length).skip(10).exec();
-  let findMovies = [];
-  for (let item of MoviesArr) {
-    let ob = JSON.parse(JSON.stringify(item));
-    findMovies.push(ob)
+  if(sortID==1){
+    let MoviesArr = await MovieModel.find({}).limit(page_length).skip(10).exec();
+    let findMovies = [];
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
   }
   return _dbSuccess(res, '获取指定限制的电影列表', findMovies)
 });
