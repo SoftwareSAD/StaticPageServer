@@ -451,7 +451,9 @@ export default {
       transition: left .2s ease;
       margin: auto;
   }
-
+  .movie-list div{
+    cursor: pointer;
+  }
   .movie {
       width: 162px;
       height: 227px;
@@ -551,7 +553,7 @@ export default {
       color: #333;
       padding: 2px 10px;
       margin-left: 12px;
-      cursor: default;
+      cursor: pointer;
   }
   .show-list .show-date .date-item.active {
       color: #fff;
