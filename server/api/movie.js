@@ -463,7 +463,7 @@ router.get('/getFilmList', async (req, res, next) => {
   //let currentPage = req.query.currentPage;  //当前页面
   let page_length = 30;   // 每页30个
   let sortID = req.query.sortID;  //排序方式
-  //let page = req.query.currentPage;
+  let page = req.query.currentPage
   //let count = (page - 1) * page_length;
   console.log(sortID);
   let findMovies = [];
@@ -478,7 +478,7 @@ router.get('/getFilmList', async (req, res, next) => {
     }
   }
   else if(sortID == 2){
-    console.log('Yes');
+    //console.log('Yes');
     let MoviesArr = await MovieModel.find({movie_total_price: '暂无'}).limit(page_length).exec();
     console.log(MoviesArr.length);
 
@@ -488,10 +488,24 @@ router.get('/getFilmList', async (req, res, next) => {
     }
   }
   else if(sortID == 3){
+    //console.log('Yes');
+    let page_length = 30;   // 获取30个
+    let count = (page - 1) * page_length
+    let MoviesArr = await MovieModel.find({movie_star: {$regex: /^\d+([\.](\d)+)?$/}}).sort({movie_star: -1}).limit(60).exec()
+    //let MoviesArr = await MovieModel.find({movie_star: {$regex: /^\d+(\.\d+)?$/}}).sort({movie_star: -1}).limit(60).exec()
+    console.log(MoviesArr.length)
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
+  }
+  else{
     console.log('Yes');
-    let MoviesArr = await await MovieModel.find({movie_star: '8.5'}).limit(page_length).exec();
-    console.log(MoviesArr.length);
-
+    let page_length = 30;   // 获取30个
+    let count = (page - 1) * page_length
+    let MoviesArr = await MovieModel.find({movie_name: {$regex: sortID}}).limit(page_length).exec();
+    //let MoviesArr = await MovieModel.find({movie_star: {$regex: /^\d+(\.\d+)?$/}}).sort({movie_star: -1}).limit(60).exec()
+    console.log(MoviesArr.length)
     for (let item of MoviesArr) {
       let ob = JSON.parse(JSON.stringify(item));
       findMovies.push(ob)
