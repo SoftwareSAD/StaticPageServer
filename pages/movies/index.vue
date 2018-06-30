@@ -8,7 +8,7 @@
             <div class="tags-title">类型 ：</div>
             <ul class="tags">
               <li v-for="(type, index) in type_list" v-if="index < 9" :key="index">
-                <button @click="changeLimit(type.type_name, Distriction)" target="_self">{{type.type_name}}</button>
+                <button @click="changeLimit(type.type_name, Distriction, onlineTime)" target="_self">{{type.type_name}}</button>
               </li>
             </ul>
           </li>
@@ -16,7 +16,7 @@
             <div class="tags-title">区域 ：</div>
             <ul class="tags">
               <li v-for="(position, index) in position_list" v-if="index < 10" :key="index">
-                <button @click="changeLimit(MovieType, position.position_name)" target="_self">{{position.position_name}}</button>
+                <button @click="changeLimit(MovieType, position.position_name, onlineTime)" target="_self">{{position.position_name}}</button>
               </li>
             </ul>
           </li>
@@ -24,7 +24,7 @@
             <div class="tags-title">年代 ：</div>
             <ul class="tags">
               <li v-for="(age, index) in age_list" v-if="index < 8" :key="index">
-                <a :href="age.href" :data-val="age.sort_ID" target="_self">{{age.age_name}}</a>
+                <button :href="age.href" @click="changeLimit(MovieType, Distriction, age.age_name)" target="_self">{{age.age_name}}</button>
               </li>
             </ul>
           </li>
@@ -38,7 +38,7 @@
                 <span class="sort-control-group">
                   <span class="sort-control sort-radio"></span>
                   <!--<span class="sort-control sort-radio sort-radio-checked"></span>-->
-                  <a class="sort-control-label" :data-val="sort.sort_ID" :href="sort.href" target="_self">{{sort.sort_type}}</a>
+                  <button class="sort-control-label" v-on:click="sortMovie(sort.sort_type)" target="_self">{{sort.sort_type}}</button>
                 </span>
               </li>
             </ul>
@@ -110,39 +110,41 @@
         movie_list: [],
         MovieType: '全部',
         Distriction: '全部',
+        onlineTime: '全部',
         currentPage: "1",
+        sortType: "",
         type_list: [
-          {type_name: "全部", href: '/movies', sort_ID: '1'},
-          {type_name: "爱情", href: '/movies', sort_ID: '2'},
-          {type_name: "喜剧", href: '/movies', sort_ID: '3'},
-          {type_name: "剧情", href: '/movies', sort_ID: '4'},
-          {type_name: "惊悚", href: '/movies', sort_ID: '5'},
-          {type_name: "动作", href: '/movies', sort_ID: '6'},
-          {type_name: "悬疑", href: '/movies', sort_ID: '7'},
-          {type_name: "科幻", href: '/movies', sort_ID: '8'},
-          {type_name: "纪录片", href: '/movies', sort_ID: '9'}
+          {type_name: "全部"},
+          {type_name: "爱情"},
+          {type_name: "喜剧"},
+          {type_name: "剧情"},
+          {type_name: "惊悚"},
+          {type_name: "动作"},
+          {type_name: "悬疑"},
+          {type_name: "科幻"},
+          {type_name: "纪录片"}
         ],
         position_list: [
-          {position_name: "全部", href: '/movies', sort_ID: '1'},
-          {position_name: "内地", href: '/movies', sort_ID: '2'},
-          {position_name: "美国", href: '/movies', sort_ID: '3'},
-          {position_name: "英国", href: '/movies', sort_ID: '4'},
-          {position_name: "日韩", href: '/movies', sort_ID: '5'},
-          {position_name: "香港", href: '/movies', sort_ID: '6'},
-          {position_name: "台湾", href: '/movies', sort_ID: '7'},
-          {position_name: "印度", href: '/movies', sort_ID: '8'},
-          {position_name: "欧洲", href: '/movies', sort_ID: '9'},
-          {position_name: "其他", href: '/movies', sort_ID: '10'}
+          {position_name: "全部"},
+          {position_name: "内地"},
+          {position_name: "美国"},
+          {position_name: "英国"},
+          {position_name: "日韩"},
+          {position_name: "香港"},
+          {position_name: "台湾"},
+          {position_name: "印度"},
+          {position_name: "欧洲"},
+          {position_name: "其他"}
         ],
         age_list: [
-          {age_name: "全部", href: '/movies', sort_ID: '1'},
-          {age_name: "2018", href: '/movies', sort_ID: '2'},
-          {age_name: "2011-2017", href: '/movies', sort_ID: '3'},
-          {age_name: "2000-2010", href: '/movies', sort_ID: '4'},
-          {age_name: "90年代", href: '/movies', sort_ID: '5'},
-          {age_name: "80年代", href: '/movies', sort_ID: '6'},
-          {age_name: "70年代", href: '/movies', sort_ID: '7'},
-          {age_name: "更早", href: '/movies', sort_ID: '8'}
+          {age_name: "全部"},
+          {age_name: "2018"},
+          {age_name: "2011-2017"},
+          {age_name: "2000-2010"},
+          {age_name: "90年代"},
+          {age_name: "80年代"},
+          {age_name: "70年代"},
+          {age_name: "更早"}
         ],
         sort_choice: [
           {sort_type: "按热门排序", href: '/movies', sort_ID: '1'},
@@ -170,20 +172,65 @@
        return {movie_list: movieList}
     },
     methods: {
-      async changeLimit(type_name, country) {
+      async changeLimit(type_name, country, age) {
         this.MovieType = type_name;
         this.Distriction = country;
+        this.onlineTime = age;
         let nowfilm = [];
         try {
-          let {data} = await axios.get('/api/getMoviesByCountry', {params: {movieType: this.MovieType, country: this.Distriction, currentPage: this.currentPage}})
-          if(!data.errorCode) {
-            nowfilm = data.data
+          if(this.Distriction=="全部" && this.onlineTime=="全部"){
+            let {data} = await axios.get('/api/getMoviesByType', {params: {type: this.MovieType, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+          else if(this.MovieType=="全部" && this.onlineTime=="全部"){
+            let {data} = await axios.get('/api/getMoviesByCountry', {params: {country: this.Distriction, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+          else if(this.MovieType=="全部" && this.Distriction=="全部"){
+            let {data} = await axios.get('/api/getMoviesByDate', {params: {online_time: this.onlineTime, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
           }
         } catch (e) {
           console.log(e)
         }
         this.movie_list = nowfilm;
-  }
+      },
+      async sortMovie(type){
+        this.sortType = type;
+        console.log()
+        let nowfilm = [];
+        try {
+          // console.log(currentPage)
+          if(this.sortType == "按热门排序"){
+            let {data} = await axios.get('/api/getHotSortedMovies', {params: {currentPage: 1}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+          else if(this.sortType == "按时间排序"){
+            let {data} = await axios.get('/api/getOnlineSortedMovies', {params: {currentPage: 1}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+          else if(this.sortType == "按评价排序"){
+            let {data} = await axios.get('/api/getEvalSortedMovies', {params: {currentPage: 1}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+
+        } catch (e) {
+          // console.log(e)
+        }
+        this.movie_list = nowfilm;
+      }
     }
   }
 </script>
@@ -201,6 +248,14 @@
   }
   i, cite, em, var, address, dfn{
     font-style: italic;
+  }
+  button{
+    background: transparent;
+    border: none;
+    color: #dbe1ec;
+    padding: 0.5px;
+    margin: 0;
+    cursor: pointer;
   }
   .movie-subnav{
     background-color: #23272b;

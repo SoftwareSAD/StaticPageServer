@@ -168,7 +168,8 @@ router.get('/getMoviesByCountry', async (req, res, next) => {
     }
     return _dbSuccess(res, '获取电影成功', findMovies)
   } else if (key == '日韩') {
-    let MoviesArr = await MovieModel.find({country: {$regex: $or:['日本', '韩国']}}).limit(page_length).skip(count).exec();
+    // let MoviesArr = await MovieModel.find({country: {$regex: $or:['日本', '韩国']}}).limit(page_length).skip(count).exec();
+    let MoviesArr = await MovieModel.find({country: {$or:['日本', '韩国']}}).limit(page_length).skip(count).exec();
     let findMovies = [];
     for (let item of MoviesArr) {
       let ob = JSON.parse(JSON.stringify(item));
@@ -176,7 +177,8 @@ router.get('/getMoviesByCountry', async (req, res, next) => {
     }
     return _dbSuccess(res, '获取电影成功', findMovies)
   } else if (key == '欧洲') {
-    let MoviesArr = await MovieModel.find({country: {$regex: $or:['法国', '意大利', '西班牙']}}).limit(page_length).skip(count).exec();
+    // let MoviesArr = await MovieModel.find({country: {$regex: $or:['法国', '意大利', '西班牙']}}).limit(page_length).skip(count).exec();
+    let MoviesArr = await MovieModel.find({country: {$or:['法国', '意大利', '西班牙']}}).limit(page_length).skip(count).exec();
     let findMovies = [];
     for (let item of MoviesArr) {
       let ob = JSON.parse(JSON.stringify(item));
@@ -184,7 +186,8 @@ router.get('/getMoviesByCountry', async (req, res, next) => {
     }
     return _dbSuccess(res, '获取电影成功', findMovies)
   } else if (key == '其他') {
-    let MoviesArr = await MovieModel.find({country: {$regex: $or:['泰国', '俄罗斯', '澳大利亚', '伊朗']}}).limit(page_length).skip(count).exec();
+    // let MoviesArr = await MovieModel.find({country: {$regex: $or:['泰国', '俄罗斯', '澳大利亚', '伊朗']}}).limit(page_length).skip(count).exec();
+    let MoviesArr = await MovieModel.find({country: {$or:['泰国', '俄罗斯', '澳大利亚', '伊朗']}}).limit(page_length).skip(count).exec();
     let findMovies = [];
     for (let item of MoviesArr) {
       let ob = JSON.parse(JSON.stringify(item));
@@ -396,8 +399,12 @@ router.get('/getOnlineSortedMovies', async (req, res, next) => {
   let page_length = 30;   // 获取30个
   let page = req.query.currentPage
   let count = (page - 1) * page_length
-  let MoviesArr = await MovieModel.find({}).sort(online_time: -1).exec();
-  
+  let MoviesArr = await MovieModel.find({}).sort({online_time: -1}).exec();
+  let findMovies = [];
+  for (let item of MoviesArr) {
+    let ob = JSON.parse(JSON.stringify(item));
+    findMovies.push(ob)
+  }
   return _dbSuccess(res, '获取时间排序电影成功', findMovies)
 });
 

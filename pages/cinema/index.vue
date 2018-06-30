@@ -6,15 +6,15 @@
           <div class="tags-title">品牌：</div>
           <ul class="tags">
             <li v-for="(brand, index) in brand_list" v-if="index < 10" :key="index">
-              <button v-on:click="getCinemabybrandname(brand.brand_name)" target="_self">{{brand.brand_name}}</button>
+              <button v-on:click="changeLimit(brand.brand_name, cinemaDis)" target="_self">{{brand.brand_name}}</button>
             </li>
           </ul>
         </li>
         <li class="tags-line tags-line-border" data-type="district">
           <div class="tags-title">行政区：</div>
           <ul class="tags">
-            <li v-for="(position, index) in position_list" v-if="index < 11" :key="position.position_name">
-              <button :href="position.href" v-on:click="getCinemabydist(position.position_name)" target="_self">{{position.position_name}}</button>
+            <li v-for="(position, index) in position_list" v-if="index < 12" :key="position.position_name">
+              <button v-on:click="changeLimit(cinemaBrand, position.position_name)" target="_self">{{position.position_name}}</button>
             </li>
           </ul>
         </li>
@@ -22,7 +22,7 @@
     </div>
     <div class="cinemas-list">
       <h2 class="cinemas-list-header">影院列表</h2>
-      <div v-for="(theatre, index) in distCinemas" v-if="index < 10" class="cinema-cell" :key="theatre.cinema_name">
+      <div v-for="(theatre, index) in cinema_list" v-if="index < 10" class="cinema-cell" :key="theatre.cinema_name">
         <!--<div class="cinema-cell" v-for="item in theatredata" :key="item.id">-->
         <div class="cinema-info">
           <a  class="cinema-name" :href="theatre.href" target="_blank" :title="theatre.cinema_name">{{theatre.cinema_name}}</a>
@@ -60,32 +60,34 @@
         filmName: "",   // 从电影详情页面跳转过来选影院
         currentPage: 1,
         numEachPage: 10,
-        distCinemas: [],
-        brandCinemas: [],
+        cinemaBrand: '全部',
+        cinemaDis: '全部',
+        cinema_list: [],
         href: '/cinema-detail-page',    // 转到影院详情页面
         brand_list: [
-          {brand_name: "全部", href: '/cinema', sort_ID: '1'},
-          {brand_name: "飞扬影城", href: '/cinema', sort_ID: '2'},
-          {brand_name: "大地影院", href: '/cinema', sort_ID: '3'},
-          {brand_name: "万达影城", href: '/cinema', sort_ID: '4'},
-          {brand_name: "星美国际影城", href: '/cinema', sort_ID: '5'},
-          {brand_name: "横店电影城", href: '/cinema', sort_ID: '6'},
-          {brand_name: "中影国际影城", href: '/cinema', sort_ID: '7'},
-          {brand_name: "保利国际影城", href: '/cinema', sort_ID: '8'},
-          {brand_name: "CGV影城", href: '/cinema', sort_ID: '9'}
+          {brand_name: "全部"},
+          {brand_name: "飞扬影城"},
+          {brand_name: "大地影院"},
+          {brand_name: "万达影城"},
+          {brand_name: "星美国际影城"},
+          {brand_name: "横店电影城"},
+          {brand_name: "中影国际影城"},
+          {brand_name: "保利国际影城"},
+          {brand_name: "CGV影城"}
         ],
         position_list: [
-          {position_name: "全部", href: '/cinema'},
-          {position_name: "白云区", href: '/cinema'},
-          {position_name: "番禺区", href: '/cinema', sort_ID: '4'},
-          {position_name: "天河区", href: '/cinema', sort_ID: '5'},
-          {position_name: "越秀区", href: '/cinema', sort_ID: '6'},
-          {position_name: "荔湾区", href: '/cinema', sort_ID: '7'},
-          {position_name: "花都区", href: '/cinema', sort_ID: '8'},
-          {position_name: "黄埔区", href: '/cinema', sort_ID: '9'},
-          {position_name: "南沙区", href: '/cinema', sort_ID: '10'},
-          {position_name: "增城市", href: '/cinema', sort_ID: '11'},
-          {position_name: "从化市", href: '/cinema', sort_ID: '12'}
+          {position_name: "全部"},
+          {position_name: "白云区"},
+          {position_name: "海珠区"},
+          {position_name: "番禺区"},
+          {position_name: "天河区"},
+          {position_name: "越秀区"},
+          {position_name: "荔湾区"},
+          {position_name: "花都区"},
+          {position_name: "黄埔区"},
+          {position_name: "南沙区"},
+          {position_name: "增城市"},
+          {position_name: "从化市"}
         ],
       }
     },
@@ -98,38 +100,45 @@
       return {filmName: choosedFilmName}
     },
     methods: {
-      async getCinemabydist(name){
-        console.log(name)
-        try {
-          // console.log(currentPage)
-          let {data} = await axios.get('/api/getCinemaByDistrict', {params: {currentPage: 1, district: name}})
-          this.distCinemas = data.data
-        } catch (e) {
-          // console.log(e)
-        }
-      },
-      async getCinemabybrandname(name){
-        console.log(name)
-        try {
-          // console.log(currentPage)
-          let {data} = await axios.get('/api/getCinemaByBrand', {params: {currentPage: 1, brand: name}})
-          this.distCinemas = data.data
-        } catch (e) {
-          // console.log(e)
-        }
-      },
       async getCinemaAll(){
         console.log()
         try {
           // console.log(currentPage)
           let {data} = await axios.get('/api/getCinemaByDistrict', {params: {currentPage: 1, district: '全部'}})
-          this.distCinemas = data.data
+          this.cinema_list = data.data
         } catch (e) {
           // console.log(e)
         }
       },
+      async changeLimit(brandName, distName) {
+        this.cinemaBrand = brandName;
+        this.cinemaDis = distName;
+        let nowcinema = [];
+        try {
+          if(this.cinemaBrand=="全部"){
+            let {data} = await axios.get('/api/getCinemaByDistrict', {params: {district: this.cinemaDis, currentPage: this.currentPage}})
+            if (!data.errorCode) {
+              nowcinema = data.data
+            }
+          }
+          else if(this.cinemaDis=="全部"){
+            let {data} = await axios.get('/api/getCinemaByBrand', {params: {brand: this.cinemaBrand, currentPage: this.currentPage}})
+            if (!data.errorCode) {
+              nowcinema = data.data
+            }
+          }
+          else{
+            let {data} = await axios.get('/api/getCinemaByAll', {params: {brand: this.cinemaBrand, district: this.cinemaDis, currentPage: this.currentPage}})
+            if (!data.errorCode) {
+              nowcinema = data.data
+            }
+          }
+        } catch (e) {
+          console.log(e)
+        }
+        this.cinema_list = nowcinema
+      }
     },
-
   }
 </script>
 
@@ -163,6 +172,9 @@
     margin: 0;
     cursor: pointer;
   }
+  /*button .active{*/
+    /*background: #721c24;*/
+  /*}*/
   .container{
     width: 1200px;
     margin-top: 100px;
