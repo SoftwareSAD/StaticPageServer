@@ -34,23 +34,29 @@ router.get('/getHomeHotMovies', async (req, res, next) => {
     return value2 - value1
   }
   YiArr.sort(compare)
+  // console.log(YiArr)
   WanArr.sort(compare)
+  // console.log(WanArr)
   for (var i = 0; i < page_length; i++) {
     if (i < YiArr.length) {
       let price = String(YiArr[i]) + '亿'
-      let Arr = await MovieModel.find({movie_total_price: price}).exec();
+      console.log(price)
+      let Arr = await MovieModel.find({movie_total_price: price, online_time: {$regex: '2018-06'}}).exec();
       for (let item of Arr) {
         let ob = JSON.parse(JSON.stringify(item));
         findMovies.push(ob)
       }
     } else {
       let price = String(WanArr[i - YiArr.length]) + '万'
-      let Arr = await MovieModel.find({movie_total_price: price}).exec();
+      let Arr = await MovieModel.find({movie_total_price: price, online_time: {$regex: '2018-06'}}).exec();
       for (let item of Arr) {
         let ob = JSON.parse(JSON.stringify(item));
         findMovies.push(ob)
       }
     }
+  }
+  for (var i = 0; i < findMovies.length; i++) {
+    console.log(findMovies[i].movie_total_price)
   }
   return _dbSuccess(res, '获取热映电影成功', findMovies)
 });
