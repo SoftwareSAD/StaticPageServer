@@ -87,7 +87,6 @@ router.get('/getHomeReadyMovies', async (req, res, next) => {
  * */
 router.get("/getSingleFilm", async (req, res, next) =>{
   let name = req.query.name;
-
   console.log('########拉取电影-' + name + '#########')
   MovieModel.find({movie_name: name})
   .then(function (resDb) {
@@ -104,8 +103,8 @@ router.get("/getSingleFilm", async (req, res, next) =>{
  * @return 电影对象
  * */
 router.get("/getFilmByImg", async (req, res, next) =>{
-  console.log('########通过图片链接拉取电影#########')
   let img = req.query.src
+  console.log('########通过图片链接' + img +'拉取电影#########')
   if (img.indexOf('@') != -1) {
     img = img.split('@')[0]
   }
