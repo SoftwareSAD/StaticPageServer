@@ -31,6 +31,7 @@
                 </div>
             </div>
             <div id="cinema-map">
+              <baidu-map class="bm-view" ak="YOUR_APP_KEY" :center="center" :zoom="zoom" @ready="mapHandler"></baidu-map>
             </div>
         </div>
     </div>
@@ -241,9 +242,11 @@
 import Logo from '~/components/Logo.vue'
 import Adcolumn from '~/components/Adcolumn.vue'
 import axios from '~/plugins/axios'
+import BaiduMap from 'vue-baidu-map/components/Map/Map.vue'
+
 
 export default {
-  components: {Logo, Adcolumn},
+  components: {Logo, Adcolumn,BaiduMap},
   head: {
     'title': 'cinema-detail',
   },
@@ -252,6 +255,8 @@ export default {
       cinema: {},
       film: "",   //当前选中的电影对象
       filmSrc: "",    //当前选中的电影图片src
+      center: {lng: 0, lat: 0}, // map
+      zoom: 3 //map
     }
   },
 
@@ -302,6 +307,12 @@ export default {
       } else {
         return true
       }
+    },
+    mapHandler ({BMap, map}) {
+      console.log(BMap, map)
+      this.center.lng = 116.404
+      this.center.lat = 39.915
+      this.zoom = 15
     }
   }
 
@@ -468,6 +479,11 @@ export default {
       height: 200px;
       float: right;
       margin-right: 40px;
+  }
+
+  .bm-view {
+    width: 100%;
+    height: 100%;
   }
 
   .movie-container {

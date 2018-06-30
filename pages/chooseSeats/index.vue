@@ -52,16 +52,7 @@
                         </div>
                         <div class="seats-wrapper">
                             <div id="seatWrap">
-                                <!-- <div class="seat" v-for="n in 19" :key="n.id" :class="{'seatChoosed': clickIndex==n }"  v-on:click="addClassFun(n)">
-                                  {{ n }}
-                                </div> -->
-                                <div class="seat" v-for="(n, index) in clickList" :key="n.id" :class="{'seatChoosed': clickIndex[index]==1 }"  v-on:click="addClassFun(index)">
-                                  {{ n }}
-                                </div>
-                                <div class="seatSold" v-for="n in 2" :key="n.id">
-                                  {{ n }}
-                                </div>
-                                <div class="seat" v-for="n in 27" :key="n.id">
+                                <div class="seat" v-for="(n,index) in clickList" :key="index" :class="getSeatState(index)" v-on:click="handler(index)">
                                   {{ n }}
                                 </div>
                             </div>
@@ -118,7 +109,9 @@
                     <div class="has-ticket">
                         <span class="text">座位：</span>
                         <div class="ticket-container" data-limit="4">
-                            <span class="ticket">5排4座</span>
+                            <span class="ticket" v-for="(item, index) in seatId" :key="index">
+                              {{ item.row}}排{{item.col}}座
+                            </span>
                         </div>
                     </div>
                     <div class="total-price">
@@ -150,7 +143,7 @@
 import Logo from '~/components/Logo.vue'
 import Adcolumn from '~/components/Adcolumn.vue'
 import axios from '~/plugins/axios'
-//import Vue from 'vue';
+import Vue from 'vue'
 
 export default {
     components: {Logo, Adcolumn},
@@ -163,23 +156,45 @@ export default {
         clickList:[
           0, 0, 0, 0, 0, 0, 0, 0,
           0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0
+          0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 2, 2, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0
+        ],
+        seatNum: 0,
+        seatId:[
         ]
-      } 
-    },
-    methods: {
-      // addClassFun: function(n) {
-      //     this.clickIndex = n;
-      //     alert(this.clickIndex);
-      // }
-
-      addClassFun: function(index) {
-          this.clickList[index] = 1;
-          alert(this.clickList[index]);
+          
+        
       }
 
+    },
+    methods: {
+      handler: function(index) {
+        if (this.clickList[index] == 0) {
+          if (this.seatNum < 4) {
+            this.$set(this.clickList,index,1);
+            this.seatNum++;
+            this.seatId.push({ index: index,row: Math.floor((index+1)/6)+1, col: (index+1)%6 });
+          } else {
+            alert("最多选4个座位！")
+          }
+        } else if (this.clickList[index] == 1) {
+          this.$set(this.clickList,index,0);
+          this.seatNum--;
+          // this.seatId.splice(0, 1);
+        }
+      },
+      getSeatState: function(index) {
+        if (this.clickList[index] == 0) {
+          return "seat";
+        } else if (this.clickList[index] == 1) {
+          return "seatChoosed";
+        } else if (this.clickList[index] == 2) {
+          return "seatSold";
+        }
+      }
     }
-
 
 }
 
@@ -418,7 +433,8 @@ td {
   background:#ccc;
 }
 
-.seat, .seatSold {
+.seat, .seatSold, .seatChoosed{
+  cursor: pointer;
   width:23px;
   height:19px;
   margin:3px 14px 14px 14px;
@@ -446,6 +462,7 @@ td {
   background-image: url("../../assets/img/chooseSeats/sold_seat.gif");
   background-repeat: no-repeat;
 }
+
 
 /*side*/
 .side {
