@@ -38,10 +38,10 @@
     <div class="movie-container" id="app">
         <div class="movie-list-container" data-cinemaid="2161">
             <div class="movie-list">
-              <div class="movie active">
+              <div class="movie" :class="{'active': isCurrentActive}" v-on:click="clickCurrentMovie">
                 <img :src="film.img" :alt="film.movie_name" />
               </div>
-              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="notSameFilm(film.img,movie_img)" :key="index" :data-index="index">
+              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="notSameFilm(film.img,movie_img)" :key="index" :data-index="index" :class="{'active': isActive==index}" v-on:click="clickMovie(index)">
                 <img :src="movie_img" alt="movie_img" />
               </div>
               <span class="pointer" style="left: 71.0138px;"></span>
@@ -256,6 +256,8 @@ export default {
       cinema: {},
       film: "",   //当前选中的电影对象
       filmSrc: "",    //当前选中的电影图片src
+      isCurrentActive: true,
+      isActive: -1,
       center: {lng: 0, lat: 0}, // map
       zoom: 3 //map
     }
@@ -314,6 +316,19 @@ export default {
       this.center.lng = 116.404
       this.center.lat = 39.915
       this.zoom = 15
+    },
+    clickCurrentMovie: function(event) {
+      if (!this.isCurrentActive) {
+        this.isCurrentActive = true;
+        this.isActive = -1;
+      }
+    },
+    clickMovie: function(index) {
+      if (this.isActive != index) {
+        this.isActive = index;
+        this.isCurrentActive = false;
+      }
+      
     }
   }
 
