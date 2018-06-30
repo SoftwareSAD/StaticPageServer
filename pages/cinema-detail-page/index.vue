@@ -109,7 +109,8 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a href="/chooseSeats" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
                           </td>
                         </tr>
                         <tr class="even">
@@ -128,7 +129,7 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a href="/chooseSeats" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
                           </td>
                         </tr>
                         <tr class="">
@@ -147,7 +148,7 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a href="/chooseSeats" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
                           </td>
                         </tr>
                         <tr class="even">
@@ -166,7 +167,7 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a href="/chooseSeats" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
                           </td>
                         </tr>
                         <tr class="">
@@ -185,7 +186,7 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a href="/chooseSeats" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
                           </td>
                         </tr>
                         <tr class="even">
@@ -204,7 +205,7 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a href="/chooseSeats" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
                           </td>
                         </tr>
                         <tr class="">
@@ -223,7 +224,7 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a href="/chooseSeats" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
                           </td>
                         </tr>
                       </tbody>

@@ -59,22 +59,23 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="side">
                 <div class="movie-info clearfix">
                     <div class="poster">
-                        <img src="http://p1.meituan.net/movie/6383f5cb72f994370f9e817eaa495aaf428644.jpg@170w_235h_1e_1c" alt="">                      
+                        <img :src="film.img" :alt="film.movie_name">
                     </div>
                     <div class="content">
-                        <p class="name text-ellipsis">超人总动员2</p>
+                        <p class="name text-ellipsis">{{film.movie_name}}</p>
+
                         <div class="info-item">
                             <span>类型： </span>
-                            <span class="value">动画，动作，冒险</span>
+                            <span class="value">{{film.movie_type}}</span>
                         </div>
                         <div class="info-item">
                             <span>时长： </span>
-                            <span class="value">126分钟</span>
+                            <span class="value">{{film.movie_time}}</span>
                         </div>
 
                     </div>
@@ -82,7 +83,7 @@
                 <div class="show-info">
                     <div class="info-item">
                         <span>影院 :</span>
-                        <span class="value text-ellipsis">烽禾影城(祈福新邨店)</span>
+                        <span class="value text-ellipsis">{{cinema.cinema_name}}</span>
                     </div>
                     <div class="info-item">
                         <span>影厅 :</span>
@@ -98,7 +99,7 @@
                     </div>
                     <div class="info-item">
                         <span>票价 :</span>
-                        <span class="value text-ellipsis">￥28/张</span>
+                        <span class="value text-ellipsis">￥{{ticketPrice}}/张</span>
                     </div>
                 </div>
                 <div class="ticket-info">
@@ -109,14 +110,14 @@
                     <div class="has-ticket">
                         <span class="text">座位：</span>
                         <div class="ticket-container" data-limit="4">
-                            <span class="ticket" v-for="(item, index) in seatId" :key="index">
-                              {{ item.row}}排{{item.col}}座
-                            </span>
+                          <span class="ticket" v-for="(item, index) in clickList" v-if="item == 1" :key="index">
+                            {{Math.floor(index / 8)+1}}排{{index % 8}}座
+                          </span>
                         </div>
                     </div>
                     <div class="total-price">
                         <span>总价 :</span>
-                        <span class="price">0</span>
+                        <span class="price">{{ticketPrice * seatNum}}</span>
                     </div>
                 </div>
                 <div class="confirm-order">
@@ -153,6 +154,7 @@ export default {
     data() {
       return {
         clickIndex: 0,
+        ticketPrice: 28,
         clickList:[
           0, 0, 0, 0, 0, 0, 0, 0,
           0, 0, 0, 0, 0, 0, 0, 0,
@@ -164,11 +166,38 @@ export default {
         seatNum: 0,
         seatId:[
         ]
-          
-        
+
+
       }
 
     },
+  async asyncData({context, route}) {
+    let filmName = route.query.filmName;      //取得电影名字
+    let cinemaName = route.query.cinemaName;  //取得影院名字
+    let nowcinema = {};
+    let nowfilm = {};
+    // 获取影院信息
+    try {
+      let {data} = await axios.get('/api/getCinemaByName', {params: {cinemaName: cinemaName}})
+      if(!data.errorCode) {
+        nowcinema = data.data
+      }
+    } catch (e) {
+      console.log(e)
+    }
+    // 获取电影信息
+    try {
+      let {data} = await axios.get('/api/getSingleFilm', {params: {name: filmName}})
+      if(!data.errorCode) {
+        nowfilm = data.data[0]
+      }
+    } catch (e) {
+      console.log(e)
+    }
+    return {cinema: nowcinema,
+      film: nowfilm,
+    }
+  },
     methods: {
       handler: function(index) {
         if (this.clickList[index] == 0) {
@@ -665,7 +694,7 @@ p {
   position: relative;
   left: 50%;
   margin: 38px 0 0 -130px;
-  background-color: #f03d37;  
+  background-color: #f03d37;
 }
 
 .confirm-btn a {
