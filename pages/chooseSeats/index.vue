@@ -176,7 +176,7 @@ export default {
             this.seatNum++;
             this.seatId.push({ index: index,row: Math.floor((index)/8)+1, col: (index)%8+1 });
             this.$set(this.isTicketActive, 0, 'true');
-            alert(this.isTicketActive)
+            // alert(this.isTicketActive)
           } else {
             alert("最多选4个座位！")
           }
