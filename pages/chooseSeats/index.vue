@@ -165,7 +165,7 @@ export default {
         ],
         seatNum: 0,
 
-        isTicketActive: ['false']
+        isTicketActive: false
       }
 
     },
@@ -202,8 +202,7 @@ export default {
           if (this.seatNum < 4) {
             this.$set(this.clickList,index,1);
             this.seatNum++;
-            this.$set(this.isTicketActive, 0, 'true');
-            // alert(this.isTicketActive)
+            this.isTicketActive = true;
           } else {
             alert("最多选4个座位！")
           }
