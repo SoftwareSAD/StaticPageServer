@@ -12,9 +12,9 @@
         <b-nav-item href="/">首页</b-nav-item>
         <b-nav-item href="/cinema">影院</b-nav-item>
         <b-nav-item-dropdown text="电影" left no-caret>
-          <b-dropdown-item href="/movies">正在热映</b-dropdown-item>
-          <b-dropdown-item href="/movies">即将上映</b-dropdown-item>
-          <b-dropdown-item href="/movies">经典影片</b-dropdown-item>
+          <b-dropdown-item href="/movies?sort_ID=1">正在热映</b-dropdown-item>
+          <b-dropdown-item href="/movies?sort_ID=2">即将上映</b-dropdown-item>
+          <b-dropdown-item href="/movies?sort_ID=3">经典影片</b-dropdown-item>
           <b-dropdown-item href="/cinema-detail-page">购买影票</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown text="资讯" left no-caret>
