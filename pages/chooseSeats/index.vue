@@ -111,7 +111,7 @@
                         <span class="text">座位：</span>
                         <div class="ticket-container" data-limit="4">
                           <span class="ticket" v-for="(item, index) in clickList" v-if="item == 1" :key="index">
-                            {{Math.floor(index / 8)+1}}排{{index % 8}}座
+                            {{Math.floor(index/8)+1}}排{{index%8+1}}座
                           </span>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                         </div>
                     </form>
                     <div class="confirm-btn" data-act="confirm-click" data-bid="b_0a0ep6pp">
-                        <a href="/confirm">确认选座</a>
+                        <a :href="'/confirm?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" >确认选座</a>
                     </div>
                 </div>
             </div>

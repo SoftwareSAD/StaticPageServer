@@ -41,7 +41,7 @@
               <div class="movie" :class="{'active': isCurrentActive}" v-on:click="clickCurrentMovie">
                 <img :src="film.img" :alt="film.movie_name" />
               </div>
-              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="notSameFilm(film.img,movie_img)" :key="index" :data-index="index" :class="{'active': isActive==index}" v-on:click="clickMovie(index)">
+              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="notSameFilm(film.img,movie_img) && index < 6" :key="index" :data-index="index" :class="{'active': isActive==index}" v-on:click="clickMovie(index)">
                 <img :src="movie_img" alt="movie_img" />
               </div>
               <span class="pointer" style="left: 71.0138px;"></span>
@@ -95,83 +95,6 @@
                     <tbody>
                         <tr class="">
                           <td>
-                            <span class="begin-time">14:40</span>
-                            <br>
-                            <span class="end-time">16:48散场</span>
-                          </td>
-                          <td>
-                            <span class="lang">英语3D</span>
-                          </td>
-                          <td>
-                            <span class="hall">1号厅</span>
-                          </td>
-                          <td>
-                            <span class="sell-price"><span class="stonefont">28</span></span>
-                          </td>
-                          <td>
-
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
-                          </td>
-                        </tr>
-                        <tr class="even">
-                          <td>
-                            <span class="begin-time">15:30</span>
-                            <br>
-                            <span class="end-time">17:38散场</span>
-                          </td>
-                          <td>
-                            <span class="lang">英语3D</span>
-                          </td>
-                          <td>
-                            <span class="hall">2号厅</span>
-                          </td>
-                          <td>
-                            <span class="sell-price"><span class="stonefont">28</span></span>
-                          </td>
-                          <td>
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
-                          </td>
-                        </tr>
-                        <tr class="">
-                          <td>
-                            <span class="begin-time">17:00</span>
-                            <br>
-                            <span class="end-time">19:08散场</span>
-                          </td>
-                          <td>
-                            <span class="lang">英语3D</span>
-                          </td>
-                          <td>
-                            <span class="hall">1号厅</span>
-                          </td>
-                          <td>
-                            <span class="sell-price"><span class="stonefont">28</span></span>
-                          </td>
-                          <td>
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
-                          </td>
-                        </tr>
-                        <tr class="even">
-                          <td>
-                            <span class="begin-time">18:00</span>
-                            <br>
-                            <span class="end-time">20:08散场</span>
-                          </td>
-                          <td>
-                            <span class="lang">英语3D</span>
-                          </td>
-                          <td>
-                            <span class="hall">2号厅</span>
-                          </td>
-                          <td>
-                            <span class="sell-price"><span class="stonefont">28</span></span>
-                          </td>
-                          <td>
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
-                          </td>
-                        </tr>
-                        <tr class="">
-                          <td>
                             <span class="begin-time">19:20</span>
                             <br>
                             <span class="end-time">21:28散场</span>
@@ -186,7 +109,7 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal">选座购票</a>
                           </td>
                         </tr>
                         <tr class="even">
@@ -205,7 +128,7 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal">选座购票</a>
                           </td>
                         </tr>
                         <tr class="">
@@ -224,7 +147,7 @@
                             <span class="sell-price"><span class="stonefont">28</span></span>
                           </td>
                           <td>
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal" data-tip="" data-act="show-click" data-bid="b_gvh3l8gg" data-val="{movie_id: 341628, cinema_id:2161}">选座购票</a>
+                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal">选座购票</a>
                           </td>
                         </tr>
                       </tbody>
