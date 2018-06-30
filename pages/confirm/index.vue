@@ -34,9 +34,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="movie-name">《{{film.movie_name}}》</td>
+                    <td class="movie-name">《{{film_name}}》</td>
                     <td class="showtime">今天 6月27日 19:20</td>
-                    <td class="cinema-name">{{cinema.cinema_name}}</td>
+                    <td class="cinema-name">{{cinema_name}}</td>
                     <td>
                         <span class="hall">1号厅</span>
                         <div class="seats">
@@ -84,28 +84,8 @@ export default {
   async asyncData({context, route}) {
     let filmName = route.query.filmName;      //取得电影名字
     let cinemaName = route.query.cinemaName;  //取得影院名字
-    let nowcinema = {};
-    let nowfilm = {};
-    // 获取影院信息
-    try {
-      let {data} = await axios.get('/api/getCinemaByName', {params: {cinemaName: cinemaName}})
-      if(!data.errorCode) {
-        nowcinema = data.data
-      }
-    } catch (e) {
-      console.log(e)
-    }
-    // 获取电影信息
-    try {
-      let {data} = await axios.get('/api/getSingleFilm', {params: {name: filmName}})
-      if(!data.errorCode) {
-        nowfilm = data.data[0]
-      }
-    } catch (e) {
-      console.log(e)
-    }
-    return {cinema: nowcinema,
-      film: nowfilm,
+    return {cinema_name: cinemaName,
+      film_name: filmName,
     }
   }
 }
