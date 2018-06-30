@@ -27,7 +27,7 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
           <b-form-input size="sm" type="text" placeholder="Search"/>
-          <b-button size="sm" class="my-sm-0" type="submit">Search</b-button>
+          <b-button href="/search" size="sm" class="my-sm-0" type="submit">Search</b-button>
         </b-nav-form>
 
         <b-nav-item-dropdown right>

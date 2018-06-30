@@ -124,9 +124,9 @@
           {age_name: "更早"}
         ],
         sort_choice: [
-          {sort_type: "按热门排序", href: '/movies', sort_ID: '1'},
-          {sort_type: "按时间排序", href: '/movies', sort_ID: '2'},
-          {sort_type: "按评价排序", href: '/movies', sort_ID: '3'}
+          {sort_type: "按热门排序", href: '/movies'},
+          {sort_type: "按时间排序", href: '/movies'},
+          {sort_type: "按评价排序", href: '/movies'}
         ],
 
       }

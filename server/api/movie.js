@@ -463,14 +463,41 @@ router.get('/getFilmList', async (req, res, next) => {
   //let currentPage = req.query.currentPage;  //当前页面
   let page_length = 30;   // 每页30个
   let sortID = req.query.sortID;  //排序方式
-  if(sortID==1){
-    let MoviesArr = await MovieModel.find({}).limit(page_length).skip(10).exec();
-    let findMovies = [];
+  //let page = req.query.currentPage;
+  //let count = (page - 1) * page_length;
+  console.log(sortID);
+  let findMovies = [];
+  if(sortID == 1){
+    //console.log('Yes');
+    let MoviesArr = await MovieModel.find({online_time: {$regex: '2018'}}).limit(page_length).exec();
+    console.log(MoviesArr.length);
+
     for (let item of MoviesArr) {
       let ob = JSON.parse(JSON.stringify(item));
       findMovies.push(ob)
     }
   }
+  else if(sortID == 2){
+    console.log('Yes');
+    let MoviesArr = await MovieModel.find({movie_total_price: '暂无'}).limit(page_length).exec();
+    console.log(MoviesArr.length);
+
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
+  }
+  else if(sortID == 3){
+    console.log('Yes');
+    let MoviesArr = await await MovieModel.find({movie_star: '8.5'}).limit(page_length).exec();
+    console.log(MoviesArr.length);
+
+    for (let item of MoviesArr) {
+      let ob = JSON.parse(JSON.stringify(item));
+      findMovies.push(ob)
+    }
+  }
+    // let MoviesArr = await MovieModel.find({}).limit(page_length).skip(10).exec();
   return _dbSuccess(res, '获取指定限制的电影列表', findMovies)
 });
 

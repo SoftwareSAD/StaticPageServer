@@ -79,7 +79,7 @@
   import axios from '~/plugins/axios'
   export default {
     head() {
-      return {'title': '正在热映'}
+      return {'title': '搜索电影'}
     },
     data () {
       return {
