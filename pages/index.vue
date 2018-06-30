@@ -52,6 +52,8 @@
         </div>
       </div>
     </div>
+    <div class="cut">
+    </div>
   </div>
 </template>
 
@@ -113,8 +115,10 @@ export default {
 
 <style>
   .mycontainer {
-    margin-top: 50px;
-    width: 100%;
+    top: 50px;
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
   }
   #adcolum {
     margin-top: 0px;
@@ -211,5 +215,9 @@ export default {
     font-weight: 500;
     font-size: 14px;
     color: #e30000;
+  }
+  .cut {
+    width: 100%;
+    height: 200px;
   }
 </style>
