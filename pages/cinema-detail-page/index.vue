@@ -39,9 +39,9 @@
         <div class="movie-list-container" data-cinemaid="2161">
             <div class="movie-list">
               <div class="movie" :class="{'active': isCurrentActive}" v-on:click="clickCurrentMovie">
-                <img :src="film.img" :alt="film.movie_name" />
+                <img :src="originalFilm.img" :alt="originalFilm.movie_name" />
               </div>
-              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="notSameFilm(film.img,movie_img) && index < 6" :key="index" :data-index="index" :class="{'active': isActive==index}" v-on:click="clickMovie(index)">
+              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="notSameFilm(originalFilm.img,movie_img) && index < 6" :key="index" :data-index="index" :class="{'active': isActive==index}" v-on:click="clickMovie(index)">
                 <img :src="movie_img" alt="movie_img" />
               </div>
               <span class="pointer" style="left: 71.0138px;"></span>
@@ -178,11 +178,17 @@ export default {
     return {
       cinema: {},
       film: "",   //当前选中的电影对象
-      filmSrc: "",    //当前选中的电影图片src
+      originalFilm: {},   //显示在第一个的电影
       isCurrentActive: true,
       isActive: -1,
       center: {lng: 0, lat: 0}, // map
-      zoom: 3 //map
+      zoom: 3, //map
+      choosedTimes: {
+        date: '2018-6-30',
+
+
+      }
+
     }
   },
 
@@ -221,7 +227,7 @@ export default {
     }
     return {cinema: nowcinema,
             film: nowfilm,
-            filmSrc: nowfilm == undefined ? "" : nowfilm.img,
+            originalFilm: nowfilm
             }
   },
   methods: {
@@ -244,16 +250,27 @@ export default {
       if (!this.isCurrentActive) {
         this.isCurrentActive = true;
         this.isActive = -1;
+        this.film = this.originalFilm;
       }
     },
-    clickMovie: function(index) {
+    async clickMovie(index) {
       if (this.isActive != index) {
         this.isActive = index;
         this.isCurrentActive = false;
+        // 拉取当前的电影信息
+          let nowFilmSrc = this.cinema.online_moive[index];
+          try {
+            let {data} = await axios.get('/api/getFilmByImg', {params: {src: nowFilmSrc}})
+            if(!data.errorCode) {
+              this.film = data.data[0]
+            }
+          } catch (e) {
+            console.log(e)
+          }
       }
-      
-    }
-  }
+    },
+  },
+
 
 
 
