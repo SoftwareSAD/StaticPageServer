@@ -164,7 +164,6 @@ export default {
           0, 0, 0, 0, 0, 0, 0, 0
         ],
         seatNum: 0,
-
         isTicketActive: false
       }
 
@@ -209,7 +208,9 @@ export default {
         } else if (this.clickList[index] == 1) {
           this.$set(this.clickList,index,0);
           this.seatNum--;
-          // this.seatId.splice(0, 1);
+          if (this.seatNum == 0) {
+            this.isTicketActive = false;
+          }
         }
       },
       getSeatState: function(index) {
@@ -222,7 +223,6 @@ export default {
         }
       }
     }
-
 }
 
 
