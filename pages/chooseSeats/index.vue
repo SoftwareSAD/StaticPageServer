@@ -52,10 +52,14 @@
                         </div>
                         <div class="seats-wrapper">
                             <div id="seatWrap">
+<<<<<<< HEAD
                                 <button></button> class="seat" v-for="n in 19" :key="n.id" :class="{'seatChoosed': clickIndex==n }"  v-on:click="addClassFun(n)">
                                   {{ n }}
                                 </button>
                                 <!-- <div class="seat" v-for="(n, index) in clickList" :key="n.id" :class="{'seatChoosed': clickIndex[index]==1 }"  v-on:click="addClassFun(index)">
+=======
+                                <div class="seat" v-for="n in 19" :key="n.id" :class="{'seatChoosed': clickIndex==n }"  v-on:click="addClassFun(n)">
+>>>>>>> parent of cf8a432... 修改背景图片
                                   {{ n }}
                                 </div> -->
                                 <div class="seatSold" v-for="n in 2" :key="n.id">
@@ -158,26 +162,22 @@ export default {
         'title': 'cinema-detail',
     },
     data() {
-      return {
-        clickIndex: 0,
-        clickList:[
-          0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0
-        ]
-      } 
+        clickIndex: 0
     },
     methods: {
       addClassFun: function(n) {
           this.clickIndex = n;
           alert(this.clickIndex);
       }
+<<<<<<< HEAD
 
       // addClassFun: function(index) {
       //     this.clickList[index] = 1;
       //     alert(this.clickList[index]);
       // }
 
+=======
+>>>>>>> parent of cf8a432... 修改背景图片
     }
 
 
