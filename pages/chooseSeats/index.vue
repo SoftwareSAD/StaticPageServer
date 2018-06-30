@@ -103,11 +103,11 @@
                     </div>
                 </div>
                 <div class="ticket-info">
-                    <div class="no-ticket">
+                    <div class="no-ticket" :class="{'ticket-active': !isTicketActive}">
                         <p class="buy-limit">座位：一次最多选4个座位</p>
                         <p class="no-selected">请<span>点击左侧</span>座位图选择座位</p>
                     </div>
-                    <div class="has-ticket">
+                    <div class="has-ticket" :class="{'ticket-active': isTicketActive}">
                         <span class="text">座位：</span>
                         <div class="ticket-container" data-limit="4">
                           <span class="ticket" v-for="(item, index) in clickList" v-if="item == 1" :key="index">
@@ -164,10 +164,8 @@ export default {
           0, 0, 0, 0, 0, 0, 0, 0
         ],
         seatNum: 0,
-        seatId:[
-        ]
 
-
+        isTicketActive: ['false']
       }
 
     },
@@ -204,7 +202,8 @@ export default {
           if (this.seatNum < 4) {
             this.$set(this.clickList,index,1);
             this.seatNum++;
-            this.seatId.push({ index: index,row: Math.floor((index+1)/6)+1, col: (index+1)%6 });
+            this.$set(this.isTicketActive, 0, 'true');
+            // alert(this.isTicketActive)
           } else {
             alert("最多选4个座位！")
           }
@@ -578,8 +577,15 @@ td {
 }
 /* has-ticket */
 .side .ticket-info .has-ticket {
+  display: none;
+}
+
+.side .ticket-info .ticket-active {
   display: block;
 }
+
+
+
 
 .side .ticket-info .buy-limit {
   font-size: 14px;
