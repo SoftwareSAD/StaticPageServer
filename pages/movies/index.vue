@@ -126,7 +126,7 @@
         ],
         position_list: [
           {position_name: "全部"},
-          {position_name: "内地"},
+          {position_name: "大陆"},
           {position_name: "美国"},
           {position_name: "英国"},
           {position_name: "日韩"},
