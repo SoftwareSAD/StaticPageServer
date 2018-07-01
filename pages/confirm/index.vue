@@ -56,7 +56,9 @@
                 <span class="price">{{total_price}}</span>
             </div>
             <div>
-                <div class="pay-btn" data-order-id="3206359556" data-act="pay-click" data-bid="b_u30afks6">确认支付</div>
+                <div class="pay-btn" >
+                  <a href="/" v-on:click="comeback">确认支付</a>
+                </div>
             </div>
         </div>
     </div>
@@ -89,7 +91,13 @@ export default {
       film_name: filmName,
       total_price: totalprice
     }
+  },
+  methods: {
+    comeback: function(event) {
+      alert('确认支付');
+    }
   }
+
 }
 
 </script>
