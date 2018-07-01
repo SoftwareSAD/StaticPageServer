@@ -315,6 +315,7 @@ router.get('/getHotSortedMovies', async (req, res, next) => {
   console.log('########按照热度对电影排序#########');
   let page_length = 30;   // 获取30个
   let page = req.query.currentPage
+  console.log(page);
   let count = (page - 1) * page_length
   let MoviesArr = await MovieModel.find({online_time: {$regex: '2018'}}).exec();
   let findMovies = [];
@@ -490,8 +491,7 @@ router.get('/getFilmList', async (req, res, next) => {
     //console.log('Yes');
     let page_length = 30;   // 获取30个
     let count = (page - 1) * page_length
-    let MoviesArr = await MovieModel.find({movie_star: {$regex: /^\d+([\.](\d)+)?$/}}).sort({movie_star: -1}).limit(60).exec()
-    //let MoviesArr = await MovieModel.find({movie_star: {$regex: /^\d+(\.\d+)?$/}}).sort({movie_star: -1}).limit(60).exec()
+    let MoviesArr = await MovieModel.find({movie_star: {$lt: String(10)}}).collation({"locale": "zh", numericOrdering:true}).sort({movie_star: -1}).limit(30).exec();
     console.log(MoviesArr.length)
     for (let item of MoviesArr) {
       let ob = JSON.parse(JSON.stringify(item));
