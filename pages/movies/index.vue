@@ -68,7 +68,9 @@
           </dl>
         </div>
         <div class="movies-pager">
-          <b-pagination align="center" :total-rows="900" v-model="currentPage" :per-page="30" @click.native="changeLimit(MovieType, Distriction, onlineTime)"></b-pagination>
+          <!--<b-pagination align="center" :total-rows="900" v-model="currentPage" :per-page="30" @click.native="changeLimit(MovieType, Distriction, onlineTime)"></b-pagination>-->
+          <b-pagination align="center" :total-rows="900" v-model="currentPage" :per-page="30" @click.native="getMoviesByPage()"></b-pagination>
+          <div>currentPage: {{currentPage}}</div>
         </div>
       </div>
     </div>
@@ -173,6 +175,12 @@
               nowfilm = data.data
             }
           }
+          else{
+            let {data} = await axios.get('/api/getMoviesByAll', {params: {type: this.MovieType, country: this.Distriction, online_time: this.onlineTime, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
         } catch (e) {
           console.log(e)
         }
@@ -185,29 +193,78 @@
         try {
           // console.log(currentPage)
           if(this.sortType == "按热门排序"){
-            let {data} = await axios.get('/api/getHotSortedMovies', {params: {currentPage: 1}})
+            let {data} = await axios.get('/api/getHotSortedMovies', {params: {currentPage: this.currentPage}})
             if(!data.errorCode) {
               nowfilm = data.data
             }
           }
           else if(this.sortType == "按时间排序"){
-            let {data} = await axios.get('/api/getOnlineSortedMovies', {params: {currentPage: 1}})
+            let {data} = await axios.get('/api/getOnlineSortedMovies', {params: {currentPage: this.currentPage}})
             if(!data.errorCode) {
               nowfilm = data.data
             }
           }
           else if(this.sortType == "按评价排序"){
-            let {data} = await axios.get('/api/getEvalSortedMovies', {params: {currentPage: 1}})
+            let {data} = await axios.get('/api/getEvalSortedMovies', {params: {currentPage: this.currentPage}})
             if(!data.errorCode) {
               nowfilm = data.data
             }
           }
-
         } catch (e) {
           // console.log(e)
         }
         this.movie_list = nowfilm;
-      }
+      },
+      async getMoviesByPage() {
+        let nowfilm = [];
+        try {
+          if(this.sortType == "按热门排序"){
+            let {data} = await axios.get('/api/getHotSortedMovies', {params: {currentPage: this.currentPage}})
+            if(!data.errorCode) {
+             nowfilm = data.data
+            }
+          }
+          else if(this.sortType == "按时间排序"){
+           let {data} = await axios.get('/api/getOnlineSortedMovies', {params: {currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+             }
+           }
+          else if(this.sortType == "按评价排序"){
+            let {data} = await axios.get('/api/getEvalSortedMovies', {params: {currentPage: this.currentPage}})
+             if(!data.errorCode) {
+              nowfilm = data.data
+             }
+           }
+          else if(this.Distriction=="全部" && this.onlineTime=="全部"){
+            let {data} = await axios.get('/api/getMoviesByType', {params: {type: this.MovieType, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+          else if(this.MovieType=="全部" && this.onlineTime=="全部"){
+            let {data} = await axios.get('/api/getMoviesByCountry', {params: {country: this.Distriction, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+          else if(this.MovieType=="全部" && this.Distriction=="全部"){
+            let {data} = await axios.get('/api/getMoviesByDate', {params: {online_time: this.onlineTime, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+          else{
+            let {data} = await axios.get('/api/getMoviesByAll', {params: {type: this.MovieType, country: this.Distriction, online_time: this.onlineTime, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+        } catch (e) {
+        // console.log(e)
+        }
+          this.movie_list = nowfilm;
+      },
     }
   }
 </script>

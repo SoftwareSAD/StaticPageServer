@@ -26,8 +26,8 @@
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
-          <b-form-input size="sm" type="text" placeholder="Search"/>
-          <b-button href="/search" size="sm" class="my-sm-0" type="submit">Search</b-button>
+          <b-form-input v-model="inputText" type="text" size="sm" placeholder="Search"/>
+          <b-button :href="'/movies?sort_ID='+inputText" size="sm" class="my-sm-0" type="submit">Search</b-button>
         </b-nav-form>
 
         <b-nav-item-dropdown right>
@@ -49,6 +49,11 @@
 <script>
   export default {
     name: 'top-nav',
+    data(){
+      return {
+        inputText: ''
+      }
+    },
     methods: {
       async logout() {
         await this.$store.dispatch('logout')

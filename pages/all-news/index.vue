@@ -20,7 +20,7 @@
     </div>
     <!--分页栏--每页10项，共30页-->
     <div class="pag-nav">
-      <b-pagination align="center" :total-rows="300" v-model="currentPage" :per-page="10" @click.native="getNewsByPage()"></b-pagination>
+      <b-pagination align="center" :total-rows="300" v-model="currentPage" :per-page="10" v-on:click.native="getNewsByPage()"></b-pagination>
     </div>
   </div>
 </template>
