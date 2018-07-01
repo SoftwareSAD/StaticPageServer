@@ -175,6 +175,12 @@
               nowfilm = data.data
             }
           }
+          else{
+            let {data} = await axios.get('/api/getMoviesByAll', {params: {type: this.MovieType, country: this.Distriction, online_time: this.onlineTime, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
         } catch (e) {
           console.log(e)
         }
@@ -244,6 +250,12 @@
           }
           else if(this.MovieType=="全部" && this.Distriction=="全部"){
             let {data} = await axios.get('/api/getMoviesByDate', {params: {online_time: this.onlineTime, currentPage: this.currentPage}})
+            if(!data.errorCode) {
+              nowfilm = data.data
+            }
+          }
+          else{
+            let {data} = await axios.get('/api/getMoviesByAll', {params: {type: this.MovieType, country: this.Distriction, online_time: this.onlineTime, currentPage: this.currentPage}})
             if(!data.errorCode) {
               nowfilm = data.data
             }

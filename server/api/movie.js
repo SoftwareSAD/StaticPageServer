@@ -551,7 +551,7 @@ router.get('/getFilmList', async (req, res, next) => {
     endYear = 1969
   }
   for (var i = 0; i < inputArr.length; i++) {
-    for (var j = startYear; j <= startYear; j++) {
+    for (var j = startYear; j <= endYear; j++) {
       if (inputArr[i].online_time.indexOf(String(j)) != -1) {
         outputArr.push(inputArr[i])
       }
@@ -626,8 +626,11 @@ router.get('/getMoviesByAll', async (req, res, next) => {
     }
     return _dbSuccess(res, '获取电影成功', result)
   } else if (online_time == '全部') {   // 根据国家和类型搜索
+    console.log('Yes');
     let MoviesArr = await MovieModel.find({movie_type: {$regex: key}}).exec();
+    console.log(MoviesArr.length);
     let findMovies = searchByCountry(MoviesArr, country)
+    console.log(findMovies.length)
     let result = []
     for (var i = count; i < count + page_length && i < findMovies.length; i++) {
       let ob = JSON.parse(JSON.stringify(findMovies[i]));
@@ -636,8 +639,7 @@ router.get('/getMoviesByAll', async (req, res, next) => {
     return _dbSuccess(res, '获取电影成功', result)
   } else if (type == '全部') {   // 根据国家和上映时间搜索
     let MoviesArr = await MovieModel.find({}).exec();
-    let NewArr = searchByCountry(MoviesArr, country)
-    let findMovies = searchByYear(NewArr, online_time)
+    let findMovies = searchByYear(MoviesArr, online_time)
     let result = []
     for (var i = count; i < count + page_length && i < findMovies.length; i++) {
       let ob = JSON.parse(JSON.stringify(findMovies[i]));
