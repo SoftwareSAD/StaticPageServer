@@ -127,7 +127,7 @@ export default {
   .aside {
     width: 350px;
     float:right;
-    margin-right: 60px;
+    margin-right: 30px;
     overflow: hidden;
 
   }
@@ -175,7 +175,7 @@ export default {
   .main {
     width: 850px;
     height: auto;
-    margin-left: 60px;
+    margin-left: 30px;
   }
   .film-context {
     display: inline-block;
