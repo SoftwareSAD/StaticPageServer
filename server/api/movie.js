@@ -514,4 +514,147 @@ router.get('/getFilmList', async (req, res, next) => {
   return _dbSuccess(res, '获取指定限制的电影列表', findMovies)
 });
 
+/**
+ * @desc 根据所有条件查询电影
+ * @param   online_time: 上映时间
+                country: 国家
+                   type: 电影类型
+            currentPage: 当前是第几页
+ * @return 返回30个电影
+ * */
+
+// 根据年份筛选
+ function searchByYear(inputArr, year) {
+  let outputArr = []
+  let startYear = 1950
+  let endYear = 2025
+  if (year == '2018') {
+    startYear = 2018
+    endYear = 2018
+  } else if (year == '2011-2017') {
+    startYear = 2011
+    endYear = 2017
+  } else if (year == '2000-2010') {
+    startYear = 2000
+    endYear = 2010
+  } else if (year == '90年代') {
+    startYear = 1990
+    endYear = 1999
+  } else if (year == '80年代') {
+    startYear = 1980
+    endYear = 1989
+  } else if (year == '70年代') {
+    startYear = 1970
+    endYear = 1979
+  } else if (year == '更早') {
+    startYear = 1950
+    endYear = 1969
+  }
+  for (var i = 0; i < inputArr.length; i++) {
+    for (var j = startYear; j <= startYear; j++) {
+      if (inputArr[i].online_time.indexOf(String(j)) != -1) {
+        outputArr.push(inputArr[i])
+      }
+    }
+  }
+  return outputArr
+ }
+
+// 根据类型筛选
+ function searchByType(inputArr, type) {
+  let outputArr = []
+  for(var i = 0; i < inputArr.length; i++) {
+    if (inputArr[i].movie_type.indexOf(type) != -1) {
+      outputArr.push(inputArr[i])
+    }
+  }
+  return outputArr
+ }
+
+// 根据国家筛选
+ function searchByCountry(inputArr, country) {
+  let outputArr = []
+  if (country == '全部') {
+    for(var i = 0; i < inputArr.length; i++) {
+      outputArr.push(inputArr[i])
+    }
+  } else if (country == '日韩') {
+    for(var i = 0; i < inputArr.length; i++) {
+      if (inputArr[i].movie_type.indexOf('日本') != -1 || inputArr[i].movie_type.indexOf('韩国') != -1) {
+        outputArr.push(inputArr[i])
+      }
+    }
+  } else if (country == '欧洲') {
+    for(var i = 0; i < inputArr.length; i++) {
+      if (inputArr[i].movie_type.indexOf('意大利') != -1 || inputArr[i].movie_type.indexOf('西班牙') != -1 ||
+       inputArr[i].movie_type.indexOf('德国') != -1 || inputArr[i].movie_type.indexOf('波兰') != -1) {
+        outputArr.push(inputArr[i])
+      }
+    }
+  } else if (country == '其他') {
+    for(var i = 0; i < inputArr.length; i++) {
+      if (inputArr[i].movie_type.indexOf('泰国') != -1 || inputArr[i].movie_type.indexOf('俄罗斯') != -1 ||
+       inputArr[i].movie_type.indexOf('澳大利亚') != -1 || inputArr[i].movie_type.indexOf('伊朗') != -1) {
+        outputArr.push(inputArr[i])
+      }
+    }
+  } else {
+    for(var i = 0; i < inputArr.length; i++) {
+      if (inputArr[i].movie_type.indexOf(country) != -1) {
+        outputArr.push(inputArr[i])
+      }
+    }
+  }
+  return outputArr
+ }
+
+router.get('/getMoviesByAll', async (req, res, next) => {
+  console.log('########根据全部条件查询电影#########');
+  let page_length = 30;   // 获取30个
+  let online_time = req.query.online_time
+  let country = req.query.country
+  let type = req.query.type
+  let page = req.query.currentPage
+  let count = (page - 1) * page_length
+  if (country == '全部') {  // 根据上映时间和类型搜索
+    let MoviesArr = await MovieModel.find({movie_type: {$regex: key}}).exec();
+    let findMovies = searchByYear(MoviesArr, online_time)
+    let result = []
+    for (var i = count; i < count + page_length && i < findMovies.length; i++) {
+      let ob = JSON.parse(JSON.stringify(findMovies[i]));
+      result.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', result)
+  } else if (online_time == '全部') {   // 根据国家和类型搜索
+    let MoviesArr = await MovieModel.find({movie_type: {$regex: key}}).exec();
+    let findMovies = searchByCountry(MoviesArr, country)
+    let result = []
+    for (var i = count; i < count + page_length && i < findMovies.length; i++) {
+      let ob = JSON.parse(JSON.stringify(findMovies[i]));
+      result.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', result)
+  } else if (type == '全部') {   // 根据国家和上映时间搜索
+    let MoviesArr = await MovieModel.find({}).exec();
+    let NewArr = searchByCountry(MoviesArr, country)
+    let findMovies = searchByYear(NewArr, online_time)
+    let result = []
+    for (var i = count; i < count + page_length && i < findMovies.length; i++) {
+      let ob = JSON.parse(JSON.stringify(findMovies[i]));
+      result.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', result)
+  } else {   // 根据国家、类型和上映时间搜索
+    let MoviesArr1 = await MovieModel.find({movie_type: {$regex: key}}).exec(); // 按照类型的搜索结果
+    let MoviesArr2 = searchByYear(MoviesArr1, online_time) // 按照时间、类型的搜索结果
+    let findMovies = searchByCountry(MoviesArr2, country)  // 按照国家、时间、类型的搜索结果
+    let result = []
+    for (var i = count; i < count + page_length && i < findMovies.length; i++) {
+      let ob = JSON.parse(JSON.stringify(findMovies[i]));
+      result.push(ob)
+    }
+    return _dbSuccess(res, '获取电影成功', result)
+  }
+})
+
 export default router
