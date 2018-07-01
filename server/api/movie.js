@@ -200,7 +200,7 @@ router.get('/getMoviesByCountry', async (req, res, next) => {
     }
     return _dbSuccess(res, '获取电影成功', findMovies)
   } else {
-    if (key == '内地') {
+    if (key == '大陆') {
       key = '大陆'
     }
     let MoviesArr = await MovieModel.find({country: {$regex: key}}).limit(page_length).skip(count).exec();
@@ -534,6 +534,7 @@ router.get('/getFilmList', async (req, res, next) => {
   } else if (year == '2011-2017') {
     startYear = 2011
     endYear = 2017
+    console.log(startYear)
   } else if (year == '2000-2010') {
     startYear = 2000
     endYear = 2010
@@ -554,8 +555,10 @@ router.get('/getFilmList', async (req, res, next) => {
     for (var j = startYear; j <= endYear; j++) {
       if (inputArr[i].online_time.indexOf(String(j)) != -1) {
         outputArr.push(inputArr[i])
+        //console.log('Yes')
       }
     }
+    console.log(inputArr)
   }
   return outputArr
  }
@@ -573,38 +576,61 @@ router.get('/getFilmList', async (req, res, next) => {
 
 // 根据国家筛选
  function searchByCountry(inputArr, country) {
+   console.log('国家')
   let outputArr = []
   if (country == '全部') {
     for(var i = 0; i < inputArr.length; i++) {
       outputArr.push(inputArr[i])
     }
+  } else if (country == '美国') {
+    for(var i = 0; i < inputArr.length; i++) {
+      console.log('美国')
+      if (inputArr[i].country.indexOf('美国') != -1) {
+        outputArr.push(inputArr[i])
+      }
+    }
+  } else if (country == '英国') {
+    for (var i = 0; i < inputArr.length; i++) {
+      if (inputArr[i].country.indexOf('英国') != -1) {
+        outputArr.push(inputArr[i])
+      }
+    }
+  } else if (country == '大陆') {
+    for(var i = 0; i < inputArr.length; i++) {
+      console.log('大陆')
+      if (inputArr[i].country.indexOf('大陆') != -1) {
+        outputArr.push(inputArr[i])
+      }
+    }
   } else if (country == '日韩') {
     for(var i = 0; i < inputArr.length; i++) {
-      if (inputArr[i].movie_type.indexOf('日本') != -1 || inputArr[i].movie_type.indexOf('韩国') != -1) {
+      if (inputArr[i].country.indexOf('日本') != -1 || inputArr[i].country.indexOf('韩国') != -1) {
         outputArr.push(inputArr[i])
       }
     }
   } else if (country == '欧洲') {
     for(var i = 0; i < inputArr.length; i++) {
-      if (inputArr[i].movie_type.indexOf('意大利') != -1 || inputArr[i].movie_type.indexOf('西班牙') != -1 ||
-       inputArr[i].movie_type.indexOf('德国') != -1 || inputArr[i].movie_type.indexOf('波兰') != -1) {
+      if (inputArr[i].country.indexOf('意大利') != -1 || inputArr[i].country.indexOf('西班牙') != -1 ||
+       inputArr[i].country.indexOf('德国') != -1 || inputArr[i].country.indexOf('波兰') != -1) {
         outputArr.push(inputArr[i])
       }
     }
   } else if (country == '其他') {
     for(var i = 0; i < inputArr.length; i++) {
-      if (inputArr[i].movie_type.indexOf('泰国') != -1 || inputArr[i].movie_type.indexOf('俄罗斯') != -1 ||
-       inputArr[i].movie_type.indexOf('澳大利亚') != -1 || inputArr[i].movie_type.indexOf('伊朗') != -1) {
+      if (inputArr[i].country.indexOf('泰国') != -1 || inputArr[i].country.indexOf('俄罗斯') != -1 ||
+       inputArr[i].country.indexOf('澳大利亚') != -1 || inputArr[i].country.indexOf('伊朗') != -1) {
         outputArr.push(inputArr[i])
       }
     }
   } else {
     for(var i = 0; i < inputArr.length; i++) {
-      if (inputArr[i].movie_type.indexOf(country) != -1) {
+      if (inputArr[i].country.indexOf(country) != -1) {
         outputArr.push(inputArr[i])
       }
     }
   }
+  console.log('Yes')
+  console.log(outputArr.length)
   return outputArr
  }
 
@@ -617,7 +643,7 @@ router.get('/getMoviesByAll', async (req, res, next) => {
   let page = req.query.currentPage
   let count = (page - 1) * page_length
   if (country == '全部') {  // 根据上映时间和类型搜索
-    let MoviesArr = await MovieModel.find({movie_type: {$regex: key}}).exec();
+    let MoviesArr = await MovieModel.find({movie_type: {$regex: type}}).exec();
     let findMovies = searchByYear(MoviesArr, online_time)
     let result = []
     for (var i = count; i < count + page_length && i < findMovies.length; i++) {
@@ -627,7 +653,7 @@ router.get('/getMoviesByAll', async (req, res, next) => {
     return _dbSuccess(res, '获取电影成功', result)
   } else if (online_time == '全部') {   // 根据国家和类型搜索
     console.log('Yes');
-    let MoviesArr = await MovieModel.find({movie_type: {$regex: key}}).exec();
+    let MoviesArr = await MovieModel.find({movie_type: {$regex: type}}).exec();
     console.log(MoviesArr.length);
     let findMovies = searchByCountry(MoviesArr, country)
     console.log(findMovies.length)
@@ -638,8 +664,9 @@ router.get('/getMoviesByAll', async (req, res, next) => {
     }
     return _dbSuccess(res, '获取电影成功', result)
   } else if (type == '全部') {   // 根据国家和上映时间搜索
-    let MoviesArr = await MovieModel.find({}).exec();
+    let MoviesArr = await MovieModel.find({country:{$regex: country}}).exec();
     let findMovies = searchByYear(MoviesArr, online_time)
+    console.log(findMovies)
     let result = []
     for (var i = count; i < count + page_length && i < findMovies.length; i++) {
       let ob = JSON.parse(JSON.stringify(findMovies[i]));
@@ -647,7 +674,7 @@ router.get('/getMoviesByAll', async (req, res, next) => {
     }
     return _dbSuccess(res, '获取电影成功', result)
   } else {   // 根据国家、类型和上映时间搜索
-    let MoviesArr1 = await MovieModel.find({movie_type: {$regex: key}}).exec(); // 按照类型的搜索结果
+    let MoviesArr1 = await MovieModel.find({movie_type: {$regex: type}}).exec(); // 按照类型的搜索结果
     let MoviesArr2 = searchByYear(MoviesArr1, online_time) // 按照时间、类型的搜索结果
     let findMovies = searchByCountry(MoviesArr2, country)  // 按照国家、时间、类型的搜索结果
     let result = []
