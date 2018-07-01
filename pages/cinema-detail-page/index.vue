@@ -215,6 +215,17 @@ export default {
       } catch (e) {
         console.log(e)
       }
+      if (!nowfilm) {     //未取到（影院有些不中 ）
+        let name = '侏罗纪世界2';        //直接取它吧
+        try {
+          let {data} = await axios.get('/api/getSingleFilm', {params: {name: name}})
+          if(!data.errorCode) {
+            nowfilm = data.data[0]
+          }
+        } catch (e) {
+          console.log(e)
+        }
+      }
     } else {      //已经选择了电影直接获取
       try {
         let {data} = await axios.get('/api/getSingleFilm', {params: {name: filmName}})
@@ -255,14 +266,21 @@ export default {
     },
     async clickMovie(index) {
       if (this.isActive != index) {
-        this.isActive = index;
-        this.isCurrentActive = false;
         // 拉取当前的电影信息
           let nowFilmSrc = this.cinema.online_moive[index];
           try {
             let {data} = await axios.get('/api/getFilmByImg', {params: {src: nowFilmSrc}})
             if(!data.errorCode) {
-              this.film = data.data[0]
+              if (data.data[0]) {
+                alert("OK")
+                // 能拉取到
+                this.film = data.data[0]
+                this.isActive = index;
+                this.isCurrentActive = false;
+              } else {
+                alert("此电影暂时无法购买，请选择其他电影")
+              }
+
             }
           } catch (e) {
             console.log(e)
