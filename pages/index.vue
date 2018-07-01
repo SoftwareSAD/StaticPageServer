@@ -35,7 +35,7 @@
         <div v-for="(film, index) in hotFilms" v-if="index < 8" class="film-context" :key="index">
           <img class="index-film-picture" v-bind:src="film.img" v-bind:alt="film.movie_name" />
           <span class="index-film_name">{{film.movie_name}}</span>
-          <a class="ticket-link" :href="href + '?filmName=' + film.movie_name" target="_blank"><span >购票</span></a>
+          <a class="ticket-link" :href="href + '?filmName=' + film.movie_name" target="_blank"><span >详情</span></a>
         </div>
       </div>
       <!--即将上映-->
@@ -48,7 +48,7 @@
         <div v-for="(film, index) in readyFilms" v-if="index < 8" class="film-context" :key="index">
           <img class="index-film-picture" v-bind:src="film.img" v-bind:alt="film.movie_name" />
           <span class="index-film_name">{{film.movie_name}}</span>
-          <a class="ticket-link" :href="href + '?filmName=' + film.movie_name" target="_blank"><span >购票</span></a>
+          <a class="ticket-link" :href="href + '?filmName=' + film.movie_name" target="_blank"><span >详情</span></a>
         </div>
       </div>
     </div>
