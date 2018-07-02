@@ -262,8 +262,13 @@ var _vue2 = _interopRequireDefault(_vue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+<<<<<<< HEAD
 var host = process.env.HOST || '0.0.0.0';
 var port = process.env.PORT || 80;
+=======
+var host = process.env.HOST || '127.0.0.1'; //0.0.0.0
+var port = process.env.PORT || 3000; //80
+>>>>>>> d88267551ededaa6fe51f3a72e225717d7e6c420
 var eventBus = new _vue2.default();
 var app = (0, _express2.default)();
 app.set('port', port);
@@ -2820,9 +2825,14 @@ module.exports = {
 
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3389',
+<<<<<<< HEAD
     HOST: '0.0.0.0', //0.0.0.0
     PORT: '80'
     // NODE_ENV : 'production'//设置生产/开发模式 production/development
+=======
+    HOST: '127.0.0.1', //0.0.0.0
+    PORT: '3000' //80
+>>>>>>> d88267551ededaa6fe51f3a72e225717d7e6c420
   },
 
   build: {
@@ -2846,7 +2856,11 @@ module.exports = {
 /* 29 */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = {"name":"sad-project","version":"1.0.0","description":"My tremendous Nuxt.js project","author":"SAD","private":true,"scripts":{"dev":"backpack dev","build":"nuxt build && backpack build && npm start","start":"cross-env NODE_ENV=production node build/main.js","generate":"nuxt generate","lint":"eslint --ext .js,.vue --ignore-path .gitignore .","precommit":"npm run lint"},"config":{"nuxt":{"host":"0.0.0.0","port":"80"}},"dependencies":{"@nuxtjs/axios":"^5.0.0","body-parser":"^1.18.3","bootstrap":"^4.0.0-beta.2","bootstrap-vue":"^2.0.0-rc.11","crypto":"^1.0.1","dotenv":"^6.0.0","express":"^4.15.3","express-jwt":"^5.3.1","fs":"0.0.1-security","http":"0.0.0","jquery":"^3.3.1","js-cookie":"^2.2.0","jsonwebtoken":"^8.3.0","jwt-decode":"^2.2.0","mongoose":"^5.1.6","nuxt":"^1.0.0","tracer":"^0.9.0","vue":"^2.5.16","vue-baidu-map":"^0.21.10","vuelidate":"^0.7.4"},"devDependencies":{"babel-core":"^6.26.3","babel-eslint":"^8.2.1","babel-polyfill":"^6.26.0","babel-preset-es2015":"^6.24.1","backpack-core":"^0.7.0","cross-env":"^5.0.1","eslint":"^4.15.0","eslint-loader":"^2.0.0","eslint-plugin-vue":"^4.0.0","nodemon":"^1.11.0"}}
+=======
+module.exports = {"name":"sad-project","version":"1.0.0","description":"My tremendous Nuxt.js project","author":"SAD","private":true,"scripts":{"dev":"backpack dev","build":"nuxt build && backpack build && npm start","start":"cross-env NODE_ENV=production node build/main.js","generate":"nuxt generate","lint":"eslint --ext .js,.vue --ignore-path .gitignore .","precommit":"npm run lint"},"dependencies":{"@nuxtjs/axios":"^5.0.0","body-parser":"^1.18.3","bootstrap":"^4.0.0-beta.2","bootstrap-vue":"^2.0.0-rc.11","crypto":"^1.0.1","dotenv":"^6.0.0","express":"^4.15.3","express-jwt":"^5.3.1","fs":"0.0.1-security","http":"0.0.0","jquery":"^3.3.1","js-cookie":"^2.2.0","jsonwebtoken":"^8.3.0","jwt-decode":"^2.2.0","mongoose":"^5.1.6","nuxt":"^1.0.0","tracer":"^0.9.0","vue":"^2.5.16","vue-baidu-map":"^0.21.10","vuelidate":"^0.7.4"},"devDependencies":{"babel-core":"^6.26.3","babel-eslint":"^8.2.1","babel-polyfill":"^6.26.0","babel-preset-es2015":"^6.24.1","backpack-core":"^0.7.0","cross-env":"^5.0.1","eslint":"^4.15.0","eslint-loader":"^2.0.0","eslint-plugin-vue":"^4.0.0","nodemon":"^1.11.0"}}
+>>>>>>> d88267551ededaa6fe51f3a72e225717d7e6c420
 
 /***/ })
 /******/ ]);

@@ -15,7 +15,11 @@
           <b-dropdown-item href="/movies?sort_ID=1">正在热映</b-dropdown-item>
           <b-dropdown-item href="/movies?sort_ID=2">即将上映</b-dropdown-item>
           <b-dropdown-item href="/movies?sort_ID=3">经典影片</b-dropdown-item>
+<<<<<<< HEAD
         <!-- <b-dropdown-item href="/cinema-detail-page">购买影票</b-dropdown-item>-->
+=======
+          <!-- <b-dropdown-item href="/cinema-detail-page">购买影票</b-dropdown-item> -->
+>>>>>>> d88267551ededaa6fe51f3a72e225717d7e6c420
         </b-nav-item-dropdown>
         <b-nav-item-dropdown text="资讯" left no-caret>
           <b-dropdown-item href="/hot-news">热点资讯</b-dropdown-item>
