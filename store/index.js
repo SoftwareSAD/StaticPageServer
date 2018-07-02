@@ -2,7 +2,7 @@ import axios from 'axios'
 import Cookie from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 
-const backendURL = 'http://localhosts:3000';
+const backendURL = `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`;
 
 let instance = axios.create({
   timeout: 1000,

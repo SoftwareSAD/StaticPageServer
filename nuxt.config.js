@@ -30,8 +30,9 @@ module.exports = {
 
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    HOST: '127.0.0.1',
-    PORT: '3000'
+    HOST: '127.0.0.1',//0.0.0.0
+    PORT: '3000',
+    NODE_ENV : 'development'//设置生产/开发模式
   },
 
   build: {
