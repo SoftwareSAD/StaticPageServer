@@ -5,17 +5,17 @@
     <div class="news-cell-group">
       <div class="news-cell clearfix" v-for="item in allnewsdata" :key="item.id">
         <div class="news-cell-img float-left">
-          <a :href="item.newsLink" :title="item.newsTitle" target="_blank">
+          <a :href="'http://maoyan.com' + item.news_url" :title="item.title" target="_blank">
             <img :src="item.cover_img_src"/>
           </a>
         </div>
         <div class="news-cell-detail float-left">
-          <a :href="item.newsLink" title="item.newsTitle" target="_blank">
+          <a :href="'http://maoyan.com' + item.news_url" title="item.title" target="_blank">
             <h5 class="news-cell-title two-line-text">{{item.title}}</h5>
           </a>
           <article class="news-cell-article three-line-text">{{item.abstract}}</article>
         </div>
-        <small class="news-cell-info float-right">STAR MOVIES<span class="news-date text-muted">{{item.date}}</span></small>
+        <small class="news-cell-info float-right">STAR MOVIES<span class="news-date text-muted">{{item.news_date}}</span></small>
       </div>
     </div>
     <!--分页栏--每页10项，共30页-->

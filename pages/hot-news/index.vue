@@ -7,10 +7,10 @@
       </div>
       <div class="news-box-container clearfix" id="vue-app1">
         <div class="news-box" v-for="item in newsdata" :key="item.id">
-          <a  :href="item.url" target="_blank" :title="item.title">
-            <img class="news-box-img" :src="item.cover_img_scr" alt="news img">
+          <a  :href=" 'http://maoyan.com' + item.news_url" target="_blank" :title="item.title">
+            <img class="news-box-img" :src="item.cover_img_src" alt="news img"/>
           </a>
-          <a  :href="item.url" target="_blank" :title="item.title">
+          <a :href="'http://maoyan.com' + item.news_url" target="_blank" :title="item.title">
             <p class="news-box-title two-line-text text-center">
               {{item.title}}
             </p>

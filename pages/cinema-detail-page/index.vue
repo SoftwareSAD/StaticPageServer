@@ -41,7 +41,8 @@
               <div class="movie" :class="{'active': isCurrentActive}" v-on:click="clickCurrentMovie">
                 <img :src="originalFilm.img" :alt="originalFilm.movie_name" />
               </div>
-              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" v-if="notSameFilm(originalFilm.img,movie_img) && index < 6" :key="index" :data-index="index" :class="{'active': isActive==index}" v-on:click="clickMovie(index)">
+              <div class="movie" v-for="(movie_img, index) in cinema.online_moive" 
+              v-if="notSameFilm(originalFilm.img,movie_img) && index < 6" :key="index" :data-index="index" :class="{'active': isActive==index}" v-on:click="clickMovie(index)">
                 <img :src="movie_img" alt="movie_img" />
               </div>
               <span class="pointer" style="left: 71.0138px;"></span>
