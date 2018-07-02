@@ -35,15 +35,6 @@ module.exports = {
     // NODE_ENV : 'production'//设置生产/开发模式 production/development
   },
 
-  config: {
-    entry: {
-      main: ['./server/index']
-    },
-    resolve: {
-      modules : ['./server']
-    }
-  },
-
   build: {
     extractCSS: true,
     vendor: ['axios'],
