@@ -22,7 +22,7 @@ module.exports = {
 
   modules: [
     '@nuxtjs/axios',
-    'bootstrap-vue/nuxt',
+    'bootstrap-vue/nuxt'
   ],
   serverMiddleware: [
     bodyParser.json()
@@ -30,9 +30,18 @@ module.exports = {
 
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    HOST: 'localhost',//0.0.0.0
+    HOST: '127.0.0.1',//0.0.0.0
     PORT: '3000',
-    NODE_ENV : 'development'//设置生产/开发模式 production
+    // NODE_ENV : 'production'//设置生产/开发模式 production/development
+  },
+
+  config: {
+    entry: {
+      main: ['./server/index']
+    },
+    resolve: {
+      modules : ['./server']
+    }
   },
 
   build: {
