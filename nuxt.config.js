@@ -10,7 +10,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   loading: { color: '#FFFFFF' },
@@ -29,9 +29,9 @@ module.exports = {
   ],
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:4000',
-    HOST: '0.0.0.0',
-    PORT: '4000'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    HOST: '127.0.0.1',
+    PORT: '3000'
   },
 
   build: {
