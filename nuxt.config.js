@@ -25,8 +25,7 @@ module.exports = {
     'bootstrap-vue/nuxt',
   ],
   serverMiddleware: [
-    bodyParser.json(),
-    '~/server/api'
+    bodyParser.json()
   ],
 
   build: {
