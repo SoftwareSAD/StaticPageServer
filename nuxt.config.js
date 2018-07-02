@@ -28,6 +28,12 @@ module.exports = {
     bodyParser.json()
   ],
 
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:4000',
+    HOST: '0.0.0.0',
+    PORT: '4000'
+  },
+
   build: {
     extractCSS: true,
     vendor: ['axios'],
