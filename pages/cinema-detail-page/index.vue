@@ -166,7 +166,7 @@
 import Logo from '~/components/Logo.vue'
 import Adcolumn from '~/components/Adcolumn.vue'
 import axios from '~/plugins/axios'
-import BaiduMap from 'vue-baidu-map/components/Map/Map.vue'
+import BaiduMap from 'vue-baidu-map/components/map/Map.vue'
 
 
 export default {
