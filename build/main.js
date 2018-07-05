@@ -342,15 +342,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var router = _express2.default.Router();
 
-/**@desc db options*/
-var options = {
-  user: 'heygrandpa',
-  pass: 'SYSU2018',
-  keepAlive: true
-};
 _mongoose2.default.Promise = global.Promise;
 
-_mongoose2.default.connect('mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691/maoyanmovie', options);
+_mongoose2.default.connect('mongodb://sysu:sysu2018@120.77.37.156:27017/maoyanmovie?authSource=admin');
 var db = _mongoose2.default.connection;
 db.on('error', console.error.bind(console, '数据库连接失败:'));
 db.once('open', function () {
@@ -1945,7 +1939,7 @@ var movieSchema = new Schema({
 /**
  * @desc构建表模型
  */
-var MovieModel = _mongoose2.default.model('movie', movieSchema, 'new_decode_movie');
+var MovieModel = _mongoose2.default.model('movie', movieSchema, 'movie');
 
 exports.default = MovieModel;
 
@@ -2100,8 +2094,10 @@ router.get('/getCinemaByBrand', async function (req, res, next) {
 		return (0, _function._dbSuccess)(res, '获取电影院成功', findCinemas);
 	} else {
 		// 在电影院的名字中模糊搜索
-		var _cinemaArr2 = await _cinema2.default.find({ cinema_name: { $regex: key } }).limit(page_length).skip(count).sort({ cinema_name: -1 }).exec();
-		console.log(_cinemaArr2);
+		var brand = key.substring(0, 2);
+		console.log(brand);
+		var _cinemaArr2 = await _cinema2.default.find({ cinema_name: { $regex: brand } }).limit(page_length).skip(count).sort({ cinema_name: -1 }).exec();
+		// console.log(cinemaArr)
 		var _findCinemas2 = [];
 		var _iteratorNormalCompletion4 = true;
 		var _didIteratorError4 = false;
@@ -2281,7 +2277,10 @@ router.get('/getCinemaByAll', async function (req, res, next) {
 
 		return (0, _function._dbSuccess)(res, '获取电影院成功', _findCinemas4);
 	} else {
-		var _cinemaArr5 = await _cinema2.default.find({ cinema_name: { $regex: brand }, district: district }).limit(page_length).skip(count).exec();
+		var key = brand.substring(0, 2);
+		console.log("all: ");
+		console.log(key);
+		var _cinemaArr5 = await _cinema2.default.find({ cinema_name: { $regex: key }, district: district }).limit(page_length).skip(count).exec();
 		var _findCinemas5 = [];
 		var _iteratorNormalCompletion9 = true;
 		var _didIteratorError9 = false;
