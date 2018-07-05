@@ -8,7 +8,6 @@ import news from './news'
 import {config} from '../config'
 const router = express.Router()
 
-<<<<<<< HEAD
 /**@desc db options*/
 let options = {
   user: config.username,
@@ -18,11 +17,7 @@ let options = {
 mongoose.Promise = global.Promise
 
 mongoose.connect(config.url, options);
-=======
-mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://sysu:sysu2018@120.77.37.156:27017/maoyanmovie?authSource=admin');
->>>>>>> 45e2276d324e661687f9f96e7cd7fb22c6acc697
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, '数据库连接失败:'));
 db.once('open', function() {
