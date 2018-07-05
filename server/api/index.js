@@ -5,17 +5,18 @@ import movie from './movie'
 import cinema from './cinema'
 import users from './users'
 import news from './news'
+import {config} from '../config'
 const router = express.Router()
 
 /**@desc db options*/
 let options = {
-  user: 'heygrandpa',
-  pass: 'SYSU2018',
+  user: config.username,
+  pass: config.password,
   keepAlive: true,
 }
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691/maoyanmovie', options);
+mongoose.connect(config.url, options);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, '数据库连接失败:'));
 db.once('open', function() {
