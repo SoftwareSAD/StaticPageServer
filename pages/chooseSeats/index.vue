@@ -87,15 +87,15 @@
                     </div>
                     <div class="info-item">
                         <span>影厅 :</span>
-                        <span class="value text-ellipsis">3号厅</span>
+                        <span class="value text-ellipsis">{{room}}号厅</span>
                     </div>
                     <div class="info-item">
                         <span>版本 :</span>
-                        <span class="value text-ellipsis">英语3D</span>
+                        <span class="value text-ellipsis">{{film.country.indexOf("中国大陆") != -1 ? '国语' : '英语'}}</span>
                     </div>
                     <div class="info-item">
                         <span>场次 :</span>
-                        <span class="value text-ellipsis screen">今天 6月26 21:20</span>
+                        <span class="value text-ellipsis screen">{{date + '  ' + time}}</span>
                     </div>
                     <div class="info-item">
                         <span>票价 :</span>
@@ -129,7 +129,7 @@
                         </div>
                     </form>
                     <div class="confirm-btn" data-act="confirm-click" data-bid="b_0a0ep6pp">
-                        <a :href="'/confirm?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name+'&totalPrice='+totalPrice" >确认选座</a>
+                        <a :href="'/confirm?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name+'&totalPrice='+totalPrice+'&date='+date+'&time='+time+'&room='+room+'&list='+clickList.join('')">确认选座</a>
                     </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@ export default {
     data() {
       return {
         clickIndex: 0,
-        ticketPrice: 28,
+        ticketPrice: 42,
         totalPrice: 0,
         clickList:[
           0, 0, 0, 0, 0, 0, 0, 0,
@@ -172,6 +172,21 @@ export default {
   async asyncData({context, route}) {
     let filmName = route.query.filmName;      //取得电影名字
     let cinemaName = route.query.cinemaName;  //取得影院名字
+    let room = parseInt(route.query.room) + 2;
+    let dateIndex = parseInt(route.query.date);
+
+    let today = new Date()
+      let nowTime = today.getTime();
+      let ms = 24*3600*1000*dateIndex;
+      today.setTime(parseInt(nowTime + ms));
+      let oMoth = (today.getMonth() + 1).toString();
+      if (oMoth.length <= 1) oMoth = '0' + oMoth;
+      let oDay = today.getDate().toString();
+      if (oDay.length <= 1) oDay = '0' + oDay;
+      let str = '-'
+
+    let date = oMoth + str + oDay;
+    let time = route.query.time
     let nowcinema = {};
     let nowfilm = {};
     // 获取影院信息
@@ -193,7 +208,10 @@ export default {
       console.log(e)
     }
     return {cinema: nowcinema,
-      film: nowfilm,
+            film: nowfilm,
+            room: room,
+            date: date,
+            time: time,
     }
   },
     methods: {
