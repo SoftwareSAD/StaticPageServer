@@ -62,7 +62,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -175,6 +175,46 @@ module.exports = require("crypto");
 "use strict";
 
 
+/**
+ * @desc db config
+ * */
+module.exports.config = {
+  url: 'mongodb://sysu:sysu2018@120.77.37.156:27017/maoyanmovie?authSource=admin', // 普通不授权模式链接mongodb
+  domain: 'mlab.com', // 主域名
+  scheme: 'mongodb', // 协议
+  database: 'mlab.com', // 数据库名称
+  username: 'heygrandpa', // 管理员用户名称
+  password: 'SYSU2018' // 管理员密码
+
+
+  /**
+   * @desc InitAdmin
+   * */
+};module.exports.InitAdmin = {
+  username: 'admin', // 管理员用户昵称
+  password: 'admin', // 管理员密码
+  // nickname: 'admin', // 昵称
+  email: 'admin@vsorg.com', // email
+  cellphone: '13711111111', // phone
+  portrait: '../assets/img/logo/login-default-portrait.png' // 头像
+
+
+  /**
+   *@desc 短信发送
+   */
+};module.exports.SMS = {
+  smsapi: "api.smsbao.com",
+  user: "susie", // 短信平台账号
+  password: "smsbaoshiwojia13" // 短信平台密码
+};
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -207,36 +247,36 @@ var CinemaModel = _mongoose2.default.model('cinema', cinemaSchema, 'cinema');
 exports.default = CinemaModel;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(7);
 __webpack_require__(8);
 __webpack_require__(9);
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("babel-core/register");
+__webpack_require__(10);
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("babel-polyfill");
+module.exports = require("babel-core/register");
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("babel-polyfill");
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -246,13 +286,13 @@ var _express = __webpack_require__(0);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _nuxt = __webpack_require__(10);
+var _nuxt = __webpack_require__(11);
 
-var _api = __webpack_require__(11);
+var _api = __webpack_require__(12);
 
 var _api2 = _interopRequireDefault(_api);
 
-var _bodyParser = __webpack_require__(5);
+var _bodyParser = __webpack_require__(6);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
@@ -294,13 +334,13 @@ async function start() {
 start();
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("nuxt");
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -318,7 +358,7 @@ var _mongoose = __webpack_require__(1);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _smsverity = __webpack_require__(12);
+var _smsverity = __webpack_require__(13);
 
 var _smsverity2 = _interopRequireDefault(_smsverity);
 
@@ -338,13 +378,16 @@ var _news = __webpack_require__(24);
 
 var _news2 = _interopRequireDefault(_news);
 
+var _config = __webpack_require__(4);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
 
 _mongoose2.default.Promise = global.Promise;
 
-_mongoose2.default.connect('mongodb://sysu:sysu2018@120.77.37.156:27017/maoyanmovie?authSource=admin');
+_mongoose2.default.connect(_config.config.url);
+
 var db = _mongoose2.default.connection;
 db.on('error', console.error.bind(console, '数据库连接失败:'));
 db.once('open', function () {
@@ -369,7 +412,7 @@ router.use(_news2.default);
 exports.default = router;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -383,15 +426,15 @@ var _crypto = __webpack_require__(3);
 
 var _crypto2 = _interopRequireDefault(_crypto);
 
-var _http = __webpack_require__(13);
+var _http = __webpack_require__(14);
 
 var _http2 = _interopRequireDefault(_http);
 
-var _querystring = __webpack_require__(14);
+var _querystring = __webpack_require__(15);
 
 var _querystring2 = _interopRequireDefault(_querystring);
 
-var _config = __webpack_require__(15);
+var _config = __webpack_require__(4);
 
 var _express = __webpack_require__(0);
 
@@ -470,56 +513,16 @@ router.post('/sms', async function (req, res, next) {
 exports.default = router;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = require("http");
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("querystring");
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * @desc db config
- * */
-module.exports.config = {
-  url: 'mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691', // 普通不授权模式链接mongodb
-  domain: 'mlab.com', // 主域名
-  scheme: 'mongodb', // 协议
-  database: 'mlab.com', // 数据库名称
-  username: 'heygrandpa', // 管理员用户名称
-  password: 'SYSU2018' // 管理员密码
-
-
-  /**
-   * @desc InitAdmin
-   * */
-};module.exports.InitAdmin = {
-  username: 'admin', // 管理员用户昵称
-  password: 'admin', // 管理员密码
-  // nickname: 'admin', // 昵称
-  email: 'admin@vsorg.com', // email
-  cellphone: '13711111111', // phone
-  portrait: '../assets/img/logo/login-default-portrait.png' // 头像
-
-
-  /**
-   *@desc 短信发送
-   */
-};module.exports.SMS = {
-  smsapi: "api.smsbao.com",
-  user: "susie", // 短信平台账号
-  password: "smsbaoshiwojia13" // 短信平台密码
-};
 
 /***/ }),
 /* 16 */
@@ -540,7 +543,7 @@ var _function = __webpack_require__(2);
 
 var _express = __webpack_require__(0);
 
-var _cinema = __webpack_require__(4);
+var _cinema = __webpack_require__(5);
 
 var _cinema2 = _interopRequireDefault(_cinema);
 
@@ -1960,7 +1963,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _cinema = __webpack_require__(4);
+var _cinema = __webpack_require__(5);
 
 var _cinema2 = _interopRequireDefault(_cinema);
 
@@ -2095,7 +2098,7 @@ router.get('/getCinemaByBrand', async function (req, res, next) {
 	} else {
 		// 在电影院的名字中模糊搜索
 		var brand = key.substring(0, 2);
-		console.log(brand);
+		// console.log(brand)
 		var _cinemaArr2 = await _cinema2.default.find({ cinema_name: { $regex: brand } }).limit(page_length).skip(count).sort({ cinema_name: -1 }).exec();
 		// console.log(cinemaArr)
 		var _findCinemas2 = [];
@@ -2278,8 +2281,8 @@ router.get('/getCinemaByAll', async function (req, res, next) {
 		return (0, _function._dbSuccess)(res, '获取电影院成功', _findCinemas4);
 	} else {
 		var key = brand.substring(0, 2);
-		console.log("all: ");
-		console.log(key);
+		// console.log("all: ")
+		// console.log(key)
 		var _cinemaArr5 = await _cinema2.default.find({ cinema_name: { $regex: key }, district: district }).limit(page_length).skip(count).exec();
 		var _findCinemas5 = [];
 		var _iteratorNormalCompletion9 = true;
@@ -2800,7 +2803,7 @@ module.exports = require("vue");
 
 
 var pkg = __webpack_require__(29);
-var bodyParser = __webpack_require__(5);
+var bodyParser = __webpack_require__(6);
 module.exports = {
   mode: 'universal',
   head: {
@@ -2821,7 +2824,6 @@ module.exports = {
     baseUrl: process.env.BASE_URL || 'http://localhost:3389',
     HOST: '127.0.0.1', //0.0.0.0/127.0.0.1
     PORT: '3000' //80/3000
-    // NODE_ENV : 'production'//设置生产/开发模式 production/development
   },
 
   build: {
@@ -2845,7 +2847,7 @@ module.exports = {
 /* 29 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"sad-project","version":"1.0.0","description":"My tremendous Nuxt.js project","author":"SAD","private":true,"scripts":{"dev":"backpack dev","build":"nuxt build && backpack build && npm start","start":"cross-env NODE_ENV=production node build/main.js","generate":"nuxt generate","lint":"eslint --ext .js,.vue --ignore-path .gitignore .","precommit":"npm run lint"},"dependencies":{"@nuxtjs/axios":"^5.0.0","body-parser":"^1.18.3","bootstrap":"^4.0.0-beta.2","bootstrap-vue":"^2.0.0-rc.11","crypto":"^1.0.1","dotenv":"^6.0.0","express":"^4.15.3","express-jwt":"^5.3.1","fs":"0.0.1-security","http":"0.0.0","jquery":"^3.3.1","js-cookie":"^2.2.0","jsonwebtoken":"^8.3.0","jwt-decode":"^2.2.0","mongoose":"^5.1.6","nuxt":"^1.0.0","tracer":"^0.9.0","vue":"^2.5.16","vue-baidu-map":"^0.21.10","vuelidate":"^0.7.4"},"devDependencies":{"babel-core":"^6.26.3","babel-eslint":"^8.2.1","babel-polyfill":"^6.26.0","babel-preset-es2015":"^6.24.1","backpack-core":"^0.7.0","cross-env":"^5.0.1","eslint":"^4.15.0","eslint-loader":"^2.0.0","eslint-plugin-vue":"^4.0.0","nodemon":"^1.11.0"}}
+module.exports = {"name":"sad-project","version":"1.0.0","description":"My tremendous Nuxt.js project","author":"SAD","private":true,"scripts":{"dev":"backpack dev","build":"nuxt build && backpack build","start":"cross-env NODE_ENV=production node build/main.js","generate":"nuxt generate","lint":"eslint --ext .js,.vue --ignore-path .gitignore .","precommit":"npm run lint","pm2build":"nuxt build && backpack build && npm start"},"dependencies":{"@nuxtjs/axios":"^5.0.0","body-parser":"^1.18.3","bootstrap":"^4.0.0-beta.2","bootstrap-vue":"^2.0.0-rc.11","crypto":"^1.0.1","dotenv":"^6.0.0","express":"^4.15.3","express-jwt":"^5.3.1","fs":"0.0.1-security","http":"0.0.0","jquery":"^3.3.1","js-cookie":"^2.2.0","jsonwebtoken":"^8.3.0","jwt-decode":"^2.2.0","mongoose":"^5.1.6","nuxt":"^1.0.0","tracer":"^0.9.0","vue":"^2.5.16","vue-baidu-map":"^0.21.10","vuelidate":"^0.7.4"},"devDependencies":{"babel-core":"^6.26.3","babel-eslint":"^8.2.1","babel-polyfill":"^6.26.0","babel-preset-es2015":"^6.24.1","backpack-core":"^0.7.0","cross-env":"^5.0.1","eslint":"^4.15.0","eslint-loader":"^2.0.0","eslint-plugin-vue":"^4.0.0","nodemon":"^1.11.0"}}
 
 /***/ })
 /******/ ]);

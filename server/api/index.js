@@ -8,15 +8,9 @@ import news from './news'
 import {config} from '../config'
 const router = express.Router()
 
-/**@desc db options*/
-let options = {
-  user: config.username,
-  pass: config.password,
-  keepAlive: true,
-}
 mongoose.Promise = global.Promise
 
-mongoose.connect(config.url, options);
+mongoose.connect(config.url);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, '数据库连接失败:'));

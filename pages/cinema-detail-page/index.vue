@@ -74,12 +74,9 @@
             </div>
             <div class="show-date">
                 <span>观影时间 :</span>
-                <span class="date-item active" data-index="0">今天 6月19</span>
-                <span class="date-item " data-index="1">明天 6月20</span>
-                <span class="date-item " data-index="2">后天 6月21</span>
-                <span class="date-item " data-index="3">周五 6月22</span>
-                <span class="date-item " data-index="4">周六 6月23</span>
-                <span class="date-item " data-index="5">周日 6月24</span>
+                <span :class="nowDate == 0 ? 'date-item active' : 'date-item'" data-index="0" @click="chooseDate(0)">今天 {{getDate(0)}}</span>
+                <span :class="nowDate == 1 ? 'date-item active' : 'date-item'" data-index="1" @click="chooseDate(1)">明天 {{getDate(1)}}</span>
+                <span :class="nowDate == 2 ? 'date-item active' : 'date-item'" data-index="2" @click="chooseDate(2)">后天 {{getDate(2)}}</span>
             </div>
             <div class="plist-container active">
                 <table class="plist">
@@ -94,58 +91,19 @@
                     </thead>
 
                     <tbody>
-                        <tr class="">
+                        <tr v-for="(item, index) in section" :key="index" :class="index % 2 == 0 ? '' : 'even'" v-if="nowDate != 0 || timeAvaliable(item)">
                           <td>
-                            <span class="begin-time">19:20</span>
+                            <span class="begin-time">{{item}}</span>
                             <br>
-                            <span class="end-time">21:28散场</span>
                           </td>
                           <td>
-                            <span class="lang">英语3D</span>
+                            <span class="lang">{{film.country.indexOf("中国大陆") != -1 ? '国语' : '英语'}}</span>
                           </td>
                           <td>
-                            <span class="hall">1号厅</span>
+                            <span class="hall">{{isActive + 2}}号厅</span>
                           </td>
                           <td>
-                            <span class="sell-price"><span class="stonefont">28</span></span>
-                          </td>
-                          <td>
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal">选座购票</a>
-                          </td>
-                        </tr>
-                        <tr class="even">
-                          <td>
-                            <span class="begin-time">20:30</span>
-                            <br>
-                            <span class="end-time">22:38散场</span>
-                          </td>
-                          <td>
-                            <span class="lang">英语3D</span>
-                          </td>
-                          <td>
-                            <span class="hall">2号厅</span>
-                          </td>
-                          <td>
-                            <span class="sell-price"><span class="stonefont">28</span></span>
-                          </td>
-                          <td>
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal">选座购票</a>
-                          </td>
-                        </tr>
-                        <tr class="">
-                          <td>
-                            <span class="begin-time">21:40</span>
-                            <br>
-                            <span class="end-time">23:48散场</span>
-                          </td>
-                          <td>
-                            <span class="lang">英语3D</span>
-                          </td>
-                          <td>
-                            <span class="hall">1号厅</span>
-                          </td>
-                          <td>
-                            <span class="sell-price"><span class="stonefont">28</span></span>
+                            <span class="sell-price"><span class="stonefont">{{ticketPrice}}</span></span>
                           </td>
                           <td>
                             <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name" class="buy-btn normal">选座购票</a>
@@ -184,11 +142,18 @@ export default {
       center: {lng: 0, lat: 0}, // map
       zoom: 3, //map
       choosedTimes: {
-        date: '2018-6-30',
-
-
-      }
-
+        date: '2018-6-30'
+      },
+      section: [
+        '12:10',
+        '14:30',
+        '16:50',
+        '19:10',
+        '21:30',
+        '23:50'
+      ],
+      ticketPrice: 42,
+      nowDate: 0,
     }
   },
 
@@ -242,6 +207,38 @@ export default {
             }
   },
   methods: {
+    getDate(num) {
+      let today = new Date()
+      let nowTime = today.getTime();
+      let ms = 24*3600*1000*num;
+      today.setTime(parseInt(nowTime + ms));
+      let oYear = today.getFullYear();
+      let oMoth = (today.getMonth() + 1).toString();
+      if (oMoth.length <= 1) oMoth = '0' + oMoth;
+      let oDay = today.getDate().toString();
+      if (oDay.length <= 1) oDay = '0' + oDay;
+      let str = '-'
+      return oMoth + str + oDay;
+    },
+    timeAvaliable(item) {
+      let nowtime = item.split(':')
+      let secHour = parseInt(nowtime[0])
+      let secMin = parseInt(nowtime[1])
+      let today = new Date()
+      let hour = parseInt(today.getHours())
+      let min = parseInt(today.getMinutes())
+      if (hour > secHour) {
+        return false
+      } else if (hour < secHour) {
+        return true
+      } else if (min >= secMin) {
+        return false
+      }
+      return true
+    },
+    chooseDate(index) {
+      this.nowDate = index
+    },
     notSameFilm(imgSrc1, imgSrc2) {
       let img1 = (imgSrc1.split('@'))[0]
       let img2 = (imgSrc2.split('@'))[0]
@@ -272,7 +269,6 @@ export default {
             let {data} = await axios.get('/api/getFilmByImg', {params: {src: nowFilmSrc}})
             if(!data.errorCode) {
               if (data.data[0]) {
-                alert("OK")
                 // 能拉取到
                 this.film = data.data[0]
                 this.isActive = index;
