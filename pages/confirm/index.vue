@@ -35,13 +35,14 @@
             <tbody>
                 <tr>
                     <td class="movie-name">《{{film_name}}》</td>
-                    <td class="showtime">今天 6月27日 19:20</td>
+                    <td class="showtime">{{date + '  ' + time}}</td>
                     <td class="cinema-name">{{cinema_name}}</td>
                     <td>
-                        <span class="hall">1号厅</span>
+                        
                         <div class="seats">
-                            <div>
-                                <span class=""><i>1</i>排<i>01</i>座</span>
+                            <div  v-for="(item, index) in seat" :key="index">
+                                <span class="hall">{{room}}号厅</span>
+                                <span><i>{{Math.floor(item/8)+1}}</i>排<i>{{item%8+1}}</i>座</span>
                             </div>
                             <div>
                             </div>
@@ -87,9 +88,25 @@ export default {
     let filmName = route.query.filmName;      //取得电影名字
     let cinemaName = route.query.cinemaName;  //取得影院名字
     let totalprice = route.query.totalPrice;  //总价
+    let date = route.query.date;
+    let time = route.query.time;
+    let room = route.query.room;
+    let list = route.query.list;
+    let i = 0;
+    let seat = [];
+    let strlen = list.length;
+    for (i = 0; i < strlen; i++) {
+      if (list[i] == '1') {
+        seat.push(i)
+      }
+    }
     return {cinema_name: cinemaName,
       film_name: filmName,
-      total_price: totalprice
+      total_price: totalprice,
+      date: date,
+      time: time,
+      room: room,
+      seat: seat,
     }
   },
   methods: {
