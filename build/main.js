@@ -179,11 +179,7 @@ module.exports = require("crypto");
  * @desc db config
  * */
 module.exports.config = {
-<<<<<<< HEAD
-  url: 'mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691/maoyanmovie', // 普通不授权模式链接mongodb
-=======
   url: 'mongodb://sysu:sysu2018@120.77.37.156:27017/maoyanmovie?authSource=admin', // 普通不授权模式链接mongodb
->>>>>>> e8759d640a5ce8743c9cfca52e8faee91b46e222
   domain: 'mlab.com', // 主域名
   scheme: 'mongodb', // 协议
   database: 'mlab.com', // 数据库名称
@@ -317,7 +313,7 @@ app.set("eventBus", eventBus);
 
 // Import and Set Nuxt.js options
 var config = __webpack_require__(28);
-config.dev = !("development" === 'production');
+config.dev = !("production" === 'production');
 
 async function start() {
   // Init Nuxt.js
@@ -388,19 +384,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var router = _express2.default.Router();
 
-/**@desc db options*/
-var options = {
-  user: _config.config.username,
-  pass: _config.config.password,
-  keepAlive: true
-};
 _mongoose2.default.Promise = global.Promise;
 
-<<<<<<< HEAD
-_mongoose2.default.connect(_config.config.url, options);
-=======
 _mongoose2.default.connect(_config.config.url);
->>>>>>> e8759d640a5ce8743c9cfca52e8faee91b46e222
 
 var db = _mongoose2.default.connection;
 db.on('error', console.error.bind(console, '数据库连接失败:'));
