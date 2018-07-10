@@ -52,5 +52,5 @@ mongoose
 vue-baidu-map
 ```
 
-参考结构：https://github.com/veaba/express-nuxt
+访问：http://120.77.37.156/
 
