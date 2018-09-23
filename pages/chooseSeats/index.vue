@@ -129,7 +129,7 @@
                         </div>
                     </form>
                     <div class="confirm-btn" data-act="confirm-click" data-bid="b_0a0ep6pp">
-                        <a :href="'/confirm?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name+'&totalPrice='+totalPrice+'&date='+date+'&time='+time+'&room='+room+'&list='+clickList.join('')">确认选座</a>
+                        <a :href="'/nuxt/confirm?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name+'&totalPrice='+totalPrice+'&date='+date+'&time='+time+'&room='+room+'&list='+clickList.join('')">确认选座</a>
                     </div>
                 </div>
             </div>

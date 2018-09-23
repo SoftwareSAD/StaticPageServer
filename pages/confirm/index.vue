@@ -58,7 +58,7 @@
             </div>
             <div>
                 <div class="pay-btn" >
-                  <a href="/" v-on:click="comeback">确认支付</a>
+                  <a href="/nuxt/" v-on:click="comeback">确认支付</a>
                 </div>
             </div>
         </div>
