@@ -2806,6 +2806,9 @@ var pkg = __webpack_require__(29);
 var bodyParser = __webpack_require__(6);
 module.exports = {
   mode: 'universal',
+  router: {
+    base: '/nuxt/'
+  },
   head: {
     titleTemplate: '%s | STAR MOVIE',
     meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: pkg.description }],

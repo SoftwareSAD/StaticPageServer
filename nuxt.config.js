@@ -2,6 +2,9 @@ const pkg = require('./package')
 const bodyParser = require('body-parser')
 module.exports = {
   mode: 'universal',
+  router: {
+      base: '/nuxt/'
+  },
   head: {
     titleTemplate: '%s | STAR MOVIE',
     meta: [

@@ -4,16 +4,19 @@
     <h1 class="title">
       Welcome
     </h1>
-    <h3>
-      Now you're logged in
-    </h3>
-    <ul class="users">
-      <li v-for="(user, index) in users" :key="index" class="user">
-        <nuxt-link :to="{ params: { id: index }, path : '/users/'+ index}" target="_blank">
-          {{ user.name }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <div v-if="$store.state.authUser">
+      <h3>Now you're logged in</h3>
+      <ul class="users">
+        <li v-for="(user, index) in users" :key="index" class="user">
+          <nuxt-link :to="{ params: { id: index }, path : '/users/'+ index}" target="_blank">
+          {{ user.name }}</nuxt-link>
+        </li>
+      </ul>
+    </div>
+    <div v-else>
+      <h3>Sorry. You're not logged in.</h3>
+    </div>
+
   </section>
 </template>
 

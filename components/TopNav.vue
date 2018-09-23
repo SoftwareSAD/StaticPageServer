@@ -9,24 +9,24 @@
           <b-dropdown-item href="#">定位城市：<span class="city-name">广州</span></b-dropdown-item>
           <b-dropdown-item href="#"><b-list-group class="city-list"></b-list-group></b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-nav-item href="/">首页</b-nav-item>
-        <b-nav-item href="/cinema">影院</b-nav-item>
+        <b-nav-item href="/nuxt">首页</b-nav-item>
+        <b-nav-item href="/nuxt/cinema">影院</b-nav-item>
         <b-nav-item-dropdown text="电影" left no-caret>
-          <b-dropdown-item href="/movies?sort_ID=1">正在热映</b-dropdown-item>
-          <b-dropdown-item href="/movies?sort_ID=2">即将上映</b-dropdown-item>
-          <b-dropdown-item href="/movies?sort_ID=3">经典影片</b-dropdown-item>
+          <b-dropdown-item href="/nuxt/movies?sort_ID=1">正在热映</b-dropdown-item>
+          <b-dropdown-item href="/nuxt/movies?sort_ID=2">即将上映</b-dropdown-item>
+          <b-dropdown-item href="/nuxt/movies?sort_ID=3">经典影片</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown text="资讯" left no-caret>
-          <b-dropdown-item href="/hot-news">热点资讯</b-dropdown-item>
-          <b-dropdown-item href="/all-news">全部资讯</b-dropdown-item>
-          <b-dropdown-item href="/all-videos">全部视频</b-dropdown-item>
+          <b-dropdown-item href="/nuxt/hot-news">热点资讯</b-dropdown-item>
+          <b-dropdown-item href="/nuxt/all-news">全部资讯</b-dropdown-item>
+          <b-dropdown-item href="/nuxt/all-videos">全部视频</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
           <b-form-input v-model="inputText" type="text" size="sm" placeholder="Search"/>
-          <b-button :href="'/movies?sort_ID='+inputText" size="sm" class="my-sm-0" type="submit">Search</b-button>
+          <b-button :href="'/nuxt/movies?sort_ID='+inputText" size="sm" class="my-sm-0" type="submit">Search</b-button>
         </b-nav-form>
 
         <b-nav-item-dropdown right>
@@ -37,7 +37,7 @@
           </template>
           <b-dropdown-item v-if="$store.state.authUser"><nuxt-link to="/users">个人主页</nuxt-link></b-dropdown-item>
           <b-dropdown-item v-if="$store.state.authUser" v-on:click="logout()">退出</b-dropdown-item>
-          <b-dropdown-item v-else><nuxt-link to="/login">登录</nuxt-link>/<nuxt-link to="register">注册</nuxt-link></b-dropdown-item>
+          <b-dropdown-item v-else><nuxt-link to="/login">登录</nuxt-link>/<nuxt-link to="/register">注册</nuxt-link></b-dropdown-item>
         </b-nav-item-dropdown>
 
       </b-navbar-nav>
