@@ -3,8 +3,8 @@ import { Nuxt, Builder } from 'nuxt'
 import api from './api'
 import bodyParser from 'body-parser'
 import Vue from 'vue'
-const host = process.env.HOST || '0.0.0.0'
-const port = process.env.PORT || 80
+const host = process.env.HOST || '127.0.0.1'
+const port = process.env.PORT || 8080
 const eventBus = new Vue();
 const app = express()
 app.set('port', port)
