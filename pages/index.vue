@@ -85,8 +85,10 @@ export default {
     }
   },
   async created(){
-    await this.getHotMovies()
     await this.getReadyMovies()
+  },
+  async beforeMount() {
+    await this.getHotMovies()
   },
   methods: {
     async getHotMovies() {
