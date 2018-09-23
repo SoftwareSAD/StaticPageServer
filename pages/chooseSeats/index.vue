@@ -149,7 +149,7 @@ import Vue from 'vue'
 export default {
     components: {Logo, Adcolumn},
     head: {
-        'title': 'cinema-detail',
+        'title': '选择影片场次',
     },
     data() {
       return {

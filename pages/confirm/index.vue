@@ -77,7 +77,7 @@ import Vue from 'vue'
 export default {
   components: {Logo, Adcolumn},
   head: {
-    'title': 'confirm',
+    'title': '支付确认',
   },
   data() {
     return {
