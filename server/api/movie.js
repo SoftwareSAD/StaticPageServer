@@ -55,9 +55,9 @@ router.get('/getHomeHotMovies', async (req, res, next) => {
       }
     }
   }
-  for (var i = 0; i < findMovies.length; i++) {
-    console.log(findMovies[i].movie_total_price)
-  }
+  // for (var i = 0; i < findMovies.length; i++) {
+  //   console.log(findMovies[i].movie_total_price)
+  // }
   return _dbSuccess(res, '获取热映电影成功', findMovies)
 });
 
