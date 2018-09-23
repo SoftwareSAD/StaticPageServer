@@ -5,7 +5,7 @@
     <div class="video-cell-group">
       <div class="video-cell card img-fluid" v-for="item in allvideodata" :key="item.id">
         <a :href="item.url" :title="item.title" target="_blank">
-          <img class="video-cell-img card-img-top" :src="item.cover_img_src" alt="video image">
+          <img class="video-cell-img card-img-top" v-lazy="item.cover_img_src" alt="video image" :key="item.cover_img_src">
           <div class="video-cell-detail card-img-overlay">
             <p class="video-cell-title card-title two-line-text">{{item.title}}</p>
             <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>{{item.view_count}}</small>

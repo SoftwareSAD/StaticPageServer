@@ -179,10 +179,10 @@ module.exports = require("crypto");
  * @desc db config
  * */
 module.exports.config = {
-  url: 'mongodb://sysu:sysu2018@120.77.37.156:27017/maoyanmovie?authSource=admin', // 普通不授权模式链接mongodb
+  url: 'mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691/maoyanmovie', // 普通不授权模式链接mongodb
   domain: 'mlab.com', // 主域名
   scheme: 'mongodb', // 协议
-  database: 'mlab.com', // 数据库名称
+  database: 'maoyanmovie', // 数据库名称
   username: 'heygrandpa', // 管理员用户名称
   password: 'SYSU2018' // 管理员密码
 
@@ -313,7 +313,7 @@ app.set("eventBus", eventBus);
 
 // Import and Set Nuxt.js options
 var config = __webpack_require__(28);
-config.dev = !("production" === 'production');
+config.dev = !("development" === 'production');
 
 async function start() {
   // Init Nuxt.js
@@ -1942,7 +1942,7 @@ var movieSchema = new Schema({
 /**
  * @desc构建表模型
  */
-var MovieModel = _mongoose2.default.model('movie', movieSchema, 'movie');
+var MovieModel = _mongoose2.default.model('movie', movieSchema, 'star_movie');
 
 exports.default = MovieModel;
 
@@ -2809,22 +2809,24 @@ module.exports = {
   head: {
     titleTemplate: '%s | STAR MOVIE',
     meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: pkg.description }],
-    link: [
-      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/movie.ico' }]
   },
   loading: { color: '#FFFFFF' },
 
   css: ['~/assets/css/base.css', '~/assets/css/font-awesome/css/font-awesome.min.css'],
 
+  plugins: ['~plugins/vue-lazyload'],
+
   modules: ['@nuxtjs/axios', 'bootstrap-vue/nuxt'],
   serverMiddleware: [bodyParser.json()],
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3389',
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     HOST: '127.0.0.1', //0.0.0.0/127.0.0.1
     PORT: '3000' //80/3000
   },
+
+  cache: true,
 
   build: {
     extractCSS: true,
@@ -2847,7 +2849,7 @@ module.exports = {
 /* 29 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"sad-project","version":"1.0.0","description":"My tremendous Nuxt.js project","author":"SAD","private":true,"scripts":{"dev":"backpack dev","build":"nuxt build && backpack build && npm start","start":"cross-env NODE_ENV=production node build/main.js","generate":"nuxt generate","lint":"eslint --ext .js,.vue --ignore-path .gitignore .","precommit":"npm run lint","pm2build":"nuxt build && backpack build && npm start"},"dependencies":{"@nuxtjs/axios":"^5.0.0","body-parser":"^1.18.3","bootstrap":"^4.0.0-beta.2","bootstrap-vue":"^2.0.0-rc.11","crypto":"^1.0.1","dotenv":"^6.0.0","express":"^4.15.3","express-jwt":"^5.3.1","fs":"0.0.1-security","http":"0.0.0","jquery":"^3.3.1","js-cookie":"^2.2.0","jsonwebtoken":"^8.3.0","jwt-decode":"^2.2.0","mongoose":"^5.1.6","nuxt":"^1.0.0","tracer":"^0.9.0","vue":"^2.5.16","vue-baidu-map":"^0.21.10","vuelidate":"^0.7.4"},"devDependencies":{"babel-core":"^6.26.3","babel-eslint":"^8.2.1","babel-polyfill":"^6.26.0","babel-preset-es2015":"^6.24.1","backpack-core":"^0.7.0","cross-env":"^5.0.1","eslint":"^4.15.0","eslint-loader":"^2.0.0","eslint-plugin-vue":"^4.0.0","nodemon":"^1.11.0"}}
+module.exports = {"name":"sad-project","version":"1.0.0","description":"My tremendous Nuxt.js project","author":"SAD","private":true,"scripts":{"dev":"backpack dev","build":"nuxt build && backpack build && npm start","start":"cross-env NODE_ENV=production node build/main.js","generate":"nuxt generate","lint":"eslint --ext .js,.vue --ignore-path .gitignore .","precommit":"npm run lint","pm2build":"nuxt build && backpack build && npm start","heroku-postbuild":"nuxt build && backpack build"},"dependencies":{"@nuxtjs/axios":"^5.0.0","@xunlei/vue-lazy-component":"^1.1.3","body-parser":"^1.18.3","bootstrap":"^4.0.0-beta.2","bootstrap-vue":"^2.0.0-rc.11","crypto":"^1.0.1","dotenv":"^6.0.0","express":"^4.15.3","express-jwt":"^5.3.1","fs":"0.0.1-security","http":"0.0.0","jquery":"^3.3.1","js-cookie":"^2.2.0","jsonwebtoken":"^8.3.0","jwt-decode":"^2.2.0","mongoose":"^5.1.6","nuxt":"^1.0.0","tracer":"^0.9.0","vue":"^2.5.16","vue-baidu-map":"^0.21.10","vuelidate":"^0.7.4"},"devDependencies":{"babel-core":"^6.26.3","babel-eslint":"^8.2.1","babel-polyfill":"^6.26.0","babel-preset-es2015":"^6.24.1","backpack-core":"^0.7.0","cross-env":"^5.0.1","eslint":"^4.15.0","eslint-loader":"^2.0.0","eslint-plugin-vue":"^4.0.0","nodemon":"^1.11.0","vue-lazyload":"^1.2.6"}}
 
 /***/ })
 /******/ ]);

@@ -8,7 +8,7 @@
       <div class="news-box-container clearfix" id="vue-app1">
         <div class="news-box" v-for="item in newsdata" :key="item.id">
           <a  :href=" 'http://maoyan.com' + item.news_url" target="_blank" :title="item.title">
-            <img class="news-box-img" :src="item.cover_img_src" alt="news img"/>
+            <img class="news-box-img" v-lazy="item.cover_img_src" alt="news img" :key="item.cover_img_src"/>
           </a>
           <a :href="'http://maoyan.com' + item.news_url" target="_blank" :title="item.title">
             <p class="news-box-title two-line-text text-center">
@@ -31,7 +31,7 @@
       <div class="video-box-container clearfix" id="vue-app2">
         <div class="video-box card img-fluid" v-for="item in videodata" :key="item.id">
           <a :href="item.url" :title="item.title" target="_blank">
-            <img class="video-box-img card-img-top" :src="item.cover_img_src" alt="video image">
+            <img class="video-box-img card-img-top" v-lazy="item.cover_img_src" alt="video image" :key="item.cover_img_src">
             <div class="video-box-detail card-img-overlay">
               <p class="video-box-title card-title two-line-text">{{item.title}}</p>
               <small class="view-count float-right"><span class="fa fa-play fa-lg"></span>{{item.view_count}}</small>

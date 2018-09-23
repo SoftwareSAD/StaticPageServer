@@ -10,7 +10,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/movie.ico' }
     ]
   },
   loading: { color: '#FFFFFF' },
@@ -19,6 +19,8 @@ module.exports = {
     '~/assets/css/base.css',
     '~/assets/css/font-awesome/css/font-awesome.min.css'
   ],
+
+  plugins: ['~plugins/vue-lazyload'],
 
   modules: [
     '@nuxtjs/axios',
@@ -29,10 +31,12 @@ module.exports = {
   ],
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3389',
+    baseUrl: process.env.BASE_URL || 'http://localhost:80',
     HOST: '0.0.0.0',//0.0.0.0/127.0.0.1
     PORT: '80',//80/3000
   },
+
+  cache: true,
 
   build: {
     extractCSS: true,

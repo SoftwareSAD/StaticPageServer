@@ -51,7 +51,7 @@
               <div class="movie-item">
                 <a :href="href + '?filmName=' + movie.movie_name"  target="_blank">
                   <div class="movie-poster">
-                    <img :src="movie.img" :title="movie.movie_name" :data-val="movie.id">
+                    <img v-lazy="movie.img" :title="movie.movie_name" :data-val="movie.id" :key="movie.img">
                   </div>
                 </a>
                 <div class="channel-action channel-action-sale">

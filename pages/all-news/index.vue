@@ -6,7 +6,7 @@
       <div class="news-cell clearfix" v-for="item in allnewsdata" :key="item.id">
         <div class="news-cell-img float-left">
           <a :href="'http://maoyan.com' + item.news_url" :title="item.title" target="_blank">
-            <img :src="item.cover_img_src"/>
+            <img v-lazy="item.cover_img_src" :key="item.cover_img_src"/>
           </a>
         </div>
         <div class="news-cell-detail float-left">

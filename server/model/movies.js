@@ -26,6 +26,6 @@ const movieSchema = new Schema({
 /**
  * @desc构建表模型
  */
-const MovieModel = mongoose.model('movie', movieSchema, 'movie');
+const MovieModel = mongoose.model('movie', movieSchema, 'star_movie');
 
 export default MovieModel

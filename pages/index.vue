@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div class="mycontainer">
     <div id="adcolum" class="carousel slide" data-ride="carousel">
       <Adcolumn :adcolumn_list="adcolumn_list"></Adcolumn>
@@ -9,7 +9,7 @@
         <div class="box-header">
           <span>票房排行</span>
         </div>
-        <div class="box-body" id="box-body">
+        <lazy-component class="box-body" id="box-body">
           <ul class="box-office-data list-unstyled">
             <li v-for="(film, index) in hotFilms" v-if="index < 10" :key="index">
               <a class="box-list-link" :href="href + '?filmName=' + film.movie_name" target="_blank">
@@ -19,7 +19,7 @@
               </a>
             </li>
           </ul>
-        </div>
+        </lazy-component>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
           <a href="/movies?sort_ID=1"><span class="film-more">更多></span></a>
         </div>
         <div v-for="(film, index) in hotFilms" v-if="index < 8" class="film-context" :key="index">
-          <img class="index-film-picture" v-bind:src="film.img" v-bind:alt="film.movie_name" />
+          <img class="index-film-picture" v-lazy="film.img" v-bind:alt="film.movie_name" :key="film.img"/>
           <span class="index-film_name">{{film.movie_name}}</span>
           <a class="ticket-link" :href="href + '?filmName=' + film.movie_name" target="_blank"><span >详情</span></a>
         </div>
@@ -46,7 +46,7 @@
           <a href="/movies?sort_ID=2"><span class="film-more">更多></span></a>
         </div>
         <div v-for="(film, index) in readyFilms" v-if="index < 8" class="film-context" :key="index">
-          <img class="index-film-picture" v-bind:src="film.img" v-bind:alt="film.movie_name" />
+          <img class="index-film-picture" v-lazy="film.img" v-bind:alt="film.movie_name" :key="film.img"/>
           <span class="index-film_name">{{film.movie_name}}</span>
           <a class="ticket-link" :href="href + '?filmName=' + film.movie_name" target="_blank"><span >详情</span></a>
         </div>
