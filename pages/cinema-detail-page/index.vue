@@ -106,7 +106,7 @@
                             <span class="sell-price"><span class="stonefont">{{ticketPrice}}</span></span>
                           </td>
                           <td>
-                            <a :href="'/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name+'&room='+isActive+'&date='+nowDate+'&time='+item" class="buy-btn normal">选座购票</a>
+                            <a :href="'/nuxt/chooseSeats?filmName='+film.movie_name+'&cinemaName='+cinema.cinema_name+'&room='+isActive+'&date='+nowDate+'&time='+item" class="buy-btn normal">选座购票</a>
                           </td>
                         </tr>
                       </tbody>
@@ -130,7 +130,7 @@ export default {
     Adcolumn, BaiduMap
   },
   head: {
-    'title': 'cinema-detail',
+    'title': '影院详情',
   },
   data() {
     return {

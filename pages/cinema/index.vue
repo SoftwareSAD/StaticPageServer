@@ -29,7 +29,7 @@
           <p class="cinema-address">{{theatre.address}}</p>
         </div>
         <div class="buy-btn">
-          <a :href="href + '?filmName=' + filmName + '&cinemaName=' + theatre.cinema_name" target="_blank">选座购票</a>
+          <a :href="'/nuxt/' + href + '?filmName=' + filmName + '&cinemaName=' + theatre.cinema_name" target="_blank">选座购票</a>
         </div>
         <div class="price">
           <span class="rmb red">￥</span>
