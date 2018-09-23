@@ -117,7 +117,8 @@ export default {
   .mycontainer {
     top: 50px;
     position: relative;
-    width: 1200px;
+    /*width: 1200px;*/
+    width: 100%;
     margin: 0 auto;
   }
   #adcolum {
