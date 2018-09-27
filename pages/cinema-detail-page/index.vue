@@ -135,7 +135,7 @@ export default {
   data() {
     return {
       cinema: {},
-      film: "",   //当前选中的电影对象
+      film: {},   //当前选中的电影对象
       originalFilm: {},   //显示在第一个的电影
       isCurrentActive: true,
       isActive: -1,
