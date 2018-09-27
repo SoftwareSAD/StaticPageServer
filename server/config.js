@@ -2,7 +2,7 @@
  * @desc db config
  * */
 module.exports.config = {
-  url: 'mongodb://heygrandpa:SYSU2018@ds117691.mlab.com:17691/maoyanmovie', // 普通不授权模式链接mongodb
+  url: 'mongodb://localhost:27017/maoyanmovie', // 链接mongodb//heygrandpa:SYSU2018@ds117691.mlab.com:17691/
   domain: 'mlab.com', // 主域名
   scheme: 'mongodb', // 协议
   database: 'maoyanmovie', // 数据库名称
