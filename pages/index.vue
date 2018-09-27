@@ -80,7 +80,7 @@ export default {
         {img_alt: "Third Slide", img_src:"http://p1.meituan.net/movie/671f86af1cb5c7cc583a4d1d830c078b332830.jpg@750w_1l", href:"http://maoyan.com/films/news/39223"},
         {img_alt: "Forth Slide", img_src:"http://p1.meituan.net/movie/e1331da3af4c6e8319e977814e65d9cf1051652.png@750w_1l", href:"http://maoyan.com/films/news/39474"},
       ],
-      href: "/movie-detail-page",     //转到电影详情页面
+      href: "/nuxt/movie-detail-page",     //转到电影详情页面
 
     }
   },
