@@ -10,7 +10,7 @@
             <span class="info-font">{{film.movie_type}} </span><br />
             <span class="info-font">{{film.country}} / {{film.movie_time}}</span><br />
             <span class="info-font">{{film.online_time}}</span><br />
-            <a :href="href + '?filmName=' + film.movie_name" v-if="film.movie_total_price != '暂无'" class="ticket-button">购票</a>
+            <a :href="'/nuxt/' +href + '?filmName=' + film.movie_name" v-if="film.movie_total_price != '暂无'" class="ticket-button">购票</a>
             <a :href="'/movie-detail-page' + '?filmName=' + film.movie_name" v-if="film.movie_total_price == '暂无'" class="ticket-button">暂时无法购票</a>
             <div class="movie-review">
               <span class="some-title">{{film.movie_total_price == '暂无' ? '想看人数' : '用户评分'}}</span><br />
