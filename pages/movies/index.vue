@@ -85,7 +85,7 @@
     },
     data () {
       return {
-        href: "/movie-detail-page",
+        href: "/nuxt/movie-detail-page",
         movie_list: [],
         MovieType: '全部',
         Distriction: '全部',
